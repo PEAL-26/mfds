@@ -1,28 +1,48 @@
 {
-  "name": "design-system",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "name": "software-edv-design-system",
+  "version": "1.0.2",
+  "description": "Design system para o Software EDV",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "clean": "rimraf dist",
+    "copy-css": "copyfiles -u 1 src/styles/global.css dist",
+    "build": "npm run clean && tsc && npm run copy-css",
+    "publish": "npm publish",
+    "patch": "npm version patch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PEAL-26/software-edv/tree/design-system"
+  },
+  "author": "PEAL-26",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PEAL-26/software-edv/issues"
+  },
+  "homepage": "https://peal-26.github.io/software-edv-design-system",
+  "devDependencies": {
+    "@types/node": "^20.7.0",
+    "@types/react": "^18.2.23",
+    "@types/uuid": "^9.0.4",
+    "copyfiles": "^2.4.1",
+    "eslint": "^8.50.0",
+    "prettier": "^3.0.3",
+    "rimraf": "^5.0.5",
+    "tailwindcss": "^3.3.3",
+    "typescript": "^5.2.2"
   },
   "dependencies": {
+    "@tippyjs/react": "^4.2.6",
+    "react-icons": "^4.11.0",
+    "react-select": "^5.7.5",
+    "tailwind-merge": "^1.14.0",
+    "tailwind-variants": "^0.1.14",
+    "uuid": "^9.0.1"
+  },
+  "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
-  },
-  "devDependencies": {
-    "@types/react": "^18.2.15",
-    "@types/react-dom": "^18.2.7",
-    "@typescript-eslint/eslint-plugin": "^6.0.0",
-    "@typescript-eslint/parser": "^6.0.0",
-    "@vitejs/plugin-react": "^4.0.3",
-    "eslint": "^8.45.0",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.3",
-    "typescript": "^5.0.2",
-    "vite": "^4.4.5"
   }
 }

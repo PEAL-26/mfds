@@ -1,0 +1,6 @@
+/src
+/examples
+.vscode
+.editorconfig
+.eslintrc.json
+.prettierrc
