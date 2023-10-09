@@ -1,6 +1,6 @@
 {
   "name": "software-edv-design-system",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Design system para o Software EDV",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
