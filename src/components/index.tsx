@@ -1,3 +1,5 @@
+import '../styles/global.css';
+
 // atoms
 export * from './atoms/check-box';
 export * from './atoms/icon';
