@@ -16,4 +16,5 @@ export default ModalRoot;
 export * from './modal-body';
 export * from './modal-footer';
 export * from './modal-header';
+export * from './modal-remover';
 export * from './modal-root';

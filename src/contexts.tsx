@@ -1,1 +1,1 @@
-export * from './contexts/alerts-context';
+export * from './contexts/index';

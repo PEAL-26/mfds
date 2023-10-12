@@ -18,7 +18,6 @@ export const getServerComponent = (children: ReactNode, ...componentNames: strin
   const elements: ReactNode[] = [];
 
   const isArray = Array.isArray(children);
-
   if (isArray) {
     (children as ReactNode[]).forEach((child) => {
       if (findComponent(child, componentNames)) {
