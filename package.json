@@ -9,7 +9,7 @@
     "move-files": "cpy \"dist/src/**\" dist",
     "remove-dir": "rimraf \"dist/src\" \"dist/tests\"",
     "build": "npm run clean && tsc && npm run move-files && npm run remove-dir",
-    "publish": "npm publish",
+    "publish": "npm run build && npm publish",
     "patch": "npm version patch",
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "npx prettier . --write"
@@ -40,6 +40,7 @@
   "dependencies": {
     "@tippyjs/react": "^4.2.6",
     "lottie-react": "^2.4.0",
+    "react-dropzone": "^14.2.3",
     "react-icons": "^4.11.0",
     "react-select": "^5.7.5",
     "sweetalert2": "^11.7.32",

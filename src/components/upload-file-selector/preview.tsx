@@ -1,5 +1,5 @@
-import { Image } from '@/components/pattern/molecules/image';
-import { FaTrash } from '@/helpers/icons';
+import { FaTrash } from '@/libs/react-icon';
+import { Image } from '../image';
 import { PreviewProps } from './types';
 
 export function Preview(props: PreviewProps) {

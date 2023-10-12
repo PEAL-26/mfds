@@ -1,4 +1,4 @@
-import { FaRegImage } from '@/helpers/icons';
+import { FaRegImage } from '@/libs/react-icon';
 import { UploadFileSelectorEmptyProps } from './types';
 
 export function UploadFileSelectorEmpty(props: UploadFileSelectorEmptyProps) {

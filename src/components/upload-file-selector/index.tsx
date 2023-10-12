@@ -25,3 +25,5 @@ export function UploadFileSelector(props: UploadFileSelectorProps) {
     </div>
   );
 }
+
+export * from './types';
