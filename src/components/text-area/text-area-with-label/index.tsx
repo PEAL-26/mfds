@@ -2,9 +2,9 @@ import { forwardRef } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { v4 as uuidV4 } from 'uuid';
 
-import { TextArea, TextAreaLabelProps } from '../index';
+import { TextArea, TextAreaWithLabelProps } from '../index';
 
-export const TextAreaLabel = forwardRef<HTMLTextAreaElement, TextAreaLabelProps>((props, ref) => {
+export const TextAreaWithLabel = forwardRef<HTMLTextAreaElement, TextAreaWithLabelProps>((props, ref) => {
   const { label, className, children, ...rest } = props;
 
   const uuid = uuidV4();

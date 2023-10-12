@@ -16,5 +16,6 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>((props, r
   );
 });
 
-export * from './text-area-label';
+export * from './text-area-with-label';
 export * from './types';
+export * from './variants';

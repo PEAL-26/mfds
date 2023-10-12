@@ -12,3 +12,4 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>((props: RadioProps
 });
 
 export * from './types';
+export * from './variants';

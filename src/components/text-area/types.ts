@@ -6,6 +6,6 @@ export interface TextAreaProps extends HTMLProps<HTMLTextAreaElement> {
   variant: TextAreaVariantTypes;
 }
 
-export interface TextAreaLabelProps extends TextAreaProps {
+export interface TextAreaWithLabelProps extends TextAreaProps {
   label: string;
 }

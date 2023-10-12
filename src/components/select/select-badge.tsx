@@ -13,7 +13,7 @@ export function SelectBadge(props: SelectBadgeProps) {
   const badgeLabel = (
     <label
       data-align={badgeAlign}
-      className="flex h-[38px] text-sm min-w-[96px] items-center justify-center bg-gray-300 px-2 text-center align-middle font-bold data-[align='left']:rounded-s-md data-[align='right']:rounded-e-md"
+      className="flex h-[38px] min-w-[96px] items-center justify-center bg-gray-300 px-2 text-center align-middle text-sm font-bold data-[align='left']:rounded-s-md data-[align='right']:rounded-e-md"
       htmlFor={uuid}
     >
       {badge}
@@ -23,7 +23,7 @@ export function SelectBadge(props: SelectBadgeProps) {
   return (
     <div className="flex">
       {badgeAlign === 'left' && badgeLabel}
-      <ReactSelect options={options} {...rest} styles={stylesBadge} />
+      <ReactSelect options={options} styles={stylesBadge} {...rest} />
       {badgeAlign === 'right' && badgeLabel}
     </div>
   );

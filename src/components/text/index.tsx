@@ -11,3 +11,4 @@ export function Text(props: TextProps) {
 }
 
 export * from './types';
+export * from './variants';

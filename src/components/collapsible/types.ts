@@ -14,10 +14,16 @@ export interface CollapsibleHeaderProps {
   title?: string;
   className?: string;
   classNameIcon?: string;
+  classNameContainer?: string;
   showArrowIcon?: boolean;
-  block?: boolean;
 }
 
 export interface CollapsibleBodyProps extends HTMLProps<HTMLDivElement> {
   open?: boolean;
+  block?: boolean;
+}
+
+export interface CollapsibleHeaderContainerProps extends HTMLProps<HTMLInputElement> {
+  classNameIcon?: string;
+  showArrowIcon?: boolean;
 }

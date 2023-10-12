@@ -14,3 +14,6 @@ export const Label = forwardRef<HTMLLabelElement, LabelProps>((props: LabelProps
     </label>
   );
 });
+
+export * from './types';
+export * from './variants';

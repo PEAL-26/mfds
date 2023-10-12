@@ -6,6 +6,7 @@ export const styles: StylesConfig = {
     borderWidth: '1px',
     borderRadius: '0.375rem',
     backgroundColor: '#FCFFFF',
+    fontSize: 14,
     width: '100%',
   }),
   input: () => ({
@@ -18,6 +19,9 @@ export const styles: StylesConfig = {
     clip: 'rect(0, 0, 0, 0)',
     whiteSpace: 'nowrap',
     borderWidth: '0',
+    fontSize: 14,
+    paddingBottom: 8,
+    paddingTop: 8,
   }),
   container: (styles) => ({ ...styles, width: '100%' }),
 };
@@ -32,6 +36,7 @@ export const stylesBadge: StylesConfig = {
     borderStartEndRadius: '0.375rem',
     borderEndEndRadius: '0.375rem',
     width: '100%',
+    fontSize: 14,
   }),
   input: () => ({
     position: 'absolute',
@@ -43,6 +48,9 @@ export const stylesBadge: StylesConfig = {
     clip: 'rect(0, 0, 0, 0)',
     whiteSpace: 'nowrap',
     borderWidth: '0',
+    fontSize: 14,
+    paddingBottom: 8,
+    paddingTop: 8,
   }),
   container: (styles) => ({ ...styles, width: '100%' }),
 };

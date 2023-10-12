@@ -10,4 +10,5 @@ export function Select(props: SelectProps) {
 }
 
 export * from './select-badge';
+export * from './select-label';
 export * from './types';
