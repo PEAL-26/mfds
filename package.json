@@ -6,8 +6,9 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "clean": "rimraf dist",
-    "move-files": "cpy dist/src '../dist/src'",
-    "build": "npm run clean && tsc",
+    "move-files": "cpy \"dist/src/**\" dist",
+    "remove-dir": "rimraf \"dist/src\" \"dist/tests\"",
+    "build": "npm run clean && tsc && npm run move-files && npm run remove-dir",
     "publish": "npm publish",
     "patch": "npm version patch",
     "test": "echo \"Error: no test specified\" && exit 1",
