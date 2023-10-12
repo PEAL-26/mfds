@@ -43,3 +43,6 @@ export function Tippy(props: TippyProps) {
     </TippyJs>
   );
 }
+
+export * from './tippy-content';
+export * from './types';

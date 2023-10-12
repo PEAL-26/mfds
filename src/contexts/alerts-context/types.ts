@@ -1,8 +1,8 @@
-import { AlertType } from '../../components/molecules/alert';
+import { AlertTypes } from '@/components/alert';
 import { ReactNode } from 'react';
 
 export interface AlertContextData {
-  show(type: AlertType, content: ReactNode): void;
+  show(type: AlertTypes, content: ReactNode): void;
 }
 
 export interface AlertProviderProps {

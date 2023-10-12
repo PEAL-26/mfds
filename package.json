@@ -6,11 +6,12 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "clean": "rimraf dist",
-    "copy-css": "copyfiles -u 1 src/styles/global.css dist",
-    "build": "npm run clean && tsc && npm run copy-css",
+    "move-files": "cpy dist/src '../dist/src'",
+    "build": "npm run clean && tsc",
     "publish": "npm publish",
     "patch": "npm version patch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "npx prettier . --write"
   },
   "repository": {
     "type": "git",
@@ -25,10 +26,12 @@
   "devDependencies": {
     "@types/node": "^20.7.0",
     "@types/react": "^18.2.23",
+    "@types/react-dom": "^18.2.13",
     "@types/uuid": "^9.0.4",
-    "copyfiles": "^2.4.1",
+    "cpy-cli": "^5.0.0",
     "eslint": "^8.50.0",
     "prettier": "^3.0.3",
+    "prettier-plugin-organize-imports": "^3.2.3",
     "rimraf": "^5.0.5",
     "tailwindcss": "^3.3.3",
     "typescript": "^5.2.2"
@@ -42,6 +45,7 @@
     "uuid": "^9.0.1"
   },
   "peerDependencies": {
+    "next": "^13.5.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }

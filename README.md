@@ -47,4 +47,3 @@ Este projeto é licenciado sob a Licença ISC. Consulte o arquivo [LICENSE](LICE
 - [Página do GitHub](https://github.com/PEAL-26/software-edv)
 - [Página de Problemas](https://github.com/PEAL-26/software-edv/issues)
 - [Página do npm](https://www.npmjs.com/package/software-edv-design-system)
-
