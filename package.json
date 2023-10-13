@@ -5,7 +5,9 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
+    "components/**/*",
     "dist/**/*",
+    "libs/**/*",
     "README.md",
     "*.js",
     "*.d.ts",
