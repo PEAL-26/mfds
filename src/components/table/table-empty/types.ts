@@ -1,4 +1,4 @@
-import { ElementType,HTMLProps,SVGProps } from 'react';
+import { ElementType, HTMLProps, SVGProps } from 'react';
 
 export interface TableEmptyProps {
   title: string;

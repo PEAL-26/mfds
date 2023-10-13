@@ -4,12 +4,21 @@
   "description": "Design system para o Software EDV",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "*.js",
+    "*.d.ts",
+    "!src/**/*",
+    "!tests/**/*"
+  ],
   "scripts": {
     "clean": "rimraf dist",
     "move-files": "cpy \"dist/src/**\" dist",
     "remove-dir": "rimraf \"dist/src\" \"dist/tests\"",
     "build": "npm run clean && tsc && npm run move-files && npm run remove-dir",
-    "publish": "npm run build && npm publish",
+    "build:publish": "npm run build && npm publish",
+    "publish": "npm publish",
     "patch": "npm version patch",
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "npx prettier . --write"

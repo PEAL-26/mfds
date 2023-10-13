@@ -1,7 +1,7 @@
 import { twMerge } from 'tailwind-merge';
 
-import { TableEmptyProps } from './types';
 import { TableEmptyButton } from './button';
+import { TableEmptyProps } from './types';
 
 export function TableEmpty(props: TableEmptyProps) {
   const { title, description, buttonText = '', icon: Icon, url, className } = props;

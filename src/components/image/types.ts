@@ -2,9 +2,9 @@ import { ImageProps as ImagePropsNext, StaticImageData } from 'next/image';
 import { ElementType, SVGProps } from 'react';
 
 export type ImageType = ElementType<SVGProps<HTMLOrSVGElement>> | string;
-type SrcType = string  | StaticImageData ;
+type SrcType = string | StaticImageData;
 
-export interface ImageProps extends Omit<ImagePropsNext, 'src'>  {
+export interface ImageProps extends Omit<ImagePropsNext, 'src'> {
   src?: SrcType;
   defaultImage?: ImageType;
   defaultImageSize?: number;
