@@ -6,3 +6,7 @@
 .prettierrc
 tsconfig.json
 tailwind.config.js
+package-lock.json
+jest.config.ts
+babel.config.js
+coverage

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1697244092285" clover="3.2.0">
+  <project timestamp="1697244092285" name="All files">
+    <metrics statements="19" coveredstatements="16" conditionals="16" coveredconditionals="14" methods="4" coveredmethods="3" elements="39" coveredelements="33" complexity="0" loc="19" ncloc="19" packages="1" files="1" classes="1"/>
+    <file name="currency.ts" path="/home/pel-26/dev/software-edv/design-system/design-system/src/helpers/currency.ts">
+      <metrics statements="19" coveredstatements="16" conditionals="16" coveredconditionals="14" methods="4" coveredmethods="3"/>
+      <line num="9" count="1" type="stmt"/>
+      <line num="10" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="12" count="0" type="stmt"/>
+      <line num="19" count="0" type="stmt"/>
+      <line num="22" count="1" type="stmt"/>
+      <line num="23" count="3" type="stmt"/>
+      <line num="24" count="5" type="stmt"/>
+      <line num="25" count="5" type="stmt"/>
+      <line num="27" count="5" type="stmt"/>
+      <line num="29" count="4" type="stmt"/>
+      <line num="33" count="1" type="stmt"/>
+      <line num="34" count="10" type="cond" truecount="4" falsecount="0"/>
+      <line num="35" count="1" type="stmt"/>
+      <line num="38" count="9" type="cond" truecount="2" falsecount="0"/>
+      <line num="39" count="2" type="stmt"/>
+      <line num="42" count="7" type="cond" truecount="4" falsecount="0"/>
+      <line num="43" count="1" type="stmt"/>
+      <line num="46" count="6" type="cond" truecount="4" falsecount="0"/>
+      <line num="47" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>
