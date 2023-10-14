@@ -2,7 +2,7 @@ import { useRouter } from 'next/navigation';
 import { MouseEvent } from 'react';
 import { twMerge } from 'tailwind-merge';
 
-import { Link } from '@/components/link';
+import { Link } from '../link';
 import { MenuLinkProps } from './types';
 
 export function MenuLink(props: MenuLinkProps) {

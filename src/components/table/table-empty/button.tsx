@@ -2,7 +2,7 @@
 import { useRouter } from 'next/router';
 import { MouseEvent } from 'react';
 
-import { Button } from '@/components/button';
+import { Button } from '../../button';
 import { TableEmptyButton } from './types';
 
 export function TableEmptyButton(props: TableEmptyButton) {

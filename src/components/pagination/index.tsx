@@ -1,4 +1,4 @@
-import { AiFillCaretLeft, AiFillCaretRight } from '@/libs/react-icon';
+import { AiFillCaretLeft, AiFillCaretRight } from '../../libs/react-icon';
 import { twMerge } from 'tailwind-merge';
 
 import { TablePaginationProps } from '../table/types';

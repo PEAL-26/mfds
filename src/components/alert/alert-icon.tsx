@@ -3,7 +3,7 @@ import {
   BiSolidError,
   BsFillCheckCircleFill,
   BsInfoCircleFill,
-} from '@/libs/react-icon';
+} from '../../libs/react-icon';
 import { Icon } from '../icon';
 
 import { AlertIconProps } from './types';

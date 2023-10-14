@@ -1,4 +1,4 @@
-import { SweetAlert } from '@/libs/sweet-alert';
+import { SweetAlert } from '../../../libs/sweet-alert';
 import { Buttons } from './buttons';
 
 export function ModalRemover() {

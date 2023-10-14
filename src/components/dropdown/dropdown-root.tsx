@@ -1,4 +1,4 @@
-import { Tippy } from '@/libs/tippy';
+import { Tippy } from '../../libs/tippy';
 
 import { DropdownProps } from './types';
 import { getComponents } from './utils';
