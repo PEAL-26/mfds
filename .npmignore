@@ -4,6 +4,7 @@
 .editorconfig
 .eslintrc.json
 .prettierrc
+tsconfig.json
 tailwind.config.js
 package-lock.json
 jest.config.ts
