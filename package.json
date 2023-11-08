@@ -17,8 +17,9 @@
   "scripts": {
     "clean": "rimraf dist",
     "move-files": "cpy \"dist/src/**\" dist",
+    "copy-fonts": "cpy \"src/assets/fonts/*.ttf\" dist/assets/fonts",
     "remove-dir": "rimraf \"dist/src\" \"dist/tests\"",
-    "build": "npm run clean && tsc && npm run move-files && npm run remove-dir",
+    "build": "npm run clean && tsc && npm run move-files && npm run remove-dir && npm run copy-fonts",
     "build:publish": "npm run build && npm publish",
     "publish": "npm publish",
     "patch": "npm version patch",
