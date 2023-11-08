@@ -1,1 +1,1 @@
-export * from './dist/hooks';
+export * from './dist/assets';
