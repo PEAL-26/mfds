@@ -9,14 +9,18 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs"],
-  argTypes: {
-    
+  args: {
+    type: "info",
+    show: true,
+    children: "Mensagem de Alerta",
   },
+  argTypes: {},
 } satisfies Meta<typeof Alert>;
 
 export default meta;
 type Story = StoryObj<typeof Alert>;
 
+
 export const Variants: Story = {
-  args: {},
+  
 };

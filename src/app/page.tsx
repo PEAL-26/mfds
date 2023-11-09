@@ -1,10 +1,10 @@
-import { Button } from "software-edv-design-system/components";
+import { Button } from "software-edv-design-system/components"
 
 export default function Page() {
   return (
     <>
-      <h1>Hello, Next.js!</h1>
-      <Button.Root>Teste</Button.Root>
+      <Button.Root variant="primary" >Botão padrão</Button.Root> 
+      <h1>Examples Design System</h1>
     </>
   );
 }

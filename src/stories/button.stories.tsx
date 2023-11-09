@@ -1,30 +1,28 @@
 import type { Meta, StoryObj } from "@storybook/react";
-
-import { Button } from "../components/button";
+import { Button } from "software-edv-design-system/components";
 
 const meta = {
   title: "Components/Button",
-  component: Button,
+  component: Button.Root,
   parameters: {
     layout: "centered",
   },
   tags: ["autodocs"],
+  args: {
+    children: "Botao",
+  },
   argTypes: {
     variant: {
+      options: ["primary", "secondary", "error", "success", "none"],
       defaultValue: "primary",
-      type: "string",
-      description: "",
-      name: "",
+      control: { type: "radio" },
     },
   },
-} satisfies Meta<typeof Button>;
+} satisfies Meta<typeof Button.Root>;
 
 export default meta;
 type Story = StoryObj<typeof Button>;
 
 export const Variants: Story = {
-  args: {
-    variant: "primary" || "error" || "secondary" || "success" || "none",
-    children: "Button",
-  },
+  args: {},
 };

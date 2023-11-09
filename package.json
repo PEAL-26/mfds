@@ -13,8 +13,8 @@
     "predeploy": "npm run build-storybook",
     "deploy": "gh-pages -d build",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build && touch ./storybook-static/.nojekyll",
-    "deploy-storybook": "npm run build-storybook && gh-pages -d storybook-static -t true"
+    "storybook:build": "storybook build && touch ./storybook-static/.nojekyll",
+    "storybook:deploy": "npm run storybook:build && gh-pages -d storybook-static -t true"
   },
   "dependencies": {
     "next": "^13.5.4",
@@ -27,6 +27,7 @@
     "@storybook/addon-interactions": "^7.4.6",
     "@storybook/addon-links": "^7.4.6",
     "@storybook/addon-onboarding": "^1.0.8",
+    "@storybook/addon-styling-webpack": "^0.0.5",
     "@storybook/blocks": "^7.4.6",
     "@storybook/builder-vite": "^7.4.6",
     "@storybook/nextjs": "^7.4.6",
