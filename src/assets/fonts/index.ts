@@ -1,4 +1,8 @@
+
 import localFont from 'next/font/local';
+
+console.log(__dirname)
+console.log(__filename)
 
 export const fonts = {
   KoHo: localFont({
