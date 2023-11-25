@@ -20,6 +20,7 @@ export * from './components/modal';
 export * from './components/pagination';
 export * from './components/popover';
 export * from './components/radio';
+export * from './components/scroll-area';
 export * from './components/section';
 export * from './components/select';
 export * from './components/separator';
