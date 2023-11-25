@@ -5,5 +5,5 @@ export const Animations = {
   NotFound,
 };
 
-export * from './lottie-react';
+export * from './lottie-react/index';
 export default LottieReact;
