@@ -1,3 +1,4 @@
+import { InputCounter } from './input-counter';
 import { InputLabel } from './input-label';
 import { InputMessage } from './input-message';
 import { InputMessageContainer } from './input-message-container';
@@ -16,8 +17,10 @@ export const Input = {
   WithLabel: InputWithLabel,
   Message: InputMessage,
   Messages: InputMessageContainer,
+  Counter: InputCounter,
 };
 
+export * from './input-counter';
 export * from './input-text';
 export * from './input-with-badge';
 export * from './input-with-icon';
