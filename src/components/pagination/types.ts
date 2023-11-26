@@ -1,11 +1,11 @@
-import { ElementType,MouseEvent } from 'react';
+import { ElementType, MouseEvent } from 'react';
 import { IconBaseProps } from 'react-icons/lib';
 
 export interface NavigationButtonProps {
   icon: ElementType<IconBaseProps>;
   onClick(e: MouseEvent<HTMLButtonElement>): void;
   active: boolean;
-  color?:string
+  color?: string;
 }
 
 export interface NavigationNumberProps {
@@ -20,7 +20,7 @@ export interface TablePaginationProps {
   currentPage?: number;
   className?: string;
   totalPagesDisplay?: boolean;
-  color?:string
+  color?: string;
   next?(): void;
   preview?(): void;
 }
