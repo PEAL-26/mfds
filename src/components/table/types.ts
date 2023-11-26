@@ -15,9 +15,3 @@ export interface TableRowProps extends HTMLProps<HTMLTableRowElement> {
 export interface TableHeaderCellProps extends HTMLProps<HTMLTableCellElement> {
   title?: string;
 }
-export interface TablePaginationProps extends HTMLProps<HTMLDivElement> {
-  totalPages?: number;
-  currentPage?: number;
-  next?(): void;
-  preview?(): void;
-}
