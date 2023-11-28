@@ -1,6 +1,6 @@
 let getVersionFromPackageJson: () => string | null = () => null;
 
-if (typeof process !== 'undefined' && process.version) {
+if (typeof window === 'undefined') {
   // Este código será executado apenas no ambiente Node.js
   const fs = require('fs-extra');
 
