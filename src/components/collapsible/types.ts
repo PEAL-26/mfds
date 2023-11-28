@@ -16,6 +16,7 @@ export interface CollapsibleHeaderProps {
   classNameIcon?: string;
   classNameContainer?: string;
   showArrowIcon?: boolean;
+  onClick?(): void;
 }
 
 export interface CollapsibleBodyProps extends HTMLProps<HTMLDivElement> {
@@ -26,4 +27,5 @@ export interface CollapsibleBodyProps extends HTMLProps<HTMLDivElement> {
 export interface CollapsibleHeaderContainerProps extends HTMLProps<HTMLInputElement> {
   classNameIcon?: string;
   showArrowIcon?: boolean;
+  onClick?(): void;
 }

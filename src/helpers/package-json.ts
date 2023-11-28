@@ -1,4 +1,4 @@
-import fs from 'fs-extra'
+import fs from 'fs-extra';
 
 export function getVersionFromPackageJson() {
   try {
@@ -9,4 +9,3 @@ export function getVersionFromPackageJson() {
     return null;
   }
 }
-

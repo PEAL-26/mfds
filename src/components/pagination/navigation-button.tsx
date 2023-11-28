@@ -12,7 +12,7 @@ export function NavigationButton(props: NavigationButtonProps) {
       style={{ color }}
       className="data-[active=false]:cursor-not-allowed data-[active=false]:text-opacity-30 data-[color=false]:data-[active=true]:text-neutral-500"
     >
-      <Icon size={30} />
+      <Icon size={30} color={color} />
     </button>
   );
 }

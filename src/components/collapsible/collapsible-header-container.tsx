@@ -8,7 +8,7 @@ import { CollapsibleIcon } from './collapsible-icon';
 import { CollapsibleHeaderContainerProps } from './types';
 
 export function CollapsibleHeaderContainer(props: CollapsibleHeaderContainerProps) {
-  const { children, showArrowIcon, classNameIcon, className } = props;
+  const { children, showArrowIcon, classNameIcon, className, onClick } = props;
 
   const buttonRef = useRef<HTMLButtonElement>(null);
 
@@ -16,6 +16,11 @@ export function CollapsibleHeaderContainer(props: CollapsibleHeaderContainerProp
   const [block, setBlock] = useState(false);
 
   const toggleCollapsible = (e: MouseEvent) => {
+    if (onClick) {
+      onClick();
+      return;
+    }
+
     if (block) return;
 
     const noCollapsible = buttonRef.current?.querySelectorAll('.no-collapsible');

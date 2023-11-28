@@ -10,6 +10,7 @@ export function CollapsibleHeader(props: CollapsibleHeaderProps) {
     classNameIcon = '',
     classNameContainer = '',
     showArrowIcon = true,
+    onClick,
   } = props;
 
   return (
@@ -18,6 +19,7 @@ export function CollapsibleHeader(props: CollapsibleHeaderProps) {
         className={className}
         classNameIcon={classNameIcon}
         showArrowIcon={showArrowIcon}
+        onClick={onClick}
       >
         {title && <span>{title}</span>}
         <div className={twMerge('flex-1', classNameContainer)}>{children}</div>

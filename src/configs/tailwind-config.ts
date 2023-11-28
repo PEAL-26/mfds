@@ -1,5 +1,5 @@
-import { colors } from '../styles';
 import plugin from 'tailwindcss/plugin';
+import { colors } from '../styles';
 
 export const tailwindConfig = plugin(
   ({ addUtilities, theme, e }) => {

@@ -1,12 +1,12 @@
 import { twMerge } from 'tailwind-merge';
-import { AiFillCaretLeft,AiFillCaretRight } from '../../libs/react-icon';
+import { AiFillCaretLeft, AiFillCaretRight } from '../../libs/react-icon';
 
 import { NavigationButton } from './navigation-button';
 import { NavigationNumber } from './navigation-number';
 import { TablePaginationProps } from './types';
 
 export function Pagination(props: TablePaginationProps) {
-  const { className, currentPage, totalPages, totalPagesDisplay,color, next, preview  } = props;
+  const { className, currentPage, totalPages, totalPagesDisplay, color, next, preview } = props;
 
   const previewActive = !!currentPage && currentPage > 1;
   const nextActive = !!currentPage && !!totalPages && currentPage < totalPages;
