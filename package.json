@@ -1,6 +1,6 @@
 {
   "name": "software-edv-design-system",
-  "version": "1.1.10",
+  "version": "1.1.11",
   "description": "Design system para o Software EDV",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -22,6 +22,8 @@
     "build": "npm run clean && tsc && npm run move-files && npm run remove-dir && npm run copy-fonts",
     "build:publish": "npm run build && npm publish",
     "publish": "npm publish",
+    "publish:test": "npm publish --tag test",
+    "build:publish:test": "npm run build && npm publish --tag test",
     "publish:public": "npm publish --access public",
     "patch": "npm version patch",
     "test": "jest",
