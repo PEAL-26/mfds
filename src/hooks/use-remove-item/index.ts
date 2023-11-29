@@ -1,4 +1,4 @@
-import { ModalRemover } from '@/components/modal';
+import { ModalRemover } from '../../components/modal';
 
 export function useRemoveItem() {
   const handleRemove = async (fn: () => void) => {

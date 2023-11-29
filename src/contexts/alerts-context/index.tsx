@@ -1,7 +1,7 @@
 'use client';
 import { ReactNode, createContext, useContext, useState } from 'react';
 
-import { Alert, AlertTypes } from '@/components/alert';
+import { Alert, AlertTypes } from '../../components/alert';
 import { AlertContextData, AlertProviderProps } from './types';
 
 const AlertContext = createContext<AlertContextData>({} as AlertContextData);
