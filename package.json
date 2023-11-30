@@ -1,6 +1,6 @@
 {
   "name": "software-edv-design-system",
-  "version": "1.1.14",
+  "version": "1.1.16",
   "description": "Design system para o Software EDV",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -12,7 +12,9 @@
     "*.js",
     "*.d.ts",
     "!src/**/*",
-    "!tests/**/*"
+    "!tests/**/*",
+    "!next-env.d.ts",
+    "!babel.config.js"
   ],
   "scripts": {
     "clean": "rimraf dist",

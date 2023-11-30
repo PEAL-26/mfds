@@ -7,12 +7,14 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dist
 node_modules
 dist
 dist-ssr
 *.local
 .next
 /coverage
+next-env.d.ts
 
 # Editor directories and files
 .idea

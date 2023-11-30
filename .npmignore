@@ -11,3 +11,4 @@ jest.config.ts
 babel.config.js
 coverage
 postcss.config.js
+next-env.d.ts
