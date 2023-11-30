@@ -58,7 +58,7 @@ module.exports = {
 }
 ```
 
-3. Insira as seguintes linhas no seu arquivo **components.json** para configurar o [[ui.shadcn](https://ui.shadcn.com/docs/components-json)]:
+3. Insira as seguintes linhas no seu arquivo **components.json** para configurar o [ui.shadcn](https://ui.shadcn.com/docs/components-json):
 
 ```json
 {
