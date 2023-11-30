@@ -46,12 +46,6 @@ module.exports = {
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --border: 214.3 31.8% 91.4%;
-  }
-}
-
-@layer base {
   * {
     @apply border-border;
   }
@@ -87,15 +81,17 @@ Para usar este design system em seu projeto, você pode importar os componentes 
 import { Button, Input } from 'software-edv-design-system/components';
 ```
 
-Certifique-se de que as dependências do React (`react` e `react-dom`) estejam instaladas em seu projeto, conforme especificado nas `peerDependencies`.
+Certifique-se de que as dependências do React (`next`, `react` e `react-dom`) estejam instaladas em seu projeto, conforme especificado nas `peerDependencies`.
 
-## Scripts
+## Módulos
 
-- `npm run clean`: Remove a pasta `dist` para limpar o projeto.
-- `npm run build`: Limpa o projeto e compila o código TypeScript em JavaScript na pasta `dist`.
-- `npm run publish`: Publica uma nova versão da biblioteca no npm.
-- `npm run patch`: Atualiza a versão do pacote para a próxima versão de correção (patch).
-- `npm test`: Executa testes (nenhum teste especificado no momento).
+- Components
+- Configs
+- Contexts
+- Helpers
+- Hooks
+- Libs
+- Styles
 
 ## Contribuição
 
