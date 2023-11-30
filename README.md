@@ -15,12 +15,53 @@ Você pode instalar este pacote via npm:
 npm install software-edv-design-system
 ```
 
+## Configurações
+
+1. Insira as seguintes linhas no seu arquivo **global.css** para configurar o Tailwind CSS:
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --border: 214.3 31.8% 91.4%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+}
+```
+
+2. Insira as seguintes linhas no seu arquivo **components.json** para configurar o ui.shadcn:
+
+```json
+{
+
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "default",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "config": "tailwind.config.js",
+    "css": "src/styles/globals.css",
+    "baseColor": "slate",
+    "cssVariables": true
+  },
+  "aliases": {
+  }
+}
+```
 ## Uso
 
 Para usar este design system em seu projeto, você pode importar os componentes necessários da seguinte maneira:
 
 ```javascript
-import { Button, Input } from 'software-edv-design-system';
+import { Button, Input } from 'software-edv-design-system/components';
 ```
 
 Certifique-se de que as dependências do React (`react` e `react-dom`) estejam instaladas em seu projeto, conforme especificado nas `peerDependencies`.

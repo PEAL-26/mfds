@@ -33,7 +33,6 @@ export const colors = {
     800: '#137DA0',
     900: '#0E6987',
   },
-
   gray: {
     light: '#EBEAEB',
     dark: '#7B7B7A',
@@ -104,4 +103,7 @@ export const colors = {
     900: '#7a2a0d',
     950: '#461302',
   },
+  border: {
+    DEFAULt: "214.3 31.8% 91.4%"
+  }
 };

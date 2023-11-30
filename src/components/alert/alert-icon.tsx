@@ -18,5 +18,5 @@ export function AlertIcon(props: AlertIconProps) {
     info: { icon: BsInfoCircleFill, color: '' },
   }[type];
 
-  return <Icon icon={alert.icon} className="text-black/60 mr-3" size={48} />;
+  return <Icon icon={alert.icon} className="mr-3 text-black/60" size={48} />;
 }

@@ -15,7 +15,7 @@ export function Badge(props: BadgeProps) {
     <div
       data-variant={variant}
       className={twMerge(
-        'flex  w-24 items-center justify-center rounded-sm py-1 text-xs font-normal text-white',
+        'flex w-24 items-center justify-center rounded-sm py-1 text-xs font-normal text-white',
         color,
         className,
       )}
