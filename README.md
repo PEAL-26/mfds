@@ -17,7 +17,18 @@ npm install software-edv-design-system
 
 ## Configurações
 
-1. Insira as seguintes linhas no seu arquivo **global.css** para configurar o Tailwind CSS:
+1. Insira as seguintes linhas no seu arquivo **tailwind.config.js**:
+
+```js
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    './node_modules/software-edv-design-system/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+};
+```
+
+2. Insira as seguintes linhas no seu arquivo **global.css** para configurar o Tailwind CSS:
 
 ```css
 @tailwind base;
@@ -37,7 +48,7 @@ npm install software-edv-design-system
 }
 ```
 
-2. Insira as seguintes linhas no seu arquivo **components.json** para configurar o ui.shadcn:
+3. Insira as seguintes linhas no seu arquivo **components.json** para configurar o ui.shadcn:
 
 ```json
 {
