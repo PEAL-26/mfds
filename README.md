@@ -15,16 +15,26 @@ Você pode instalar este pacote via npm:
 npm install software-edv-design-system
 ```
 
+Instale também o plugin @tailwindcss/forms que os inputs sejam estilizados
+
+```bash
+npm i -D @tailwindcss/forms
+```
+
 ## Configurações
 
 1. Insira as seguintes linhas no seu arquivo **tailwind.config.js**:
 
 ```js
+const { tailwindConfig } = require('software-edv-design-system/configs');
+const forms = require('@tailwindcss/forms');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     './node_modules/software-edv-design-system/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  plugins: [tailwindConfig, forms],
 };
 ```
 
