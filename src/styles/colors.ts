@@ -104,6 +104,6 @@ export const colors = {
     950: '#461302',
   },
   border: {
-    DEFAULt: "hsl(214.3 31.8% 91.4%)"
-  }
+    DEFAULt: 'hsl(214.3 31.8% 91.4%)',
+  },
 };

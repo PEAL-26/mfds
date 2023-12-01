@@ -1,3 +1,4 @@
+import { twMerge } from 'tailwind-merge';
 import { NavigationButtonProps } from './types';
 
 export function NavigationButton(props: NavigationButtonProps) {
@@ -9,8 +10,10 @@ export function NavigationButton(props: NavigationButtonProps) {
       disabled={!active}
       data-active={active}
       data-color={!!color}
-      style={{ color }}
-      className="data-[active=false]:cursor-not-allowed data-[color=false]:data-[active=true]:text-neutral-500 data-[active=false]:text-opacity-30"
+      className={twMerge(
+        'data-[active=false]:cursor-not-allowed data-[color=false]:text-neutral-500 data-[active=false]:text-opacity-30',
+        `data-[color=true]:text-[${color || ''}]`,
+      )}
     >
       <Icon size={30} color={color} />
     </button>

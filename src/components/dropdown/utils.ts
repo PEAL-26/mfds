@@ -12,11 +12,11 @@ export function getComponents(children: ReactNode) {
       'DropdownExpansibleArea',
       'ExpansibleArea',
       'dropdown_expansible_area_DropdownExpansibleArea',
-      );
+    );
 
-      contents.push(serverComponents.contents);
-      elements.push(serverComponents.elements);
-    } else {
+    contents.push(serverComponents.contents);
+    elements.push(serverComponents.elements);
+  } else {
     const clientComponents = getClientComponent(
       children,
       'expansible-area',

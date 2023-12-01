@@ -1,3 +1,4 @@
+import { twMerge } from 'tailwind-merge';
 import { NavigationNumberProps } from './types';
 
 export function NavigationNumber(props: NavigationNumberProps) {
@@ -6,8 +7,10 @@ export function NavigationNumber(props: NavigationNumberProps) {
   return (
     <div
       data-color={!!color}
-      style={{ color }}
-      className="flex text-3xl font-normal data-[color=false]:text-neutral-500"
+      className={twMerge(
+        'flex text-3xl font-normal data-[color=false]:text-neutral-500',
+        `data-[color=true]:text-[${color || ''}]`,
+      )}
     >
       <span>{currentPage}</span>
       {totalPagesDisplay && (

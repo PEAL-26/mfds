@@ -20,4 +20,4 @@ export function DropdownExpansibleArea(props: DropdownExpansibleAreaProps) {
   );
 }
 
-DropdownExpansibleArea.displayName = "DropdownExpansibleArea"
+DropdownExpansibleArea.displayName = 'DropdownExpansibleArea';
