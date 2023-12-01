@@ -38,21 +38,7 @@ module.exports = {
 };
 ```
 
-2. Insira as seguintes linhas no seu arquivo **global.css** para configurar o Tailwind CSS:
-
-```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-}
-```
-
-3. Insira as seguintes linhas no seu arquivo **components.json** para configurar o [ui.shadcn](https://ui.shadcn.com/docs/components-json):
+2. Insira as seguintes linhas no seu arquivo **components.json** para configurar o [ui.shadcn](https://ui.shadcn.com/docs/components-json):
 
 ```json
 {

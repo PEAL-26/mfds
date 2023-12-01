@@ -40,7 +40,9 @@ export const DateTimePicker = forwardRef<HTMLInputElement, InputWithIconProps>((
           ref={ref}
         />
       </Input.Root>
-      <Dropdown.ExpansibleArea formatting="none">
+      <Dropdown.ExpansibleArea
+        formatting="none"
+      >
         <Calendar value={value} onChange={onChange} />
       </Dropdown.ExpansibleArea>
     </Dropdown.Root>

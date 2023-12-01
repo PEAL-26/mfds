@@ -3,7 +3,7 @@ import { DropdownRoot } from './dropdown-root';
 
 export const Dropdown = {
   Root: DropdownRoot,
-  ExpansibleArea: DropdownExpansibleArea,
+  ExpansibleArea: DropdownExpansibleArea
 };
 
 export default DropdownRoot;

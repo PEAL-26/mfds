@@ -4,4 +4,5 @@ export interface ModalRootProps extends HTMLProps<HTMLDivElement> {
   children: ReactNode;
   open: boolean;
   onClose?(state: boolean): void;
+  enableBackdropClose?: boolean
 }

@@ -1,50 +1,11 @@
 'use client';
-import { MouseEvent, useEffect, useRef, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { ModalRootProps } from './types';
+import { useModalRoot } from './use-modal-root';
 
 export function ModalRoot(props: ModalRootProps) {
-  const { children, className, open, onClose, ...rest } = props;
-
-  const modalRootRef = useRef<HTMLDivElement>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    onClose && onClose(false);
-  };
-
-  const handleClickBackdropModal = (e: MouseEvent) => {
-    e.preventDefault();
-
-    if (e.currentTarget === e.target) {
-      closeModal();
-    }
-  };
-
-  useEffect(() => {
-    if (isModalOpen) document.body.classList.add('overflow-hidden');
-    if (!isModalOpen) document.body.classList.remove('overflow-hidden');
-  }, [isModalOpen]);
-
-  useEffect(() => {
-    setIsModalOpen(open);
-  }, [open]);
-
-  useEffect(() => {
-    const actionButtonCancel = modalRootRef.current?.querySelector('[data-modal-cancel]');
-
-    if (actionButtonCancel) {
-      actionButtonCancel.addEventListener('click', closeModal);
-    }
-
-    return () => {
-      if (actionButtonCancel) {
-        actionButtonCancel.removeEventListener('click', closeModal);
-      }
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const { className = '', children, ...rest } = props;
+  const { isModalOpen, handleClickBackdropModal, modalRootRef } = useModalRoot(props);
 
   return (
     <div
