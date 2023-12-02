@@ -17,6 +17,7 @@ export * from './components/link';
 export * from './components/loading';
 export * from './components/menu-link';
 export * from './components/modal';
+export * from './components/page-error';
 export * from './components/pagination';
 export * from './components/popover';
 export * from './components/radio';
