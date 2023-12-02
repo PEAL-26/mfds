@@ -7,10 +7,8 @@ export function NavigationNumber(props: NavigationNumberProps) {
   return (
     <div
       data-color={!!color}
-      className={twMerge(
-        'flex text-3xl font-normal data-[color=false]:text-neutral-500',
-        `data-[color=true]:text-[${color || ''}]`,
-      )}
+      className={twMerge('flex text-3xl font-normal data-[color=false]:text-neutral-500')}
+      style={{ color }}
     >
       <span>{currentPage}</span>
       {totalPagesDisplay && (

@@ -12,10 +12,9 @@ export function NavigationButton(props: NavigationButtonProps) {
       data-color={!!color}
       className={twMerge(
         'data-[active=false]:cursor-not-allowed data-[color=false]:text-neutral-500 data-[active=false]:text-opacity-30',
-        `data-[color=true]:text-[${color || ''}]`,
       )}
     >
-      <Icon size={30} color={color} />
+      <Icon size={30} style={{ opacity: active ? 1 : 0.3, color }} />
     </button>
   );
 }

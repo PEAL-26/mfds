@@ -3,4 +3,6 @@ export interface CounterProps {
   onDecrease?(): void;
   onIncrease?(): void;
   onChangeValue?(): void;
+  buttonClassName?: string;
+  className?: string;
 }
