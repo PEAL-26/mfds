@@ -1,13 +1,14 @@
+import { twMerge } from 'tailwind-merge';
 import { LoadingProps } from './types';
 
 export function Loading(props: LoadingProps) {
-  const { height = 16, width = 16, circle = '#E5E7EB90', ...rest } = props;
+  const { height = 16, width = 16, circle = '#E5E7EB90', className = '', ...rest } = props;
 
   return (
     <svg
       aria-hidden="true"
       role="status"
-      className="inline animate-spin text-primary-a"
+      className={twMerge('text-primary-a', className, 'inline animate-spin')}
       viewBox="0 0 100 101"
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"

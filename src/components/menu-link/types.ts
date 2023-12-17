@@ -1,7 +1,8 @@
 import { ElementType, ReactNode } from 'react';
 import { IconBaseProps } from 'react-icons';
+import { LinkProps } from '../link';
 
-export interface MenuLinkProps {
+export interface MenuLinkProps extends Partial<LinkProps> {
   children?: ReactNode;
   title?: string;
   href?: string;
