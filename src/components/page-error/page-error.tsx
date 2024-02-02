@@ -4,19 +4,10 @@ import { PageErrorProps } from './types';
 import { getButtonTitle, getErrors } from './utils';
 
 export function PageError(props: PageErrorProps) {
-  const { code = '400', title, description, button, className } = props;
+  const { code = '400', title, description, button, className, onClick } = props;
 
   const buttonTitle = getButtonTitle(button);
   const error = getErrors({ code, title, description });
-
-  const handleButton = () => {
-    switch (button) {
-      case 'go_home':
-        break;
-      case 'reload':
-        break;
-    }
-  };
 
   return (
     <div
@@ -36,7 +27,7 @@ export function PageError(props: PageErrorProps) {
       </div>
 
       {buttonTitle && (
-        <Button.Root onClick={handleButton} variant="secondary">
+        <Button.Root onClick={onClick} variant="secondary">
           {buttonTitle}
         </Button.Root>
       )}

@@ -19,7 +19,7 @@ export function ModalRoot(props: ModalRootProps) {
       )}
       {...rest}
     >
-      <div className="flex h-full flex-col justify-center">{children}</div>
+      <div className="flex h-full flex-col justify-center p-5">{children}</div>
     </div>
   );
 }

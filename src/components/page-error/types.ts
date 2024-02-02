@@ -7,4 +7,5 @@ export interface PageErrorProps {
   description?: string;
   button?: PageErrorButtonType;
   className?: string;
+  onClick?(): void;
 }

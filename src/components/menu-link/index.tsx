@@ -21,18 +21,13 @@ export function MenuLink(props: MenuLinkProps) {
 
   const handleClick = (e: MouseEvent) => {
     e.preventDefault();
-
-    if (href) {
-      router.push(href);
-    }
-
-    onClick && onClick();
+    onClick?.();
   };
 
   return (
     <Link
       href={href}
-      onClick={handleClick}
+      onClick={!href && handleClick}
       className={twMerge(
         'flex items-center gap-2 bg-white p-3 text-sm text-black hover:cursor-pointer hover:bg-gray-light/50 hover:no-underline',
         className,
