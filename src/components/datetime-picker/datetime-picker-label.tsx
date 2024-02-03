@@ -7,16 +7,28 @@ import { DateTimePickerLabelProps } from './types';
 
 export const DatetimePickerLabel = forwardRef<HTMLInputElement, DateTimePickerLabelProps>(
   (props, ref) => {
-    const { className, label, ...rest } = props;
+    const {
+      labelClassName = '',
+      inputClassName = '',
+      containerClassName = '',
+      label,
+      ...rest
+    } = props;
 
     const uuid = uuidV4();
 
     return (
-      <div className="flex w-full flex-col gap-2">
-        <label className="text-base font-bold text-black" htmlFor={uuid}>
+      <div className={twMerge('flex w-full flex-col gap-2', containerClassName)}>
+        <label className={twMerge('text-base font-bold text-black', labelClassName)} htmlFor={uuid}>
           {label}
         </label>
-        <DateTimePicker id={uuid} className={twMerge(className)} {...rest} ref={ref} />
+        <DateTimePicker
+          id={uuid}
+          containerClassName={twMerge('w-full', inputClassName)}
+          className={twMerge(inputClassName)}
+          {...rest}
+          ref={ref}
+        />
       </div>
     );
   },

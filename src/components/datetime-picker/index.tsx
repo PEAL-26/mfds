@@ -5,11 +5,12 @@ import { formatarDataYMD } from '../../helpers/date-format';
 import { BiCalendar } from '../../libs/react-icon';
 
 import { Dropdown } from '../dropdown';
-import { Input, InputWithIconProps } from '../input';
+import { Input } from '../input';
 import { Calendar } from './calendar';
+import { DateTimePickerProps } from './types';
 
-export const DateTimePicker = forwardRef<HTMLInputElement, InputWithIconProps>((props, ref) => {
-  const { ...rest } = props;
+export const DateTimePicker = forwardRef<HTMLInputElement, DateTimePickerProps>((props, ref) => {
+  const { containerClassName = '', ...rest } = props;
 
   const [value, setValue] = useState(new Date());
   const [visible, setVisible] = useState(false);
@@ -29,6 +30,7 @@ export const DateTimePicker = forwardRef<HTMLInputElement, InputWithIconProps>((
       visible={visible}
       onClickOutside={hide}
       zIndex={30}
+      className={containerClassName}
     >
       <Input.Root>
         <Input.WithIcon
