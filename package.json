@@ -30,6 +30,7 @@
     "build:publish:test": "npm run build && npm publish --tag test",
     "publish:public": "npm publish --access public",
     "patch": "npm version patch",
+    "patch:publish": "npm run patch && npm run build:publish",
     "test": "jest",
     "test:watch": "jest --watch",
     "format": "npx prettier ./src/** --write"
