@@ -25,7 +25,7 @@ export const DateTimePicker = forwardRef<HTMLInputElement, DateTimePickerProps>(
   const hide = () => setVisible(false);
 
   useEffect(() => {
-    setCurrentValue(value);
+    setCurrentValue(value || new Date());
   }, [value]);
 
   return (
