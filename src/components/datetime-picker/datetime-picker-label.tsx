@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { v4 as uuidV4 } from 'uuid';
 
-import { DateTimePicker } from './index';
+import { DateTimePicker } from './datetime-picker';
 import { DateTimePickerLabelProps } from './types';
 
 export const DatetimePickerLabel = forwardRef<HTMLInputElement, DateTimePickerLabelProps>(
