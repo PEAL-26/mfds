@@ -9,7 +9,11 @@ export interface InputLabelProps extends HTMLProps<HTMLLabelElement> {
   text: string;
 }
 
-export interface InputMessageContainerProps extends HTMLProps<HTMLDivElement> {}
+export interface InputMessageContainerProps extends HTMLProps<HTMLDivElement> {
+  errors?: string[];
+  infos?: string[];
+  warns?: string[];
+}
 
 export type InputMessageTypes = 'error' | 'info' | 'warn';
 

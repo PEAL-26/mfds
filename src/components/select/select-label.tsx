@@ -1,21 +1,23 @@
 'use client';
-import ReactSelect from 'react-select';
+import ReactSelect, { SelectInstance } from 'react-select';
 import { v4 as uuidV4 } from 'uuid';
 
+import { forwardRef } from 'react';
+import { twMerge } from 'tailwind-merge';
 import { styles } from './styles-config';
 import { SelectLabelProps } from './types';
 
-export function SelectLabel(props: SelectLabelProps) {
-  const { options, label, ...rest } = props;
-
+export const SelectLabel = forwardRef<SelectInstance, SelectLabelProps>((props, ref) => {
+  const { options, label, containerClassName = '', error, ...rest } = props;
   const uuid = uuidV4();
 
   return (
-    <div className="flex w-full flex-col gap-2">
-      <label className="text-base font-bold text-black" htmlFor={uuid}>
+    <div className={twMerge('flex w-full flex-col', containerClassName)}>
+      <label className="mb-2 text-base font-bold text-black" htmlFor={uuid}>
         {label}
       </label>
-      <ReactSelect options={options} styles={styles} {...rest} />
+      <ReactSelect ref={ref} options={options} styles={styles} {...rest} />
+      {error && <span className={`mt-1 text-xs font-normal text-red`}>{error}</span>}
     </div>
   );
-}
+});

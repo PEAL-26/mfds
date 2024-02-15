@@ -1,12 +1,13 @@
 'use client';
 import ReactSelect from 'react-select';
+import { twMerge } from 'tailwind-merge';
 import { v4 as uuidV4 } from 'uuid';
 
 import { stylesBadge } from './styles-config';
 import { SelectBadgeProps } from './types';
 
 export function SelectBadge(props: SelectBadgeProps) {
-  const { options, badge, badgeAlign = 'left', ...rest } = props;
+  const { options, badge, badgeAlign = 'left', error, containerClassName = '', ...rest } = props;
 
   const uuid = uuidV4();
 
@@ -21,10 +22,13 @@ export function SelectBadge(props: SelectBadgeProps) {
   );
 
   return (
-    <div className="flex">
-      {badgeAlign === 'left' && badgeLabel}
-      <ReactSelect options={options} styles={stylesBadge} {...rest} />
-      {badgeAlign === 'right' && badgeLabel}
+    <div className={twMerge('flex flex-col', containerClassName)}>
+      <div className="flex">
+        {badgeAlign === 'left' && badgeLabel}
+        <ReactSelect options={options} styles={stylesBadge} {...rest} />
+        {badgeAlign === 'right' && badgeLabel}
+      </div>
+      {error && <span className={`mt-1 text-xs font-normal text-red`}>{error}</span>}
     </div>
   );
 }

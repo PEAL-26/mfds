@@ -1,13 +1,15 @@
 'use client';
+import { forwardRef } from 'react';
 import { twMerge } from 'tailwind-merge';
+
 import { AiOutlineMinus, AiOutlinePlus } from '../../../libs/react-icon';
 import { Button } from '../../button';
 import { InputText } from '../input-text';
-
 import { CounterProps } from './types';
 import { useCounter } from './use-counter';
 
-export function InputCounter(props: CounterProps) {
+export const InputCounter = forwardRef<HTMLInputElement, CounterProps>((props, ref) => {
+  const { className = '', buttonClassName = '' } = props;
   const {
     counter,
     handleKeyboard,
@@ -15,7 +17,6 @@ export function InputCounter(props: CounterProps) {
     handleDiminuirCounterItem,
     handleAumentarCounterItem,
   } = useCounter(props);
-  const { className = '', buttonClassName = '' } = props;
 
   return (
     <div className="flex w-24 items-center justify-center gap-1">
@@ -33,10 +34,11 @@ export function InputCounter(props: CounterProps) {
           e.preventDefault();
           handleKeyboard(e.key);
         }}
+        ref={ref}
       />
       <Button.Root variant="none" onClick={handleAumentarCounterItem} className={buttonClassName}>
         <Button.Icon icon={AiOutlinePlus} />
       </Button.Root>
     </div>
   );
-}
+});

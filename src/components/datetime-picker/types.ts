@@ -8,6 +8,7 @@ export interface DateTimePickerProps extends Omit<InputWithIconProps, OmitInputW
 }
 
 export interface DateTimePickerLabelProps extends Omit<DateTimePickerProps, 'className'> {
+  errors?:string
   label: string;
   labelClassName?: string;
   containerClassName?: string;
