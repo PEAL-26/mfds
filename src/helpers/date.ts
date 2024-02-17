@@ -14,7 +14,6 @@ export function formatarHora(date = new Date()) {
   return `${horas}:${minutos}`;
 }
 
-
 export function dateGreaterThan(date1: Date, date2: Date) {
   return date1.getTime() > date2.getTime();
 }

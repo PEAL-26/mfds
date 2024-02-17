@@ -1,4 +1,5 @@
-import { dateGreaterThan, dateLessThan } from '../../../../helpers/date';
+import { twMerge } from 'tailwind-merge';
+import { dateGreaterThan,dateLessThan } from '../../../../helpers/date';
 import { TabDayNavigation } from './tab-day-navigation';
 import { TabDayProps } from './types';
 
@@ -54,24 +55,43 @@ export function TabDay(props: TabDayProps) {
                   const selected =
                     selectedDate && date.toDateString() === selectedDate.toDateString();
                   const today = !selected && date.toDateString() === now.toDateString();
-                  const disablePreviewDates = startDate && dateLessThan(date, startDate);
-                  const disableNextDates = endDate && dateGreaterThan(date, endDate);
+                  const UM_DIA = 24 * 60 * 60 * 1000; // 24 horas × 60 minutos × 60 segundos × 1000 milissegundos
+                  const disablePreviewDates =
+                    (startDate && dateLessThan(date, new Date(startDate.getTime() - UM_DIA))) ??
+                    false;
+                  const disableNextDates = (endDate && dateGreaterThan(date, endDate)) ?? false;
+                  const isDisable = disablePreviewDates || disableNextDates;
+
+                  const className = {
+                    enable:
+                      'cursor-pointer data-[selected-date=true]:bg-[#005193] data-[today=true]:font-bold data-[selected-date=true]:text-[#ffffff] data-[today=true]:text-[#005193] data-[off-month=true]:opacity-50 hover:bg-[#005193] hover:text-[#ffffff] data-[today=true]:hover:text-[#ffffff]',
+                    disable: 'cursor-default select-none',
+                  }[isDisable ? 'disable' : 'enable'];
+
+                  const color = {
+                    enable: '#262626',
+                    disable: '#b0b0b0',
+                  }[isDisable ? 'disable' : 'enable'];
 
                   return (
                     <td key={date.toString() + index} className="box-border border-collapse">
                       <div
-                        data-disabled={disablePreviewDates || disableNextDates}
+                        data-disable={isDisable}
                         data-today={today}
                         data-off-month={offMonth}
                         data-selected-date={selected}
-                        className="flex h-7 w-7 items-center justify-center rounded-full text-center align-middle text-sm text-[#666] transition-all hover:bg-[#005193] hover:text-[#ffffff] data-[disabled=false]:cursor-pointer data-[selected-date=true]:bg-[#005193] data-[today=true]:font-bold data-[selected-date=true]:text-[#ffffff] data-[today=true]:text-[#005193] data-[disabled=true]:opacity-40 data-[off-month=true]:opacity-50 data-[today=true]:hover:text-[#ffffff]"
+                        style={{ color }}
+                        className={twMerge(
+                          'flex h-7 w-7 items-center justify-center rounded-full text-center align-middle text-sm  transition-all',
+                          className,
+                        )}
                         id={`${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`}
                         onClick={(e) => {
-                          if (disablePreviewDates || disableNextDates) return;
+                          if (isDisable) return;
                           onDayClick(e);
                         }}
                       >
-                        {date.getDate()}
+                        <span>{date.getDate()}</span>
                       </div>
                     </td>
                   );
@@ -83,7 +103,7 @@ export function TabDay(props: TabDayProps) {
       </table>
 
       <span
-        className="block cursor-pointer p-2 text-center text-xs font-bold opacity-50 hover:text-[#005193] hover:opacity-80"
+        className="block cursor-pointer p-2 pb-0 text-center text-xs font-bold opacity-50 hover:text-[#005193] hover:opacity-80"
         onClick={onTodayClick}
       >
         Hoje
