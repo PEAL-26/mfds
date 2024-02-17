@@ -40,7 +40,7 @@ export const DateTimePicker = forwardRef<HTMLInputElement, DateTimePickerProps>(
         placement="bottom-start"
         visible={visible}
         onClickOutside={hide}
-        zIndex={30}
+        zIndex={99999999}
         className={containerClassName}
       >
         <Input.Root>
