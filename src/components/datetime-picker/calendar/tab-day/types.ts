@@ -1,5 +1,5 @@
 import { MouseEvent } from 'react';
-import { ChangeSelectionTabType, onNavClickType } from '../types';
+import { ChangeSelectionTabType,onNavClickType } from '../types';
 
 export interface TabDayNavigationProps {
   onNavClick: onNavClickType;
@@ -14,6 +14,8 @@ export interface TabDayProps {
   displayedWeeks: Date[][];
   selectedDate: Date | null;
   now: Date;
+  startDate?: Date;
+  endDate?: Date;
   onDayClick(e: MouseEvent<HTMLElement>): void;
   onTodayClick(e: MouseEvent<HTMLElement>): void;
 

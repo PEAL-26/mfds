@@ -12,5 +12,7 @@ export type ChangeSelectionTabType = (e: MouseEvent<HTMLElement> | null, tab: Ta
 
 export interface CalendarProps {
   value?: Date;
+  startDate?: Date;
+  endDate?: Date;
   onChange?(date: Date): void;
 }

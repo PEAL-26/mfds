@@ -1,7 +1,7 @@
 'use client';
 import { forwardRef, useEffect, useState } from 'react';
 
-import { formatarDataYMD } from '../../helpers/date-format';
+import { formatarDataYMD } from '../../helpers/date';
 import { BiCalendar } from '../../libs/react-icon';
 
 import { Dropdown } from '../dropdown';
@@ -10,14 +10,18 @@ import { Calendar } from './calendar';
 import { DateTimePickerProps } from './types';
 
 export const DateTimePicker = forwardRef<HTMLInputElement, DateTimePickerProps>((props, ref) => {
-  const { value, onChange, containerClassName = '', ...rest } = props;
+  const { value, onChange, containerClassName = '', startDate, endDate, ...rest } = props;
 
   const [currentValue, setCurrentValue] = useState(new Date());
   const [visible, setVisible] = useState(false);
 
   const handleOnChange = (value: Date) => {
+    const event = {
+      target: { value: formatarDataYMD(value) },
+    } as React.ChangeEvent<HTMLInputElement>;
+
     setCurrentValue(value);
-    onChange?.(value);
+    onChange?.(event);
     hide();
   };
 
@@ -25,7 +29,8 @@ export const DateTimePicker = forwardRef<HTMLInputElement, DateTimePickerProps>(
   const hide = () => setVisible(false);
 
   useEffect(() => {
-    setCurrentValue(value || new Date());
+    const date = value ? new Date(value.toString()) : new Date();
+    setCurrentValue(date);
   }, [value]);
 
   return (
@@ -42,13 +47,18 @@ export const DateTimePicker = forwardRef<HTMLInputElement, DateTimePickerProps>(
           icon={BiCalendar}
           value={formatarDataYMD(currentValue)}
           variant="primary"
-          onClick={show}
           {...rest}
+          onClick={show}
           ref={ref}
         />
       </Input.Root>
       <Dropdown.ExpansibleArea formatting="none">
-        <Calendar value={currentValue} onChange={handleOnChange} />
+        <Calendar
+          startDate={startDate}
+          endDate={endDate}
+          value={currentValue}
+          onChange={handleOnChange}
+        />
       </Dropdown.ExpansibleArea>
     </Dropdown.Root>
   );

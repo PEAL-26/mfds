@@ -2,7 +2,7 @@ import { InputMessage } from './input-message';
 import { InputMessageContainerProps } from './types';
 
 export function InputMessageContainer(props: InputMessageContainerProps) {
-  const { children, errors, infos, warns } = props;
+  const { children, errors = [], infos = [], warns = [] } = props;
 
   const notHaveMessages =
     (!errors || errors?.length === 0) &&

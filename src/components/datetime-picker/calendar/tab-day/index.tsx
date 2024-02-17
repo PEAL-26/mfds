@@ -1,3 +1,4 @@
+import { dateGreaterThan, dateLessThan } from '../../../../helpers/date';
 import { TabDayNavigation } from './tab-day-navigation';
 import { TabDayProps } from './types';
 
@@ -7,6 +8,8 @@ export function TabDay(props: TabDayProps) {
     displayedWeeks,
     selectedDate,
     now,
+    startDate,
+    endDate,
     onDayClick,
     onTodayClick,
     monthNames,
@@ -51,16 +54,22 @@ export function TabDay(props: TabDayProps) {
                   const selected =
                     selectedDate && date.toDateString() === selectedDate.toDateString();
                   const today = !selected && date.toDateString() === now.toDateString();
+                  const disablePreviewDates = startDate && dateLessThan(date, startDate);
+                  const disableNextDates = endDate && dateGreaterThan(date, endDate);
 
                   return (
                     <td key={date.toString() + index} className="box-border border-collapse">
                       <div
+                        data-disabled={disablePreviewDates || disableNextDates}
                         data-today={today}
                         data-off-month={offMonth}
                         data-selected-date={selected}
-                        className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-full text-center align-middle text-sm text-[#666] transition-all hover:bg-[#005193] hover:text-[#ffffff] data-[selected-date=true]:bg-[#005193] data-[today=true]:font-bold data-[selected-date=true]:text-[#ffffff] data-[today=true]:text-[#005193] data-[off-month=true]:opacity-50 data-[today=true]:hover:text-[#ffffff]"
+                        className="flex h-7 w-7 items-center justify-center rounded-full text-center align-middle text-sm text-[#666] transition-all hover:bg-[#005193] hover:text-[#ffffff] data-[disabled=false]:cursor-pointer data-[selected-date=true]:bg-[#005193] data-[today=true]:font-bold data-[selected-date=true]:text-[#ffffff] data-[today=true]:text-[#005193] data-[disabled=true]:opacity-40 data-[off-month=true]:opacity-50 data-[today=true]:hover:text-[#ffffff]"
                         id={`${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`}
-                        onClick={onDayClick}
+                        onClick={(e) => {
+                          if (disablePreviewDates || disableNextDates) return;
+                          onDayClick(e);
+                        }}
                       >
                         {date.getDate()}
                       </div>

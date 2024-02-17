@@ -9,7 +9,7 @@ import { monthNames, weekDays } from './constants';
 import { CalendarProps, Tab } from './types';
 
 export function Calendar(props: CalendarProps) {
-  const { value, onChange } = props;
+  const { value, onChange, startDate, endDate } = props;
   const now: Date = useMemo(() => new Date(), []);
 
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
@@ -172,6 +172,8 @@ export function Calendar(props: CalendarProps) {
       {selectionTab === 'day' && (
         <TabDay
           now={now}
+          startDate={startDate}
+          endDate={endDate}
           weekDays={weekDays}
           monthNames={monthNames}
           selectedYear={selectedYear}
