@@ -168,7 +168,7 @@ export function Calendar(props: CalendarProps) {
   };
 
   return (
-    <div className="box-border w-64 rounded-md bg-[#fff] p-3 " ref={datepickerRef}>
+    <div className="box-border w-64 rounded-md bg-white p-3 " ref={datepickerRef}>
       {selectionTab === 'day' && (
         <TabDay
           now={now}

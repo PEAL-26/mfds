@@ -10,7 +10,7 @@ import { Calendar } from './calendar';
 import { DateTimePickerProps } from './types';
 
 export const DateTimePicker = forwardRef<HTMLInputElement, DateTimePickerProps>((props, ref) => {
-  const { value, onChange, containerClassName = '', startDate, endDate, ...rest } = props;
+  const { value, onChange, containerClassName = '', startDate, endDate, errors, ...rest } = props;
 
   const [currentValue, setCurrentValue] = useState(new Date());
   const [visible, setVisible] = useState(false);
@@ -34,32 +34,37 @@ export const DateTimePicker = forwardRef<HTMLInputElement, DateTimePickerProps>(
   }, [value]);
 
   return (
-    <Dropdown.Root
-      minElementWidth={false}
-      placement="bottom-start"
-      visible={visible}
-      onClickOutside={hide}
-      zIndex={30}
-      className={containerClassName}
-    >
-      <Input.Root>
-        <Input.WithIcon
-          icon={BiCalendar}
-          value={formatarDataYMD(currentValue)}
-          variant="primary"
-          {...rest}
-          onClick={show}
-          ref={ref}
-        />
-      </Input.Root>
-      <Dropdown.ExpansibleArea formatting="none">
-        <Calendar
-          startDate={startDate}
-          endDate={endDate}
-          value={currentValue}
-          onChange={handleOnChange}
-        />
-      </Dropdown.ExpansibleArea>
-    </Dropdown.Root>
+    <>
+      <Dropdown.Root
+        minElementWidth={false}
+        placement="bottom-start"
+        visible={visible}
+        onClickOutside={hide}
+        zIndex={30}
+        className={containerClassName}
+      >
+        <Input.Root>
+          <Input.WithIcon
+            icon={BiCalendar}
+            value={formatarDataYMD(currentValue)}
+            variant="primary"
+            className="cursor-pointer"
+            {...rest}
+            onClick={show}
+            readOnly
+            ref={ref}
+          />
+        </Input.Root>
+        <Dropdown.ExpansibleArea formatting="none">
+          <Calendar
+            startDate={startDate}
+            endDate={endDate}
+            value={currentValue}
+            onChange={handleOnChange}
+          />
+        </Dropdown.ExpansibleArea>
+      </Dropdown.Root>
+      {errors && <span className="mt-1 text-xs font-normal text-red-500">{errors}</span>}
+    </>
   );
 });

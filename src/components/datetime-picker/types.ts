@@ -1,9 +1,7 @@
 import { InputWithIconProps } from '../input';
 
-type OmitInputWithIconProps = 'value' | 'onChange';
 export interface DateTimePickerProps extends InputWithIconProps {
-  // value?: Date;
-  // onChange?(date: Date): void;
+  errors?: string;
   containerClassName?: string;
   startDate?: Date;
   endDate?: Date;
