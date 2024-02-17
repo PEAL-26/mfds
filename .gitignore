@@ -40,6 +40,7 @@ dist-ssr
 
 # production
 /build
+/src/libs/soft-edv
 
 # misc
 .DS_Store
