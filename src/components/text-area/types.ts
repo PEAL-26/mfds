@@ -8,4 +8,5 @@ export interface TextAreaProps extends HTMLProps<HTMLTextAreaElement> {
 
 export interface TextAreaWithLabelProps extends TextAreaProps {
   label: string;
+  errors:string
 }
