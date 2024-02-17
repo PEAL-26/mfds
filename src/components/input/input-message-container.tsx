@@ -13,15 +13,11 @@ export function InputMessageContainer(props: InputMessageContainerProps) {
 
   return (
     <div className="flex flex-col">
-      {errors.map((error, index) => (
-        <InputMessage key={index} type="error" text={error} />
-      ))}
-      {infos.map((info, index) => (
-        <InputMessage key={index} type="info" text={info} />
-      ))}
-      {warns.map((warn, index) => (
-        <InputMessage key={index} type="warn" text={warn} />
-      ))}
+      {errors.map(
+        (error, index) => error && <InputMessage key={index} type="error" text={error} />,
+      )}
+      {infos.map((info, index) => info && <InputMessage key={index} type="info" text={info} />)}
+      {warns.map((warn, index) => warn && <InputMessage key={index} type="warn" text={warn} />)}
       {children}
     </div>
   );
