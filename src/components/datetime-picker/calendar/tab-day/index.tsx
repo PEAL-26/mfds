@@ -1,5 +1,5 @@
 import { twMerge } from 'tailwind-merge';
-import { dateGreaterThan,dateLessThan } from '../../../../helpers/date';
+import { dateGreaterThan, dateLessThan } from '../../../../helpers/date';
 import { TabDayNavigation } from './tab-day-navigation';
 import { TabDayProps } from './types';
 
@@ -64,12 +64,12 @@ export function TabDay(props: TabDayProps) {
 
                   const className = {
                     enable:
-                      'cursor-pointer data-[selected-date=true]:bg-[#005193] data-[today=true]:font-bold data-[selected-date=true]:text-[#ffffff] data-[today=true]:text-[#005193] data-[off-month=true]:opacity-50 hover:bg-[#005193] hover:text-[#ffffff] data-[today=true]:hover:text-[#ffffff]',
+                      'text-[#262626] cursor-pointer data-[selected-date=true]:bg-[#005193] data-[today=true]:font-bold data-[selected-date=true]:text-[#ffffff] data-[today=true]:text-[#005193] data-[off-month=true]:opacity-50 hover:bg-[#005193] hover:text-[#ffffff] data-[today=true]:hover:text-[#ffffff]',
                     disable: 'cursor-default select-none',
                   }[isDisable ? 'disable' : 'enable'];
 
                   const color = {
-                    enable: '#262626',
+                    enable: undefined,
                     disable: '#b0b0b0',
                   }[isDisable ? 'disable' : 'enable'];
 

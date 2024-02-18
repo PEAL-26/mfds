@@ -12,5 +12,6 @@ export interface DateTimePickerLabelProps extends Omit<DateTimePickerProps, 'cla
   label: string;
   labelClassName?: string;
   containerClassName?: string;
+  inputContainerClassName?: string;
   inputClassName?: string;
 }

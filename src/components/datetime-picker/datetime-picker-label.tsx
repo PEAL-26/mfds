@@ -10,6 +10,7 @@ export const DatetimePickerLabel = forwardRef<HTMLInputElement, DateTimePickerLa
     const {
       labelClassName = '',
       inputClassName = '',
+      inputContainerClassName = '',
       containerClassName = '',
       label,
       errors,
@@ -28,7 +29,7 @@ export const DatetimePickerLabel = forwardRef<HTMLInputElement, DateTimePickerLa
         </label>
         <DateTimePicker
           id={uuid}
-          containerClassName={twMerge('w-full', inputClassName)}
+          containerClassName={twMerge('w-full', inputContainerClassName)}
           className={twMerge(inputClassName)}
           {...rest}
           ref={ref}

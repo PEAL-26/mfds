@@ -1,5 +1,5 @@
 'use client';
-import { forwardRef, useEffect, useState } from 'react';
+import { forwardRef,useEffect,useState } from 'react';
 
 import { formatarDataYMD } from '../../helpers/date';
 import { BiCalendar } from '../../libs/react-icon';
@@ -15,12 +15,13 @@ export const DateTimePicker = forwardRef<HTMLInputElement, DateTimePickerProps>(
   const [currentValue, setCurrentValue] = useState(new Date());
   const [visible, setVisible] = useState(false);
 
-  const handleOnChange = (value: Date) => {
+  const handleOnChange = (date: Date) => {
     const event = {
-      target: { value: formatarDataYMD(value) },
+      target: { value: formatarDataYMD(date) },
+      currentTarget: { value: formatarDataYMD(date) },
     } as React.ChangeEvent<HTMLInputElement>;
 
-    setCurrentValue(value);
+    setCurrentValue(date);
     onChange?.(event);
     hide();
   };
