@@ -13,7 +13,7 @@ export const CheckBox = forwardRef<HTMLInputElement, CheckBoxProps>((props: Chec
       ref={ref}
       type="checkbox"
       onChange={(e) => {
-        onChange(e);
+        onChange?.(e);
         onChecked?.(e.currentTarget.checked);
       }}
       {...rest}
