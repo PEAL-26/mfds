@@ -1,6 +1,6 @@
 'use client';
 // import { ReturnIcon } from '../../assets/icons';
-import { FaBackspace } from '../../libs/react-icon';
+import { FaBackspace } from 'react-icons/fa';
 
 import { KeyboardButton } from './button';
 import { KeyboardProps } from './types';
@@ -32,7 +32,7 @@ export function Keyboard(props: KeyboardProps) {
         {model === 'number' ? (
           <KeyboardButton icon={FaBackspace} onClick={() => onClick('backspace')} />
         ) : (
-            <></>
+          <></>
           // <KeyboardButton icon={ReturnIcon} onClick={() => onClick('enter')} />
         )}
       </div>

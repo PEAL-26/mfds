@@ -2,7 +2,7 @@
 import { forwardRef } from 'react';
 import { twMerge } from 'tailwind-merge';
 
-import { AiOutlineMinus, AiOutlinePlus } from '../../../libs/react-icon';
+import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 import { Button } from '../../button';
 import { InputText } from '../input-text';
 import { CounterProps } from './types';

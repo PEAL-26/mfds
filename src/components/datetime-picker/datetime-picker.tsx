@@ -1,8 +1,8 @@
 'use client';
-import { forwardRef,useEffect,useState } from 'react';
+import { forwardRef, useEffect, useState } from 'react';
+import { BiCalendar } from 'react-icons/bi';
 
 import { formatarDataYMD } from '../../helpers/date';
-import { BiCalendar } from '../../libs/react-icon';
 
 import { Dropdown } from '../dropdown';
 import { Input } from '../input';

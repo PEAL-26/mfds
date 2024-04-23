@@ -11,6 +11,7 @@ export const buttonVariants = tv({
         'rounded-md bg-green text-white py-2 px-3 text-sm font-bold hover:opacity-70 hover:text-white border border-green transition-all',
       error:
         'rounded-md bg-red text-white py-2 px-3 text-sm font-bold hover:opacity-70 hover:text-white border border-red transition-all',
+      outline: 'py-2 px-3 border border-gray-light bg-white hover:bg-gray-50 hover:text-black',
       none: '',
     },
   },

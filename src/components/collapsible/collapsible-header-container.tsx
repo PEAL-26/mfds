@@ -2,7 +2,7 @@
 import { MouseEvent, useEffect, useRef, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 
-import { SlArrowDown, SlArrowUp } from '../../libs/react-icon';
+import { SlArrowDown, SlArrowUp } from 'react-icons/sl';
 
 import { CollapsibleIcon } from './collapsible-icon';
 import { CollapsibleHeaderContainerProps } from './types';

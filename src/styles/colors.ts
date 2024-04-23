@@ -3,7 +3,8 @@ export const colors = {
     DEFAULT: '#1E1E1E',
   },
   white: {
-    DEFAULT: '#FCFFFF',
+    DEFAULT: '#FFFFFF',
+    background: '#FCFFFF',
   },
   primary: {
     DEFAULT: '#005193',

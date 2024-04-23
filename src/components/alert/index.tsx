@@ -2,7 +2,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 
-import { AiOutlineClose } from '../../libs/react-icon';
+import { AiOutlineClose } from 'react-icons/ai';
 import { AlertIcon } from './alert-icon';
 import { AlertProps } from './types';
 

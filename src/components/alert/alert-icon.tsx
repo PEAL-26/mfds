@@ -1,9 +1,6 @@
-import {
-  AiFillMinusCircle,
-  BiSolidError,
-  BsFillCheckCircleFill,
-  BsInfoCircleFill,
-} from '../../libs/react-icon';
+import { AiFillMinusCircle } from 'react-icons/ai';
+import { BiSolidError } from 'react-icons/bi';
+import { BsFillCheckCircleFill, BsInfoCircleFill } from 'react-icons/bs';
 import { Icon } from '../icon';
 
 import { AlertIconProps } from './types';

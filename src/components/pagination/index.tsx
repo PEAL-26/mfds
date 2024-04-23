@@ -1,5 +1,5 @@
+import { AiFillCaretLeft, AiFillCaretRight } from 'react-icons/ai';
 import { twMerge } from 'tailwind-merge';
-import { AiFillCaretLeft, AiFillCaretRight } from '../../libs/react-icon';
 
 import { NavigationButton } from './navigation-button';
 import { NavigationNumber } from './navigation-number';

@@ -1,4 +1,4 @@
 export * from './select';
 export * from './select-badge';
 export * from './select-label';
-export * from './types';
+export * from './select-search';

@@ -1,4 +1,4 @@
-import { FaTrash } from '../../libs/react-icon';
+import { FaTrash } from 'react-icons/fa';
 import { Image } from '../image';
 import { PreviewProps } from './types';
 
