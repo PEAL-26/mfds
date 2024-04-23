@@ -1,4 +1,5 @@
-import "../tailwind.css";
+import "../styles/globals.css";
+import { } from "software-edv-design-system/components";
 
 export default function RootLayout({
   children,

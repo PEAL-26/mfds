@@ -4,7 +4,7 @@ import { Table } from "software-edv-design-system/components";
 
 const meta = {
   title: "Components/Table",
-  component: Table,
+  component: () => <Table.Root />,
   parameters: {
     layout: "centered",
   },

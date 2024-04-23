@@ -4,7 +4,7 @@ import { Dropdown } from "software-edv-design-system/components";
 
 const meta = {
   title: "Components/Dropdown",
-  component: Dropdown,
+  component: () => <Dropdown.Root />,
   parameters: {
     layout: "centered",
   },

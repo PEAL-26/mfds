@@ -4,7 +4,7 @@ import { Input } from "software-edv-design-system/components";
 
 const meta = {
   title: "Components/Input",
-  component: Input,
+  component: () => <Input.Root />,
   parameters: {
     layout: "centered",
   },

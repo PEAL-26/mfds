@@ -4,7 +4,7 @@ import { Modal } from "software-edv-design-system/components";
 
 const meta = {
   title: "Components/Modal",
-  component: Modal,
+  component: () => <Modal.Root open children={<></>} />,
   parameters: {
     layout: "centered",
   },
