@@ -1,2 +1,2 @@
-export * from './page-error'
-export * from './types'
+export * from './page-error';
+export * from './types';

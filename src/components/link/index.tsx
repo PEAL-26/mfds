@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge';
 import { LinkProps } from './types';
 
 export function Link(props: LinkProps) {
-  const { children, title, className, href,target , ...rest } = props;
+  const { children, title, className, href, target, ...rest } = props;
 
   return (
     <LinkNext

@@ -16,8 +16,8 @@ export const SelectLabel = forwardRef<typeof Select, SelectLabelProps<any>>((pro
       <label className="mb-2 text-base font-bold text-black" htmlFor={uuid}>
         {label}
       </label>
-      {type === 'default' && <Select  id={uuid}  {...rest} />}
-      {type === 'searchable' && <SelectSearch  id={uuid} {...rest} />}
+      {type === 'default' && <Select id={uuid} {...rest} />}
+      {type === 'searchable' && <SelectSearch id={uuid} {...rest} />}
       {error && <span className={`mt-1 text-xs font-normal text-red`}>{error}</span>}
     </div>
   );

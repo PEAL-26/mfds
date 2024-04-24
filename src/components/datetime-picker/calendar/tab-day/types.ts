@@ -1,5 +1,5 @@
 import { MouseEvent } from 'react';
-import { ChangeSelectionTabType,onNavClickType } from '../types';
+import { ChangeSelectionTabType, onNavClickType } from '../types';
 
 export interface TabDayNavigationProps {
   onNavClick: onNavClickType;
