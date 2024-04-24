@@ -13,7 +13,7 @@ import { SelectProps } from './types';
 export function Select<T>(props: SelectProps<T>) {
   const {
     id,
-    items,
+    items = [],
     defaultItem,
     fieldLabel = 'label' as keyof T,
     fieldValue = 'value' as keyof T,

@@ -9,7 +9,7 @@ export interface SetValueOption {
 export interface SelectSearchProps<T> {
   name?: string;
   onChange?: (event: ChangeEvent<HTMLElement>) => void;
-  items: T[];
+  items?: T[];
   defaultItem?: T;
   placeholder?: string;
   fieldValue?: keyof T;
