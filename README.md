@@ -38,27 +38,6 @@ module.exports = {
 };
 ```
 
-2. Insira as seguintes linhas no seu arquivo **components.json** para configurar o [ui.shadcn](https://ui.shadcn.com/docs/components-json):
-
-```json
-{
-  "$schema": "https://ui.shadcn.com/schema.json",
-  "style": "default",
-  "rsc": true,
-  "tsx": true,
-  "tailwind": {
-    "config": "tailwind.config.js",
-    "css": "src/styles/globals.css",
-    "baseColor": "slate",
-    "cssVariables": true
-  },
-  "aliases": {
-    "components": "@/components",
-    "utils": "@/lib/utils"
-  }
-}
-```
-
 ## Uso
 
 Para usar este design system em seu projeto, você pode importar os componentes necessários da seguinte maneira:
