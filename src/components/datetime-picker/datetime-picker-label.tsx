@@ -20,7 +20,7 @@ export const DatetimePickerLabel = forwardRef<HTMLInputElement, DateTimePickerLa
     const uuid = uuidV4();
 
     return (
-      <div className={twMerge('flex w-full flex-col', containerClassName)}>
+      <div className={twMerge('flex w-full flex-col justify-start', containerClassName)}>
         <label
           className={twMerge('mb-2 text-base font-bold text-black', labelClassName)}
           htmlFor={uuid}

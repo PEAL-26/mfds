@@ -1,8 +1,14 @@
-import { ChangeEvent, ChangeEventHandler, useEffect, useState } from 'react';
+import {
+  ChangeEvent,
+  ChangeEventHandler,
+  HTMLInputTypeAttribute,
+  useEffect,
+  useState,
+} from 'react';
 
 type Value = string | number | readonly string[] | undefined;
 interface UseRestrictedInputProps {
-  type?: 'number' | 'literal';
+  type?: HTMLInputTypeAttribute | 'text' | 'number' | 'literal' | 'money';
   value?: Value;
   onChange?: ChangeEventHandler<HTMLInputElement> | undefined;
 }
@@ -15,7 +21,6 @@ export function useRestrictedInput(
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
-
     if (type === 'number' && !isNaN(Number(inputValue))) {
       setCurrentValue(inputValue);
       onChange?.(event);

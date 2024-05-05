@@ -12,7 +12,7 @@ export const TextAreaWithLabel = forwardRef<HTMLTextAreaElement, TextAreaWithLab
     const uuid = uuidV4();
 
     return (
-      <div className="flex flex-col">
+      <div className="flex flex-col  justify-start">
         <label className="mb-2 text-base font-bold text-black" htmlFor={uuid}>
           {label}
         </label>

@@ -11,7 +11,7 @@ export const InputWithLabel = forwardRef<HTMLInputElement, InputWithLabelProps>(
   const uuid = uuidV4();
 
   return (
-    <div className="flex w-full flex-col gap-2">
+    <div className="flex w-full flex-col gap-2 justify-start">
       <label className="text-base font-bold text-black" htmlFor={uuid}>
         {label}
       </label>

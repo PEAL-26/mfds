@@ -12,7 +12,7 @@ export const SelectLabel = forwardRef<typeof Select, SelectLabelProps<any>>((pro
   const uuid = uuidV4();
 
   return (
-    <div className={twMerge('flex w-full flex-col', containerClassName)}>
+    <div className={twMerge('flex w-full flex-col  justify-start', containerClassName)}>
       <label className="mb-2 text-base font-bold text-black" htmlFor={uuid}>
         {label}
       </label>
