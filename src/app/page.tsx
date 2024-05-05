@@ -5,14 +5,11 @@ import {
   SelectSearch,
   SelectBadge,
   SelectLabel,
+  Button,
+  Input,
 } from "../../../design-system/components";
-import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
+import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-
-type Inputs = {
-  example: string;
-  exampleRequired: string;
-};
 
 const schema = z.object({
   country: z.object({
@@ -39,9 +36,17 @@ export default function Page() {
   console.log(form.watch("country")); // watch input value by passing the name of it
 
   return (
-    <div className="flex flex-col justify-center items-center h-screen p-10">
+    <div className="flex flex-col justify-center items-center min-h-screen p-10">
       <h1 className="mb-10 ">Examples Design System</h1>
       <div className="flex flex-col gap-3 justify-start items-start">
+        <Input.Text type="money" variant="primary" />
+        <Input.Text type="literal" variant="primary" />
+        <Input.Text type="number" variant="primary" />
+        <Button.Root variant="primary">Primary</Button.Root>
+        <Button.Root variant="secondary">Secondary</Button.Root>
+        <Button.Root variant="success">Green</Button.Root>
+        <Button.Root variant="error">Error</Button.Root>
+        <Button.Root variant="outline">outline</Button.Root>
         <Select items={[]} />
         <SelectBadge
           type="default"
