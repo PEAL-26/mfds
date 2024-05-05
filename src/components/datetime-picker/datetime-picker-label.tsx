@@ -13,7 +13,7 @@ export const DatetimePickerLabel = forwardRef<HTMLInputElement, DateTimePickerLa
       inputContainerClassName = '',
       containerClassName = '',
       label,
-      errors,
+      error,
       ...rest
     } = props;
 
@@ -34,7 +34,7 @@ export const DatetimePickerLabel = forwardRef<HTMLInputElement, DateTimePickerLa
           {...rest}
           ref={ref}
         />
-        {errors && <span className="mt-1 text-xs font-normal text-red-500">{errors}</span>}
+        {error && <span className="mt-1 text-xs font-normal text-red-500">{error}</span>}
       </div>
     );
   },

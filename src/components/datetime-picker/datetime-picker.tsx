@@ -10,7 +10,7 @@ import { Calendar } from './calendar';
 import { DateTimePickerProps } from './types';
 
 export const DateTimePicker = forwardRef<HTMLInputElement, DateTimePickerProps>((props, ref) => {
-  const { value, onChange, containerClassName = '', startDate, endDate, errors, ...rest } = props;
+  const { value, onChange, containerClassName = '', startDate, endDate, error, ...rest } = props;
 
   const [currentValue, setCurrentValue] = useState(new Date());
   const [visible, setVisible] = useState(false);
@@ -65,7 +65,7 @@ export const DateTimePicker = forwardRef<HTMLInputElement, DateTimePickerProps>(
           />
         </Dropdown.ExpansibleArea>
       </Dropdown.Root>
-      {errors && <span className="mt-1 text-xs font-normal text-red-500">{errors}</span>}
+      {error && <span className="mt-1 text-xs font-normal text-red-500">{error}</span>}
     </>
   );
 });
