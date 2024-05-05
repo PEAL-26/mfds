@@ -7,6 +7,7 @@ import {
   SelectLabel,
   Button,
   Input,
+  CheckToggle,
 } from "../../../design-system/components";
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -95,6 +96,8 @@ export default function Page() {
           fieldLabel="name"
           offlineSearch={true}
         />
+
+        <CheckToggle />
       </div>
       <FormProvider {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
