@@ -20,6 +20,7 @@ export const InputWithBadge = forwardRef<HTMLInputElement, InputWithBadgeProps>(
   const uuid = uuidV4();
 
   return (
+    
     <div className={twMerge('flex', containerClassName)}>
       {badgeAlign === 'left' && (
         <Label
