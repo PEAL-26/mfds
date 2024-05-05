@@ -1,22 +1,41 @@
+import { useEffect, useState } from 'react';
+import { cn } from '../../libs/utils';
+import { ToggleGroup, ToggleGroupItem } from '../@radix-ui/toggle-group';
 import { CheckToggleProps } from './types';
 
+type State = 'true' | 'false';
 export function CheckToggle(props: CheckToggleProps) {
-  const { active } = props;
+  const { active = true, onChange } = props;
 
-  //   const className = {
-  //     true: "bg-primary-a",
-  //     false: "bg-white",
-  //   }[!!active ? true : false];
+  const [value, setValue] = useState<State>('true');
+
+  const className =
+    'w-full cursor-pointer px-2 text-[10px] bg-white font-normal data-[state=on]:bg-primary data-[state=on]:text-white h-7';
+
+  useEffect(() => {
+    setValue(active ? 'true' : 'false');
+  }, [active]);
 
   return (
-    <div className="flex rounded-sm border border-gray-light">
-      <span className="w-full cursor-pointer rounded-l-sm bg-primary-a px-2 py-1 text-xs font-bold text-white max-sm:text-[10px]">
-        LIGADO
-      </span>
-      <span className="w-full cursor-pointer rounded-r-sm bg-white px-2 py-1 text-xs font-normal max-sm:text-[10px]">
-        DESLIGAR
-      </span>
-    </div>
+    <ToggleGroup
+      type="single"
+      className="rounded-sm border border-gray-light"
+      value={value}
+      onValueChange={(value) => {
+        if (value) setValue(value as State);
+        onChange?.(value === 'true' ? true : false);
+      }}
+    >
+      <ToggleGroupItem
+        value="false"
+        className={cn(className, 'rounded-l-sm data-[state=on]:bg-red-600')}
+      >
+        {value === 'false' ? 'DESLIGADO' : 'DESLIGAR'}
+      </ToggleGroupItem>
+      <ToggleGroupItem value="true" className={cn(className, 'rounded-r-sm')}>
+        {value === 'true' ? 'LIGADO' : 'LIGAR'}
+      </ToggleGroupItem>
+    </ToggleGroup>
   );
 }
 
