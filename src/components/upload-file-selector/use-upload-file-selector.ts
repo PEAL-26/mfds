@@ -1,26 +1,80 @@
-import { MouseEvent, useCallback, useState } from 'react';
-import { useDropzone } from 'react-dropzone';
-import { ErrorProps, UploadFileSelectorProps } from './types';
+import { ChangeEvent, MouseEvent, useCallback, useEffect, useState } from 'react';
+import { FileRejection, useDropzone } from 'react-dropzone';
+import { ERROR_MESSAGES, ErrorProps, FileCustom, UploadFileSelectorProps } from './types';
 
-export function useUploadFileSelector(props: UploadFileSelectorProps) {
-  const { multiple = false, maxFiles = 1, maxSize } = props;
+const MAX_UPLOAD_SIZE = 1024 * 1024 * 5; //5MB
+// const ACCEPT_FILE_TYPE = {
+//   ['image/*']: [''],
+// };
 
-  const [files, setFiles] = useState<any[]>([]);
+export function useUploadFileSelector(props?: UploadFileSelectorProps) {
+  const {
+    multiple = false,
+    maxFiles = 1,
+    maxSize = MAX_UPLOAD_SIZE,
+    accept,
+    form,
+    name,
+    onChange,
+    onErrors,
+  } = props || {};
+
+  const [files, setFiles] = useState<FileCustom[]>([]);
   const [errors, setErrors] = useState<ErrorProps[]>([]);
 
-  const onDrop = useCallback((acceptedFiles: any[], fileRejections: any[]) => {
-    acceptedFiles.forEach((file) => {});
+  const onDrop = useCallback((acceptedFiles: any[], fileRejections: FileRejection[]) => {
+    setErrors([]);
 
-    fileRejections.forEach(({ errors }) => {});
+    fileRejections.forEach(({ errors }) => {
+      setErrors(
+        errors.map(({ code }: ErrorProps) => {
+          return { code, message: ERROR_MESSAGES[code] };
+        }),
+      );
+    });
+
+    onErrors && onErrors(errors);
+    const newFiles = createImagePreview(acceptedFiles);
+    setFiles(newFiles);
+    handleChange(newFiles);
   }, []);
 
-  const { getRootProps, getInputProps } = useDropzone({
-    onDrop,
-    // accept,
-    multiple,
-    maxSize,
-    maxFiles,
-  });
+  const handleChange = useCallback(
+    (newFiles: FileCustom[]) => {
+      const files: FileList = {
+        length: newFiles.length,
+        item: (i: number) => newFiles[i],
+        [Symbol.iterator]: function* () {
+          for (let i = 0; i < newFiles.length; i++) {
+            yield newFiles[i];
+          }
+        },
+      };
+
+      const event = {
+        target: { files },
+        currentTarget: { files },
+      } as ChangeEvent<HTMLInputElement>;
+
+      if (name) {
+        form?.clearErrors(name);
+        form?.setValue(name, files.length > 0 ? files : null);
+      }
+
+      onChange?.(event);
+    },
+    [form, name, onChange],
+  );
+
+  const createImagePreview = (files: File[]) => {
+    if (files.length === 0) return [];
+
+    return files.map((file) =>
+      Object.assign(file, {
+        preview: URL.createObjectURL(file),
+      }),
+    );
+  };
 
   const fileRemove = (event: MouseEvent<HTMLButtonElement>, indexToRemove: number = 0) => {
     event.stopPropagation();
@@ -28,8 +82,32 @@ export function useUploadFileSelector(props: UploadFileSelectorProps) {
     const updatedFiles = files.slice();
     updatedFiles.splice(indexToRemove, 1);
     setFiles(updatedFiles);
-    setErrors([]);
+    handleChange(updatedFiles);
   };
 
-  return { files, errors, getRootProps, getInputProps, fileRemove };
+  const { getRootProps, getInputProps } = useDropzone({
+    onDrop,
+    accept,
+    multiple,
+    maxSize,
+    maxFiles,
+  });
+
+  useEffect(() => {
+    // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
+    return () => files.forEach((file) => URL.revokeObjectURL(file.preview));
+  }, [files]);
+
+  useEffect(() => {
+    const file = form?.watch(name);
+
+    if (file) {
+      const newFiles = createImagePreview([file]);
+      setFiles(newFiles);
+    }
+  }, [form, name]);
+
+  const errorMessage = form?.getFieldState(name)?.error?.message;
+
+  return { files, errors, errorMessage, getRootProps, getInputProps, fileRemove };
 }

@@ -33,6 +33,8 @@ export function SelectSearch<T>(props: SelectSearchProps<T>) {
     clean = false,
     className,
     classNameContent,
+    classNameContentGroup,
+    classNameContentItem,
     onChange,
     onClean,
     onSearch,
@@ -143,12 +145,13 @@ export function SelectSearch<T>(props: SelectSearchProps<T>) {
               <CommandEmpty>Nenhum item encontrado.</CommandEmpty>
             )}
             {!loading && (
-              <CommandGroup>
+              <CommandGroup className={cn(classNameContentGroup)}>
                 {items.map((item) => (
                   <CommandItem
                     key={`${item[fieldValue]}`}
                     value={String(item[fieldLabel])}
                     onSelect={() => handleSelect(item)}
+                    className={cn(classNameContentItem)}
                   >
                     <LuCheck
                       className={cn(

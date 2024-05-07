@@ -10,7 +10,7 @@ export function Preview(props: PreviewProps) {
 
   return (
     <>
-      <div className="h-full w-full">
+      <div className="relative flex h-full w-full items-center justify-center">
         <Image
           alt=""
           src={files[0].preview}

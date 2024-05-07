@@ -10,4 +10,6 @@ export interface SelectProps<T> extends RUISelectProps {
   onSelect?: (item: T) => void;
   className?: string;
   classNameContent?: string;
+  classNameContentGroup?: string;
+  classNameContentItem?: string;
 }
