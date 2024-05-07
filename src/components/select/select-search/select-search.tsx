@@ -32,9 +32,9 @@ export function SelectSearch<T>(props: SelectSearchProps<T>) {
     loading = false,
     clean = false,
     className,
-    classNameContent,
-    classNameContentGroup,
-    classNameContentItem,
+    contentClassName,
+    contentGroupClassName,
+    contentItemClassName,
     onChange,
     onClean,
     onSearch,
@@ -130,7 +130,7 @@ export function SelectSearch<T>(props: SelectSearchProps<T>) {
       <PopoverContent
         align="start"
         ref={popoverRef}
-        className={cn('w-full bg-white p-0', classNameContent)}
+        className={cn('w-full bg-white p-0', contentClassName)}
       >
         <Command shouldFilter={offlineSearch}>
           <CommandInput onValueChange={setSearch} placeholder="Pesquisar..." />
@@ -145,13 +145,13 @@ export function SelectSearch<T>(props: SelectSearchProps<T>) {
               <CommandEmpty>Nenhum item encontrado.</CommandEmpty>
             )}
             {!loading && (
-              <CommandGroup className={cn(classNameContentGroup)}>
+              <CommandGroup className={cn(contentGroupClassName)}>
                 {items.map((item) => (
                   <CommandItem
                     key={`${item[fieldValue]}`}
                     value={String(item[fieldLabel])}
                     onSelect={() => handleSelect(item)}
-                    className={cn(classNameContentItem)}
+                    className={cn(contentItemClassName)}
                   >
                     <LuCheck
                       className={cn(

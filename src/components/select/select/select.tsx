@@ -20,9 +20,9 @@ export function Select<T>(props: SelectProps<T>) {
     fieldValue = 'id' as keyof T,
     placeholder = 'Selecione um item...',
     className,
-    classNameContent,
-    classNameContentGroup,
-    classNameContentItem,
+    contentClassName,
+    contentGroupClassName,
+    contentItemClassName,
     ...rest
   } = props;
   const [selectedItem, setSelectedItem] = useState<T | undefined>(defaultItem);
@@ -36,14 +36,14 @@ export function Select<T>(props: SelectProps<T>) {
           className="placeholder:text-gray-300"
         />
       </SelectTrigger>
-      <SelectContent className={cn(classNameContent)}>
-        <SelectGroup className={cn(classNameContentGroup)}>
+      <SelectContent className={cn(contentClassName)}>
+        <SelectGroup className={cn(contentGroupClassName)}>
           {items.map((item) => (
             <SelectItem
               key={String(item[fieldValue])}
               value={String(item[fieldValue])}
               onSelect={() => setSelectedItem(item)}
-              className={cn(classNameContentItem)}
+              className={cn(contentItemClassName)}
             >
               {String(item[fieldLabel])}
             </SelectItem>

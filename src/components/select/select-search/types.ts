@@ -1,4 +1,4 @@
-import { ChangeEvent,ElementType } from 'react';
+import { ChangeEvent, ElementType } from 'react';
 
 export interface SetValueOption {
   shouldValidate: boolean;
@@ -20,9 +20,9 @@ export interface SelectSearchProps<T> {
   clean?: boolean;
   formControl?: ElementType;
   className?: string;
-  classNameContent?: string;
-  classNameContentGroup?: string;
-  classNameContentItem?: string;
+  contentClassName?: string;
+  contentGroupClassName?: string;
+  contentItemClassName?: string;
   onClean?: (state: false) => void;
   onSearch?: (value: string) => void;
   offlineSearch?: boolean;

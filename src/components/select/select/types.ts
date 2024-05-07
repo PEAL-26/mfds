@@ -9,7 +9,7 @@ export interface SelectProps<T> extends RUISelectProps {
   fieldLabel?: keyof T;
   onSelect?: (item: T) => void;
   className?: string;
-  classNameContent?: string;
-  classNameContentGroup?: string;
-  classNameContentItem?: string;
+  contentClassName?: string;
+  contentGroupClassName?: string;
+  contentItemClassName?: string;
 }
