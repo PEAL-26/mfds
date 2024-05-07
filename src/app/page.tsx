@@ -8,6 +8,7 @@ import {
   Button,
   Input,
   CheckToggle,
+  UploadFileSelector,
 } from "../../../design-system/components";
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -104,6 +105,8 @@ export default function Page() {
         />
 
         <CheckToggle />
+
+        <UploadFileSelector  />
       </div>
       <FormProvider {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
