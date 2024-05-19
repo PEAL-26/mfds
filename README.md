@@ -1,7 +1,7 @@
 # Software EDV Design System
 
-[![GitHub issues](https://img.shields.io/github/issues/PEAL-26/software-edv)](https://github.com/PEAL-26/software-edv/issues)
-[![GitHub license](https://img.shields.io/github/license/PEAL-26/software-edv)](https://github.com/PEAL-26/software-edv/blob/main/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/PEAL-26/software-edv-design-system)](https://github.com/PEAL-26/software-edv-design-system/issues)
+[![GitHub license](https://img.shields.io/github/license/PEAL-26/software-edv-design-system)](https://github.com/PEAL-26/software-edv-design-system/blob/main/LICENSE)
 
 ## Descrição
 
@@ -60,7 +60,7 @@ Certifique-se de que as dependências do React (`next`, `react` e `react-dom`) e
 
 ## Contribuição
 
-Sinta-se à vontade para contribuir para este projeto. Você pode relatar problemas na [página de problemas](https://github.com/PEAL-26/software-edv/issues).
+Sinta-se à vontade para contribuir para este projeto. Você pode relatar problemas na [página de problemas](https://github.com/PEAL-26/software-edv-design-system/issues).
 
 ## Licença
 
@@ -69,6 +69,6 @@ Este projeto é licenciado sob a Licença ISC. Consulte o arquivo [LICENSE](LICE
 ## Links
 
 - [Página do Design System](https://peal-26.github.io/software-edv-design-system)
-- [Página do GitHub](https://github.com/PEAL-26/software-edv)
-- [Página de Problemas](https://github.com/PEAL-26/software-edv/issues)
+- [Página do GitHub](https://github.com/PEAL-26/software-edv-design-system)
+- [Página de Problemas](https://github.com/PEAL-26/software-edv-design-system/issues)
 - [Página do npm](https://www.npmjs.com/package/software-edv-design-system)
