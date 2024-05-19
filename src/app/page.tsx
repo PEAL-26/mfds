@@ -41,13 +41,24 @@ export default function Page() {
     <div className="flex flex-col justify-center items-center min-h-screen p-10">
       <h1 className="mb-10 ">Examples Design System</h1>
       <div className="flex flex-col gap-3 justify-start items-start">
+        <p>Money</p>
+        <Input.Text
+          type="money"
+          variant="primary"
+          onChange={(e) => {
+
+            console.log({
+              target: e.target,
+              currentTarget: e.currentTarget.value,
+            });
+          }}
+        />
         <Input.WithLabel
-          label="Label"
+          label="Money With Label"
           error="Error"
           type="money"
           variant="primary"
         />
-        <Input.Text type="money" variant="primary" />
         <Input.Text type="literal" variant="primary" />
         <Input.Text type="number" variant="primary" />
         <Button.Root variant="primary">Primary</Button.Root>
@@ -106,7 +117,7 @@ export default function Page() {
 
         <CheckToggle />
 
-        <UploadFileSelector  />
+        <UploadFileSelector />
       </div>
       <FormProvider {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
