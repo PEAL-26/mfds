@@ -1,7 +1,7 @@
 # Software EDV Design System
 
 [![GitHub issues](https://img.shields.io/github/issues/PEAL-26/software-edv-design-system)](https://github.com/PEAL-26/software-edv-design-system/issues)
-[![GitHub license](https://img.shields.io/github/license/PEAL-26/software-edv-design-system)](https://github.com/PEAL-26/software-edv-design-system/blob/main/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/PEAL-26/software-edv-design-system)](https://github.com/PEAL-26/software-edv-design-system/blob/master/LICENSE)
 
 ## Descrição
 
