@@ -1,38 +1,50 @@
-import { clearFormat, formatInputMoney, moneyToNumber } from '../../helpers/currency';
+import { ChangeEvent } from 'react';
+import {
+  clearFormat,
+  formatInputMoney,
+  moneyToNumber,
+  numberToMoney,
+} from '../../helpers/currency';
+
+type ChangeEventType = (event: ChangeEvent<HTMLInputElement>) => void;
 
 export function useFormatMoney() {
-  function onKeydown(e: any) {
+  function onKeydown(e: any, changeEvent?: ChangeEventType) {
     e.preventDefault();
 
-    let input = e.target;
+    const input = e.target as HTMLInputElement;
     let value = input.value;
+
+    const updateValue = (newValue: string) => {
+      input.value = newValue;
+      const event = { currentTarget: input, target: input } as ChangeEvent<HTMLInputElement>;
+      changeEvent?.(event);
+    };
+
+    const formatValue = (val: string) => {
+      if (val.length === 2) val = `0${val}`;
+      return formatInputMoney(val);
+    };
 
     if (!isNaN(e.key)) {
       if (value === '0,00') {
-        input.value = `0,0${e.key}`;
-        return;
+        updateValue(`0,0${e.key}`);
+      } else if (value.startsWith('0,0')) {
+        updateValue(`0,${value.slice(3)}${e.key}`);
+      } else if (value.startsWith('0,')) {
+        const [first, secondary] = [value[2], value[3]];
+        updateValue(`${first},${secondary}${e.key}`);
+      } else {
+        value = clearFormat(`${value}${e.key}`);
+        updateValue(formatInputMoney(value));
       }
-      if (value.startsWith('0,0')) {
-        input.value = `0,${value.substring(3)}${e.key}`;
-        return;
-      }
-      if (value.startsWith('0,')) {
-        const first = value.substring(2, 3);
-        const secondary = value.substring(3, 4);
-        input.value = `${first},${secondary}${e.key}`;
-        return;
-      }
-
-      value = clearFormat(`${value}${e.key}`);
-      input.value = formatInputMoney(value);
     }
 
     if (e.code === 'Backspace') {
-      value = clearFormat(value.substring(0, input.value.length - 1));
-      if (value.length === 2) value = `0${value}`;
-      input.value = formatInputMoney(value);
+      value = clearFormat(value.slice(0, -1));
+      updateValue(formatValue(value));
     }
   }
 
-  return { onKeydown, formatInputMoney, clearFormat, moneyToNumber };
+  return { onKeydown, formatInputMoney, clearFormat, moneyToNumber, numberToMoney };
 }

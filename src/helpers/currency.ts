@@ -49,7 +49,8 @@ export const validateCurrencyProps = (obj: any) => {
 };
 
 export function formatInputMoney(input = '000') {
-  if (isNaN(Number(input))) return '0,00';
+  if (!input) return '0,00';
+  if (isNaN(Number(input))) throw new Error(`Input (${input}) is not a valid numbe`);
 
   const value = clearFormat(input);
   const milhas = value.substring(0, value.length - 2);
@@ -76,12 +77,25 @@ export function formatInputMoney(input = '000') {
 }
 
 export function moneyToNumber(money: string) {
-  if (isNaN(Number(money))) return Number('0');
   return Number(money.replaceAll(' ', '').replace(',', '.'));
+}
+
+export function numberToMoney(value?: string, round = true) {
+  if (!value) return '0,00';
+  if (isNaN(Number(value))) throw new Error(`Value (${value}) is not a valid numbe`);
+
+  const newValue = parseFloat(value);
+  if (round) return formatInputMoney(newValue.toFixed(2));
+
+  const valueSplitted = newValue.toString().split('.');
+  const whole = valueSplitted[0];
+  const fraction = valueSplitted[1].substring(0, 2);
+
+  return formatInputMoney(`${whole}.${fraction}`);
 }
 
 export function clearFormat(value = '') {
   return `${value.replace(/\D/g, '')}`;
 }
 
-export const money = { formatInputMoney, moneyToNumber, clearFormat };
+export const money = { formatInputMoney, moneyToNumber, numberToMoney, clearFormat };

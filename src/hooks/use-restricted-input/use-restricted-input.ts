@@ -22,6 +22,7 @@ export function useRestrictedInput(
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
+
     if (type === 'number' && !isNaN(Number(inputValue))) {
       setCurrentValue(inputValue);
       onChange?.(event);
