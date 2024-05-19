@@ -1,19 +1,18 @@
 'use client';
-import { ChangeEvent, useEffect, useRef, useState } from 'react';
-import { LuCheck, LuLoader2 } from 'react-icons/lu';
+import { ChangeEvent,useEffect,useRef,useState } from 'react';
+import { LuCheck,LuLoader2 } from 'react-icons/lu';
 
-import { useDebounceValue } from '../../../hooks';
 import { cn } from '../../../libs/utils';
 import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandLoading,
+Command,
+CommandEmpty,
+CommandGroup,
+CommandInput,
+CommandItem,
+CommandList,
+CommandLoading,
 } from '../../@radix-ui/command';
-import { Popover, PopoverContent, PopoverTrigger } from '../../@radix-ui/popover';
+import { Popover,PopoverContent,PopoverTrigger } from '../../@radix-ui/popover';
 
 import { SelectSearchButton } from './button';
 import { SelectSearchProps } from './types';
@@ -47,11 +46,10 @@ export function SelectSearch<T>(props: SelectSearchProps<T>) {
   const [selectedItem, setSelectedItem] = useState<T | undefined>(undefined);
 
   const [search, setSearch] = useState('');
-  const bounced = useDebounceValue(search);
 
   useEffect(() => {
-    onSearch?.(bounced);
-  }, [bounced]);
+    onSearch?.(search);
+  }, [search]);
 
   useEffect(() => {
     setSelectedItem(defaultItem);

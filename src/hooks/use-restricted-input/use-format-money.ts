@@ -1,35 +1,6 @@
+import { clearFormat, formatInputMoney, moneyToNumber } from '../../helpers/currency';
+
 export function useFormatMoney() {
-  function formatInputMoney(input = '000') {
-    if (isNaN(Number(input))) return '0,00';
-
-    const value = clearFormat(input);
-    const milhas = value.substring(0, value.length - 2);
-    const decimal = value.substring(value.length - 2);
-
-    let count = 0;
-    let milhasFormatted = '';
-    for (let i = milhas.length - 1; i >= 0; i--) {
-      count++;
-
-      if (count === 4) {
-        milhasFormatted += ' ';
-        count = 0;
-      }
-      milhasFormatted += milhas[i];
-    }
-
-    let milhasOrder = '';
-    for (let i = milhasFormatted.length - 1; i >= 0; i--) {
-      milhasOrder += milhasFormatted[i];
-    }
-
-    return `${milhasOrder},${decimal}`;
-  }
-
-  function clearFormat(value = '') {
-    return `${value.replace(/\D/g, '')}`;
-  }
-
   function onKeydown(e: any) {
     e.preventDefault();
 
@@ -63,5 +34,5 @@ export function useFormatMoney() {
     }
   }
 
-  return { onKeydown, formatInputMoney };
+  return { onKeydown, formatInputMoney, clearFormat, moneyToNumber };
 }

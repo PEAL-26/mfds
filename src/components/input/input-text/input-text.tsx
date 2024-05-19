@@ -7,9 +7,18 @@ import { inputTextVariants } from './variants';
 
 export const InputText = forwardRef<HTMLInputElement, InputTextProps>(
   (props: InputTextProps, ref) => {
-    const { className, variant = 'none', type = 'text', value, onChange, ...rest } = props;
+    const {
+      className,
+      variant = 'none',
+      type = 'text',
+      value,
+      onChange,
+      onKeyDown: onKeyDownOriginal,
+      ...rest
+    } = props;
     const { onKeydown, formatInputMoney } = useFormatMoney();
     const classNameVariante = inputTextVariants({ variant });
+
     const isMoney = type === 'money';
     const isRestrict = type === 'number' || type === 'literal';
     const typeRestrict = isRestrict ? type : undefined;
@@ -29,7 +38,7 @@ export const InputText = forwardRef<HTMLInputElement, InputTextProps>(
         {...rest}
         value={currentValue}
         onChange={setValue}
-        onKeyDown={(e) => isMoney && onKeydown(e)}
+        onKeyDown={(e) => (isMoney ? onKeydown(e) : onKeyDownOriginal?.(e))}
       />
     );
   },

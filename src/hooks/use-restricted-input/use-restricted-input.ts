@@ -7,8 +7,9 @@ import {
 } from 'react';
 
 type Value = string | number | readonly string[] | undefined;
+
 interface UseRestrictedInputProps {
-  type?: HTMLInputTypeAttribute | 'text' | 'number' | 'literal' | 'money';
+  type?: HTMLInputTypeAttribute | 'text' | 'number' | 'literal';
   value?: Value;
   onChange?: ChangeEventHandler<HTMLInputElement> | undefined;
 }
