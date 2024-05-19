@@ -46,7 +46,6 @@ export default function Page() {
           type="money"
           variant="primary"
           onChange={(e) => {
-
             console.log({
               target: e.target,
               currentTarget: e.currentTarget.value,
@@ -58,9 +57,38 @@ export default function Page() {
           error="Error"
           type="money"
           variant="primary"
+          defaultValue={"1000.88"}
+          value={"1000.88"}
         />
-        <Input.Text type="literal" variant="primary" />
-        <Input.Text type="number" variant="primary" />
+        <Input.Text
+          type="literal"
+          variant="primary"
+          onChange={(e) => {
+            console.log("literal", {
+              target: e.target,
+              currentTarget: e.currentTarget.value,
+            });
+          }}
+        />
+        <Input.Text
+          variant="primary"
+          onChange={(e) => {
+            console.log("normal", {
+              target: e.target,
+              currentTarget: e.currentTarget.value,
+            });
+          }}
+        />
+        <Input.Text
+          type="number"
+          variant="primary"
+          onChange={(e) => {
+            console.log("number", {
+              target: e.target,
+              currentTarget: e.currentTarget.value,
+            });
+          }}
+        />
         <Button.Root variant="primary">Primary</Button.Root>
         <Button.Root variant="secondary">Secondary</Button.Root>
         <Button.Root variant="success">Green</Button.Root>
