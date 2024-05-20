@@ -4,6 +4,7 @@ import { LinkProps } from '../link';
 
 export interface MenuLinkProps extends Partial<LinkProps> {
   children?: ReactNode;
+  type?: 'link' | 'button';
   title?: string;
   href?: string;
   onClick?(): void;

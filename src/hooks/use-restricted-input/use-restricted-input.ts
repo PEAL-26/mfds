@@ -23,8 +23,12 @@ export function useRestrictedInput(
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
 
-    if (type === 'number' && !isNaN(Number(inputValue))) {
-      setCurrentValue(inputValue);
+    if (type === 'number' && /^-?\d*\.?\d*$/.test(inputValue)) {
+      if (inputValue === '-') {
+        setCurrentValue('-0');
+      } else {
+        setCurrentValue(inputValue);
+      }
       onChange?.(event);
     } else if (type === 'literal' && /^[a-zA-Z\s]*$/.test(inputValue)) {
       setCurrentValue(inputValue);
