@@ -3,9 +3,6 @@ import { FileRejection, useDropzone } from 'react-dropzone';
 import { ERROR_MESSAGES, ErrorProps, FileCustom, UploadFileSelectorProps } from './types';
 
 const MAX_UPLOAD_SIZE = 1024 * 1024 * 5; //5MB
-// const ACCEPT_FILE_TYPE = {
-//   ['image/*']: [''],
-// };
 
 export function useUploadFileSelector(props?: UploadFileSelectorProps) {
   const {
@@ -69,11 +66,15 @@ export function useUploadFileSelector(props?: UploadFileSelectorProps) {
   const createImagePreview = (files: File[]) => {
     if (files.length === 0) return [];
 
-    return files.map((file) =>
-      Object.assign(file, {
+    return files.map((file) => {
+      if (!(file instanceof File)) {
+        throw new TypeError('Item in files array is not a File', { cause: file });
+      }
+
+      return Object.assign(file, {
         preview: URL.createObjectURL(file),
-      }),
-    );
+      });
+    });
   };
 
   const fileRemove = (event: MouseEvent<HTMLButtonElement>, indexToRemove: number = 0) => {
