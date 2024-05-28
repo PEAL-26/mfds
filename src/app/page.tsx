@@ -13,6 +13,7 @@ import {
   CheckToggle,
   UploadFileSelector,
 } from "../../../design-system/components";
+import { UploadFileSelectorForm } from "./form";
 
 // const MAX_FILE_SIZE = 5000000;
 // const ACCEPTED_IMAGE_TYPES = [
@@ -22,49 +23,35 @@ import {
 //   "image/webp",
 // ];
 
-const MAX_UPLOAD_SIZE = 1024 * 1024 * 1; // 3MB
-const ACCEPTED_FILE_TYPES = ["image/png"];
+// const MAX_UPLOAD_SIZE = 1024 * 1024 * 1; // 3MB
+// const ACCEPTED_FILE_TYPES = ["image/png"];
 
 const schema = z.object({
-  country: z.object({
-    id: z.string(),
-    name: z.string(),
-    // image: z
-    //   .any()
-    //   .refine((file) => file?.size <= MAX_FILE_SIZE, `Max image size is 5MB.`)
-    //   .refine(
-    //     (file) => ACCEPTED_IMAGE_TYPES.includes(file?.type),
-    //     "Only .jpg, .jpeg, .png and .webp formats are supported."
-    //   ),
-    image: z
-      .any()
-      .optional()
-      .refine((file) => {
-        return !file || file.size <= MAX_UPLOAD_SIZE;
-      }, "File size must be less than 3MB")
-      .refine((file) => {
-        console.log(file);
-        return ACCEPTED_FILE_TYPES.includes(String(file?.type));
-      }, "File must be a PNG"),
-  }),
+  image: z
+    .any()
+    .optional()
+    // .transform((file) => file && file?.length > 0 && file?.item(0))
+    // .refine((file) => {
+    //   return !file || file.size <= MAX_UPLOAD_SIZE;
+    // }, "File size must be less than 3MB"),
+  // .refine((file) => {
+  //   return ACCEPTED_FILE_TYPES.includes(file && String(file?.type));
+  // }, "File must be a PNG"),
 });
 
-type SchemaType = z.infer<typeof schema>;
+export type SchemaType = z.infer<typeof schema>;
 
 export default function Page() {
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   watch,
-  //   formState: { errors },
-  // } = useForm<Inputs>();
-  // const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
-
   const form = useForm<SchemaType>({
     resolver: zodResolver(schema),
+    mode: "onChange",
+    defaultValues: {
+      image: undefined,
+    },
   });
+
   const onSubmit = (data: SchemaType) => console.log(data);
-  console.log(form.watch()); // watch input value by passing the name of it
+  // console.log(form.watch()); // watch input value by passing the name of it
 
   return (
     <div className="flex flex-col justify-center items-center min-h-screen p-10">
@@ -178,18 +165,10 @@ export default function Page() {
       </div>
       <FormProvider {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
-          <SelectSearch
-            items={[
-              { id: "1", name: "John" },
-              { id: "2", name: "Jane" },
-            ]}
-            fieldValue="id"
-            fieldLabel="name"
-          />
-
-          <UploadFileSelector form={form} name="image" />
-
-          <input type="submit" />
+          <UploadFileSelectorForm />
+          <Button.Root type="submit" variant="primary" className="mt-3">
+            Enviar
+          </Button.Root>
         </form>
       </FormProvider>
     </div>

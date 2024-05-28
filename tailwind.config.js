@@ -7,6 +7,7 @@ const animate = require("tailwindcss-animate");
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
+    "./index.html",
     "./src/**/*.{js,jsx,ts,tsx}",
     "./node_modules/software-edv-design-system/dist/**/*.{js,jsx,ts,tsx}",
     "../design-system/dist/**/*.{js,jsx,ts,tsx}",
