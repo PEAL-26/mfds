@@ -66,7 +66,7 @@ export function useUploadFileSelector(props?: UploadFileSelectorProps) {
   );
 
   const createImagePreview = (files: File[]) => {
-    if (files.length === 0) return [];
+    if (!files || files.length === 0) return [];
 
     return files.map((file) => {
       if (!(file instanceof File)) {
@@ -110,6 +110,7 @@ export function useUploadFileSelector(props?: UploadFileSelectorProps) {
   useEffect(() => {
     const file = form?.watch(name);
     if (file) {
+      console.log(file);
       const newFiles = createImagePreview(file);
       setFiles(newFiles);
     }
