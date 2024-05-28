@@ -15,7 +15,7 @@ export interface Accept {
 
 type UploadFileSelectorType = 'image' | 'file' | 'music' | 'video';
 
-export interface UploadFileSelectorProps
+export interface UploadFileSelectorProps<TForm = any>
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'form' | 'name' | 'accept'> {
   accept?: Accept;
   type?: UploadFileSelectorType;
@@ -26,8 +26,9 @@ export interface UploadFileSelectorProps
   maxFiles?: number;
   onErrors?: (errors: ErrorProps[]) => void;
   defaultFiles?: FileCustom[];
-  name?: any;
-  form?: any;
+  form?: TForm;
+  name?: keyof TForm;
+  url?: string;
 }
 
 export interface UploadFileSelectorEmptyProps {}

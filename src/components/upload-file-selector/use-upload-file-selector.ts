@@ -1,5 +1,6 @@
 import { ChangeEvent, MouseEvent, useCallback, useEffect, useState } from 'react';
 import { FileRejection, useDropzone } from 'react-dropzone';
+import { generateFileFromUrl } from '../../helpers';
 import { ERROR_MESSAGES, ErrorProps, FileCustom, UploadFileSelectorProps } from './types';
 
 const MAX_UPLOAD_SIZE = 1024 * 1024 * 5; //5MB
@@ -14,6 +15,7 @@ export function useUploadFileSelector(props?: UploadFileSelectorProps) {
     accept,
     form,
     name,
+    url,
     onChange,
     onErrors,
   } = props || {};
@@ -68,7 +70,7 @@ export function useUploadFileSelector(props?: UploadFileSelectorProps) {
   const createImagePreview = (files: File[]) => {
     if (!files || files.length === 0) return [];
 
-    return files.map((file) => {
+    return files?.map((file) => {
       if (!(file instanceof File)) {
         console.error('Item in files array is not a File', { cause: file });
       }
@@ -108,13 +110,14 @@ export function useUploadFileSelector(props?: UploadFileSelectorProps) {
   }, [files]);
 
   useEffect(() => {
-    const file = form?.watch(name);
-    if (file) {
-      console.log(file);
-      const newFiles = createImagePreview(file);
-      setFiles(newFiles);
-    }
-  }, [form, name]);
+    (async () => {
+      const file = await generateFileFromUrl(url);
+      if (file && file instanceof File) {
+        const newFiles = createImagePreview([file]);
+        setFiles(newFiles);
+      }
+    })();
+  }, [url]);
 
   const errorMessage = form?.getFieldState(name)?.error?.message;
 
