@@ -1,3 +1,3 @@
 import { SweetAlertOptions } from 'sweetalert2';
 
-export interface SweetAlertProps extends SweetAlertOptions {}
+export type SweetAlertProps = SweetAlertOptions & {};

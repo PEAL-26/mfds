@@ -13,9 +13,13 @@ export interface Accept {
   [key: string]: string[];
 }
 
+type UploadFileSelectorType = 'image' | 'file' | 'music' | 'video';
+
 export interface UploadFileSelectorProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'form' | 'name' | 'accept'> {
   accept?: Accept;
+  type?: UploadFileSelectorType;
+  extension?: string[];
   className?: string;
   multiple?: boolean;
   maxSize?: number;

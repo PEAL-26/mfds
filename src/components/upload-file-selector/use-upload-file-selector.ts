@@ -9,6 +9,8 @@ export function useUploadFileSelector(props?: UploadFileSelectorProps) {
     multiple = false,
     maxFiles = 1,
     maxSize = MAX_UPLOAD_SIZE,
+    type = 'image',
+    extension = [],
     accept,
     form,
     name,
@@ -68,7 +70,7 @@ export function useUploadFileSelector(props?: UploadFileSelectorProps) {
 
     return files.map((file) => {
       if (!(file instanceof File)) {
-        throw new TypeError('Item in files array is not a File', { cause: file });
+        console.error('Item in files array is not a File', { cause: file });
       }
 
       return Object.assign(file, {
@@ -86,9 +88,15 @@ export function useUploadFileSelector(props?: UploadFileSelectorProps) {
     handleChange(updatedFiles);
   };
 
+  const getAccept = () => {
+    let newAccept = {};
+    newAccept[`${type}/*`] = extension;
+    return accept || newAccept;
+  };
+
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
-    accept,
+    accept: getAccept(),
     multiple,
     maxSize,
     maxFiles,
@@ -101,9 +109,8 @@ export function useUploadFileSelector(props?: UploadFileSelectorProps) {
 
   useEffect(() => {
     const file = form?.watch(name);
-
     if (file) {
-      const newFiles = createImagePreview([file]);
+      const newFiles = createImagePreview(file);
       setFiles(newFiles);
     }
   }, [form, name]);
