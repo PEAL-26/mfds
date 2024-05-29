@@ -1,5 +1,5 @@
+import { Link } from "../../../design-system/components";
 import "../styles/globals.css";
-import { } from "software-edv-design-system/components";
 
 export default function RootLayout({
   children,
@@ -8,7 +8,21 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <div className="flex flex-col justify-center items-center min-h-screen p-10">
+          <h1 className="mb-10 ">Examples Design System</h1>
+          <div className="flex items-center gap-3">
+            <Link href="/buttons">buttons</Link>
+            <Link href="/checks">checks</Link>
+            <Link href="/forms">forms</Link>
+            <Link href="/inputs">inputs</Link>
+            <Link href="/selects">selects</Link>
+            <Link href="/tables">tables</Link>
+            <Link href="/uploads">uploads</Link>
+          </div>
+          {children}
+        </div>
+      </body>
     </html>
   );
 }
