@@ -35,7 +35,7 @@ export function MenuLink(props: MenuLinkProps) {
       <button
         onClick={handleClick}
         className={twMerge(
-          'flex items-center gap-2 bg-white p-3 text-sm font-normal text-black hover:cursor-pointer hover:bg-gray-light/50 hover:no-underline',
+          'w-full flex items-center gap-2 bg-white p-3 text-sm font-normal text-black hover:cursor-pointer hover:bg-gray-light/50 hover:no-underline',
           className,
         )}
       >
@@ -50,7 +50,7 @@ export function MenuLink(props: MenuLinkProps) {
       href={href}
       onClick={!href && handleClick}
       className={twMerge(
-        'flex items-center gap-2 bg-white p-3 text-sm text-black hover:cursor-pointer hover:bg-gray-light/50 hover:no-underline',
+        'w-full  flex items-center gap-2 bg-white p-3 text-sm text-black hover:cursor-pointer hover:bg-gray-light/50 hover:no-underline',
         className,
       )}
       {...rest}
