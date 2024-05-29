@@ -12,6 +12,10 @@ export interface TableRowProps extends HTMLProps<HTMLTableRowElement> {
   formatting?: 'default' | 'none';
 }
 
+export interface TableLoadingProps {
+  isLoading?: boolean;
+}
+
 export interface TableHeaderCellProps extends HTMLProps<HTMLTableCellElement> {
   title?: string;
 }
