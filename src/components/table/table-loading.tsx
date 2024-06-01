@@ -9,7 +9,7 @@ export function TableLoading(props: TableLoadingProps) {
   if (!isLoading) return null;
 
   return (
-    <TableRow>
+    <TableRow formatting="none">
       <TableCell autoColSpan>
         <div className="flex h-60 w-full flex-1 items-center justify-center">
           <Loading width={90} height={90} />
