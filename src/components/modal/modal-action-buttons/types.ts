@@ -3,4 +3,5 @@ export interface ModalActionButtonsProps {
   okText?: string;
   onCancel?(): void;
   onOk?(): void;
+  isLoading?:boolean
 }

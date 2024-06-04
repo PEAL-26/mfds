@@ -21,9 +21,16 @@ export function useModalRoot(props: ModalRootProps) {
     }
   };
 
+  const OVERFLOW_HIDDEN = 'overflow-hidden';
+
   useEffect(() => {
-    if (isModalOpen) document.body.classList.add('overflow-hidden');
-    if (!isModalOpen) document.body.classList.remove('overflow-hidden');
+    if (isModalOpen) {
+      document.body.classList.add(OVERFLOW_HIDDEN);
+    }
+
+    if (!isModalOpen) {
+      document.body.classList.remove(OVERFLOW_HIDDEN);
+    }
   }, [isModalOpen]);
 
   useEffect(() => {
