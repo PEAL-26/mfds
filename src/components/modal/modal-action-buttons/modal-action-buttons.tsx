@@ -1,23 +1,50 @@
-import { Button } from '../../button/button';
+import { forwardRef } from 'react';
+import { twMerge } from 'tailwind-merge';
+
+import { DialogClose } from '../../../components/@radix-ui/dialog';
+import { Button, buttonVariants } from '../../button/button';
 import { ModalActionButtonsProps } from './types';
 
-export function ModalActionButtons(props: ModalActionButtonsProps) {
-  const { cancelText = 'Cancelar', okText = 'Ok', onCancel, onOk, isLoading = false } = props;
+export const ModalActionButtons = forwardRef<HTMLDivElement, ModalActionButtonsProps>(
+  (props, ref) => {
+    const {
+      cancelText = 'Cancelar',
+      okText = 'Ok',
+      onCancel,
+      onOk,
+      isLoading = false,
+      containerClassName,
+      cancelButtonClassName,
+      okButtonClassName,
+      ...rest
+    } = props;
 
-  return (
-    <div className="flex items-center justify-end gap-2">
-      <Button disabled={isLoading} type="submit" data-modal-ok variant="success" onClick={onOk}>
-        {okText}
-      </Button>
-      <Button
-        disabled={isLoading}
-        type="button"
-        data-modal-cancel
-        variant="error"
-        onClick={onCancel}
+    return (
+      <div
+        ref={ref}
+        className={twMerge('flex items-center justify-end gap-2', containerClassName)}
+        {...rest}
       >
-        {cancelText}
-      </Button>
-    </div>
-  );
-}
+        <Button
+          disabled={isLoading}
+          type="submit"
+          data-modal-action-button-ok
+          variant="success"
+          onClick={onOk}
+          className={twMerge('w-20', okButtonClassName)}
+        >
+          {okText}
+        </Button>
+        <DialogClose
+          disabled={isLoading}
+          onClick={onCancel}
+          className={twMerge(buttonVariants({ variant: 'error' }), 'w-20', cancelButtonClassName)}
+        >
+          {cancelText}
+        </DialogClose>
+      </div>
+    );
+  },
+);
+
+ModalActionButtons.displayName = 'ModalActionButtons';

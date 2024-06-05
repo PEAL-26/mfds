@@ -1,25 +1,57 @@
 'use client';
 import { twMerge } from 'tailwind-merge';
+import { Dialog, DialogContent } from '../../../components/@radix-ui/dialog';
 import { ModalRootProps } from './types';
 import { useModalRoot } from './use-modal-root';
 
 export function ModalRoot(props: ModalRootProps) {
-  const { className = '', children, ...rest } = props;
-  const { isModalOpen, handleClickBackdropModal, modalRootRef } = useModalRoot(props);
+  const {
+    containerClassName,
+    contentClassName,
+    enableBackdropClose = true,
+    blockClosing = false,
+    children,
+    ...rest
+  } = props;
+  const { isModalOpen, modalRootRef, closeModal } = useModalRoot({
+    ...props,
+    enableBackdropClose,
+    blockClosing,
+  });
 
   return (
-    <div
-      data-modal
-      data-open={isModalOpen}
-      onClick={handleClickBackdropModal}
-      ref={modalRootRef}
-      className={twMerge(
-        'fixed inset-0 z-[60] max-h-screen items-center justify-center bg-black/40 transition-transform duration-100 ease-in-out data-[open=true]:flex data-[open=false]:hidden',
-        className,
-      )}
-      {...rest}
+    <Dialog
+      open={isModalOpen}
+      modal
+      defaultOpen={isModalOpen}
+      onOpenChange={(open) => {
+        if (!open) closeModal();
+      }}
     >
-      <div className="flex h-full flex-col justify-center p-5">{children}</div>
-    </div>
+      <DialogContent
+        onEscapeKeyDown={(e) => {
+          e.preventDefault();
+          if (!blockClosing) closeModal();
+        }}
+        onPointerDownOutside={(e) => {
+          if (!enableBackdropClose || blockClosing) e.preventDefault();
+        }}
+        onInteractOutside={(e) => {
+          if (!enableBackdropClose || blockClosing) e.preventDefault();
+        }}
+        className={twMerge('flex max-h-screen items-center justify-center', containerClassName)}
+      >
+        <div
+          ref={modalRootRef}
+          className={twMerge(
+            'flex h-full w-full flex-col justify-center overflow-hidden',
+            contentClassName,
+          )}
+          {...rest}
+        >
+          {children}
+        </div>
+      </DialogContent>
+    </Dialog>
   );
 }
