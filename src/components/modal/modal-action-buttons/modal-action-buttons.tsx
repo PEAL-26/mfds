@@ -3,6 +3,7 @@ import { twMerge } from 'tailwind-merge';
 
 import { DialogClose } from '../../../components/@radix-ui/dialog';
 import { Button, buttonVariants } from '../../button/button';
+import { Loading } from '../../loading';
 import { ModalActionButtonsProps } from './types';
 
 export const ModalActionButtons = forwardRef<HTMLDivElement, ModalActionButtonsProps>(
@@ -31,8 +32,9 @@ export const ModalActionButtons = forwardRef<HTMLDivElement, ModalActionButtonsP
           data-modal-action-button-ok
           variant="success"
           onClick={onOk}
-          className={twMerge('w-20', okButtonClassName)}
+          className={twMerge('flex w-20 flex-row items-center gap-2', okButtonClassName)}
         >
+          {isLoading && <Loading className="text-white" />}
           {okText}
         </Button>
         <DialogClose
