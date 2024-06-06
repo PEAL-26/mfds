@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { cn } from '../../../libs/utils';
 import {
   SelectContent,
@@ -25,7 +25,11 @@ export function Select<T>(props: SelectProps<T>) {
     contentItemClassName,
     ...rest
   } = props;
-  const [selectedItem, setSelectedItem] = useState<T | undefined>(defaultItem);
+  const [selectedItem, setSelectedItem] = useState<T | undefined>(undefined);
+
+  useEffect(() => {
+    setSelectedItem(defaultItem);
+  }, [defaultItem]);
 
   return (
     <SelectPrimitive {...rest}>
