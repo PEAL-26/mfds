@@ -1,18 +1,18 @@
 'use client';
-import { ChangeEvent,useEffect,useRef,useState } from 'react';
-import { LuCheck,LuLoader2 } from 'react-icons/lu';
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
+import { LuCheck, LuLoader2 } from 'react-icons/lu';
 
 import { cn } from '../../../libs/utils';
 import {
-Command,
-CommandEmpty,
-CommandGroup,
-CommandInput,
-CommandItem,
-CommandList,
-CommandLoading,
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandLoading,
 } from '../../@radix-ui/command';
-import { Popover,PopoverContent,PopoverTrigger } from '../../@radix-ui/popover';
+import { Popover, PopoverContent, PopoverTrigger } from '../../@radix-ui/popover';
 
 import { SelectSearchButton } from './button';
 import { SelectSearchProps } from './types';
