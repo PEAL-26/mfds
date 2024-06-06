@@ -9,21 +9,18 @@ export const getErrors = ({ title, description, code = '400' }: Omit<PageErrorPr
         'A requisição não pôde ser processada. Por favor, actualize a página ou tente novamente mais tarde.',
     },
     401: {
-      title: title || 'Não Existe!',
-      description:
-        description || 'O recurso não foi encontrado. Verifique o caminho ou os dados fornecidos.',
-    },
-    404: {
-      title: title || 'Acesso Proibido!',
-      description:
-        description ||
-        'Desculpe, acesso não permitido. Contacte o administrador se acredita que isso seja um engano.',
+      title: title || 'Não Autorizado!',
+      description: description || 'Acesso não autorizado, verifique suas credenciais.',
     },
     403: {
       title: title || 'Acesso Proibido!',
       description:
         description ||
         'Desculpe, acesso não permitido. Contacte o administrador se acredita que isso seja um engano.',
+    },
+    404: {
+      title: title || 'Não Encontrado!',
+      description: description || 'Este recurso não existe ou foi removido.',
     },
     409: {
       title: title || 'Conflito na Requisição!',
