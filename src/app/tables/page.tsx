@@ -1,9 +1,10 @@
 "use client";
-import { Table } from "../../../../design-system/components";
+import { Table, TableEmpty } from "../../../../design-system/components";
 
 export default function Tables() {
   return (
     <div className="flex flex-col gap-3 justify-start items-start">
+      <h4>Normal</h4>
       <Table.Root>
         <Table.Head>
           <Table.HeaderCell title="Nome" />
@@ -27,6 +28,12 @@ export default function Tables() {
           </Table.Row>
         </Table.Foot>
       </Table.Root>
+
+      <h4>Table Empty Link</h4>
+      <TableEmpty title="Tabela Vazia Link" buttonText="go home" url="/" />
+
+      <h4>Table Empty Button</h4>
+      <TableEmpty title="Tabela Vazia Link" buttonText="Alert" onClick={()=>alert('Tabela Vazia - Button')}/>
     </div>
   );
 }
