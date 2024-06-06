@@ -1,23 +1,21 @@
 'use client';
-import { useRouter } from 'next/router';
-import { MouseEvent } from 'react';
-
-import { Button } from '../../button';
+import { Button, buttonVariants } from '../../button';
+import { Link } from '../../link';
 import { TableEmptyButton } from './types';
 
 export function TableEmptyButton(props: TableEmptyButton) {
-  const { url, title } = props;
-  const router = useRouter();
+  const { url, title, onClick } = props;
 
-  const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
-    if (url) {
-      router.push(url);
-      return;
-    }
-  };
+  if (url) {
+    return (
+      <Link href={url} className={buttonVariants({ variant: 'secondary' })}>
+        {title}
+      </Link>
+    );
+  }
 
   return (
-    <Button.Root variant="secondary" onClick={handleClick}>
+    <Button.Root variant="secondary" onClick={onClick}>
       {title}
     </Button.Root>
   );

@@ -4,7 +4,7 @@ import { TableEmptyButton } from './button';
 import { TableEmptyProps } from './types';
 
 export function TableEmpty(props: TableEmptyProps) {
-  const { title, description, buttonText = '', icon: Icon, url, className } = props;
+  const { title, description, buttonText = '', icon: Icon, url, className, onClick } = props;
 
   return (
     <div
@@ -23,7 +23,9 @@ export function TableEmpty(props: TableEmptyProps) {
         )}
       </div>
 
-      {url && <TableEmptyButton title={buttonText} url={url} />}
+      {(url || onClick) && buttonText && (
+        <TableEmptyButton title={buttonText} url={url} onClick={onClick} />
+      )}
     </div>
   );
 }
