@@ -1,5 +1,5 @@
 'use client';
-import { forwardRef, useEffect, useState } from 'react';
+import { forwardRef,useState } from 'react';
 import { BiCalendar } from 'react-icons/bi';
 
 import { formatarDataYMD } from '../../helpers/date';
@@ -7,19 +7,29 @@ import { formatarDataYMD } from '../../helpers/date';
 import { Dropdown } from '../dropdown';
 import { Input } from '../input';
 import { Calendar } from './calendar';
-import { DateTimePickerProps } from './types';
+import { ChangeEventType,DateTimePickerProps } from './types';
 
 export const DateTimePicker = forwardRef<HTMLInputElement, DateTimePickerProps>((props, ref) => {
-  const { value, onChange, containerClassName = '', startDate, endDate, error, ...rest } = props;
+  const {
+    value = new Date(),
+    defaultValue,
+    onChange,
+    containerClassName = '',
+    startDate,
+    endDate,
+    error,
+    ...rest
+  } = props;
 
-  const [currentValue, setCurrentValue] = useState(new Date());
+  const [currentValue, setCurrentValue] = useState(() => value);
+  // const [currentDefaultValue, setCurrentDefaultValue] = useState(() => defaultValue);
   const [visible, setVisible] = useState(false);
 
   const handleOnChange = (date: Date) => {
     const event = {
-      target: { value: formatarDataYMD(date) },
-      currentTarget: { value: formatarDataYMD(date) },
-    } as React.ChangeEvent<HTMLInputElement>;
+      target: { value: date /*formatarDataYMD(date)*/ },
+      currentTarget: { value: date /* formatarDataYMD(date)*/ },
+    } as ChangeEventType;
 
     setCurrentValue(date);
     onChange?.(event);
@@ -29,10 +39,12 @@ export const DateTimePicker = forwardRef<HTMLInputElement, DateTimePickerProps>(
   const show = () => setVisible(true);
   const hide = () => setVisible(false);
 
-  useEffect(() => {
-    const date = value ? new Date(value.toString()) : new Date();
-    setCurrentValue(date);
-  }, [value]);
+  // useEffect(() => {
+  //   const date = value ? new Date(value.toString()) : new Date();
+  //   setCurrentValue(date);
+  // }, [value]);
+
+// console.log({ currentValue, defaultValue });
 
   return (
     <>
@@ -48,6 +60,7 @@ export const DateTimePicker = forwardRef<HTMLInputElement, DateTimePickerProps>(
           <Input.WithIcon
             icon={BiCalendar}
             value={formatarDataYMD(currentValue)}
+            defaultValue={defaultValue ? formatarDataYMD(defaultValue) : undefined}
             variant="primary"
             className="cursor-pointer"
             {...rest}
