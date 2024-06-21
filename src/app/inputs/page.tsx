@@ -1,7 +1,20 @@
 "use client";
-import { Input } from "../../../../design-system/components";
+import { z } from "zod";
+import { Input, DateTimePicker } from "../../../../design-system/components";
+import { useForm } from "react-hook-form";
+
+const dateSchema = z.object({
+  date: z.coerce.date(),
+});
+type DateSchemaType = z.infer<typeof dateSchema>;
 
 export default function Inputs() {
+  const form = useForm<DateSchemaType>({
+    defaultValues: {
+      date: new Date(new Date().setDate(15)),
+    },
+  });
+
   return (
     <div className="flex flex-col gap-3 justify-start items-start">
       <Input.Text
@@ -51,6 +64,14 @@ export default function Inputs() {
           });
         }}
       />
+
+      <DateTimePicker
+        {...form.register("date")}
+        value={form.getValues('date')}
+        onChange={(e) => form.setValue("date", e.currentTarget.value)}
+      />
+      <span>{form.formState.errors.date?.message || ""}</span>
+      <span>{String(form.watch("date"))}</span>
     </div>
   );
 }
