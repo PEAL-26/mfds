@@ -1,7 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { Button, Modal } from "../../../../design-system/components";
+import {
+  Button,
+  DateTimePicker,
+  DatetimePickerLabel,
+  Modal,
+} from "../../../../design-system/components";
 
 export default function Page() {
   const [openModal, setOpenModal] = useState(false);
@@ -9,12 +14,27 @@ export default function Page() {
     useState(false);
   const [openFooterModal, setOpenFooterModal] = useState(false);
   const [openHeaderModal, setOpenHeaderModal] = useState(false);
+  const [openDatepickerModal, setOpenDatepickerModal] = useState(false);
+  const [openDatepickerLabelModal, setOpenDatepickerLabelModal] =
+    useState(false);
 
   return (
     <>
       <div className="flex w-full flex-wrap gap-3">
         <Button.Root variant="primary" onClick={() => setOpenModal(true)}>
-          Modal Normal
+          Modal normal
+        </Button.Root>
+        <Button.Root
+          variant="primary"
+          onClick={() => setOpenDatepickerModal(true)}
+        >
+          DatetimePicker
+        </Button.Root>
+        <Button.Root
+          variant="primary"
+          onClick={() => setOpenDatepickerLabelModal(true)}
+        >
+          DatetimePickerLabel
         </Button.Root>
         <Button.Root
           variant="primary"
@@ -29,6 +49,24 @@ export default function Page() {
           Modal Footer
         </Button.Root>
       </div>
+      <Modal.Root
+        enableBackdropClose={false}
+        open={openDatepickerModal}
+        onClose={setOpenDatepickerModal}
+      >
+        <Modal.Body>
+          <DateTimePicker />
+        </Modal.Body>
+      </Modal.Root>
+      <Modal.Root
+        enableBackdropClose={false}
+        open={openDatepickerLabelModal}
+        onClose={setOpenDatepickerLabelModal}
+      >
+        <Modal.Body>
+          <DatetimePickerLabel label="Data" />
+        </Modal.Body>
+      </Modal.Root>
       <Modal.Root open={openModal} onClose={setOpenModal}>
         <Modal.Body>Modal Normal</Modal.Body>
       </Modal.Root>

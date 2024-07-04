@@ -9,7 +9,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="flex flex-col justify-center items-center min-h-screen p-10">
+        <div className="flex flex-col justify-center  min-h-screen p-10">
           <h1 className="mb-10 ">Examples Design System</h1>
           <div className="flex items-center gap-3">
             <Link href="/buttons">buttons</Link>
@@ -21,7 +21,7 @@ export default function RootLayout({
             <Link href="/uploads">uploads</Link>
             <Link href="/modals">Modals</Link>
           </div>
-          {children}
+          <div className="flex-1 pt-10">{children}</div>
         </div>
       </body>
     </html>
