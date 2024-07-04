@@ -21,4 +21,6 @@ export const InputWithIcon = forwardRef<HTMLInputElement, InputWithIconProps>((p
   );
 });
 
+InputWithIcon.displayName = 'InputWithIcon';
+
 export * from './types';

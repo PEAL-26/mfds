@@ -1,12 +1,16 @@
+import { forwardRef } from 'react';
 import { twMerge } from 'tailwind-merge';
+
 import { InputRootProps } from './types';
 
-export function InputRoot(props: InputRootProps) {
+export const InputRoot = forwardRef<HTMLDivElement, InputRootProps>((props, ref) => {
   const { className = '', children, ...rest } = props;
 
   return (
-    <div className={twMerge('flex flex-col', className)} {...rest}>
+    <div ref={ref} className={twMerge('flex flex-col', className)} {...rest}>
       {children}
     </div>
   );
-}
+});
+
+InputRoot.displayName = 'InputRoot';

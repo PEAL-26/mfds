@@ -1,13 +1,14 @@
 'use client';
-import { forwardRef,useState } from 'react';
+import { forwardRef, useState } from 'react';
 import { BiCalendar } from 'react-icons/bi';
 
 import { formatarDataYMD } from '../../helpers/date';
-
-import { Dropdown } from '../dropdown';
+import { cn } from '../../libs/utils';
+import { Popover, PopoverContent, PopoverTrigger } from '../@radix-ui/popover';
 import { Input } from '../input';
+
 import { Calendar } from './calendar';
-import { ChangeEventType,DateTimePickerProps } from './types';
+import { ChangeEventType, DateTimePickerProps } from './types';
 
 export const DateTimePicker = forwardRef<HTMLInputElement, DateTimePickerProps>((props, ref) => {
   const {
@@ -15,6 +16,7 @@ export const DateTimePicker = forwardRef<HTMLInputElement, DateTimePickerProps>(
     defaultValue,
     onChange,
     containerClassName = '',
+    className,
     startDate,
     endDate,
     error,
@@ -44,40 +46,35 @@ export const DateTimePicker = forwardRef<HTMLInputElement, DateTimePickerProps>(
   //   setCurrentValue(date);
   // }, [value]);
 
-// console.log({ currentValue, defaultValue });
+  // console.log({ currentValue, defaultValue });
 
   return (
     <>
-      <Dropdown.Root
-        minElementWidth={false}
-        placement="bottom-start"
-        visible={visible}
-        onClickOutside={hide}
-        zIndex={99999999}
-        className={containerClassName}
-      >
-        <Input.Root>
-          <Input.WithIcon
-            icon={BiCalendar}
-            value={formatarDataYMD(currentValue)}
-            defaultValue={defaultValue ? formatarDataYMD(defaultValue) : undefined}
-            variant="primary"
-            className="cursor-pointer"
-            {...rest}
-            onClick={show}
-            readOnly
-            ref={ref}
-          />
-        </Input.Root>
-        <Dropdown.ExpansibleArea formatting="none">
-          <Calendar
-            startDate={startDate}
-            endDate={endDate}
-            value={currentValue}
-            onChange={handleOnChange}
-          />
-        </Dropdown.ExpansibleArea>
-      </Dropdown.Root>
+      <Popover modal open={visible} onOpenChange={setVisible}>
+        <PopoverTrigger asChild>
+          <Input.Root>
+            <Input.WithIcon
+              icon={BiCalendar}
+              value={formatarDataYMD(currentValue)}
+              defaultValue={defaultValue ? formatarDataYMD(defaultValue) : undefined}
+              variant="primary"
+              className={cn('cursor-pointer', className)}
+              {...rest}
+              onClick={show}
+              readOnly
+              ref={ref}
+            />
+          </Input.Root>
+        </PopoverTrigger>
+          <PopoverContent className="w-auto border-none p-0" align="start">
+            <Calendar
+              startDate={startDate}
+              endDate={endDate}
+              value={currentValue}
+              onChange={handleOnChange}
+            />
+          </PopoverContent>
+      </Popover>
       {error && <span className="mt-1 text-xs font-normal text-red-500">{error}</span>}
     </>
   );

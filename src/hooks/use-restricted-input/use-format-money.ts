@@ -17,7 +17,7 @@ export function useFormatMoney() {
 
     const updateValue = (newValue: string) => {
       input.value = newValue;
-      const event = { currentTarget: input, target: input } as ChangeEvent<HTMLInputElement>;
+      const event = { ...e, currentTarget: input, target: input } as ChangeEvent<HTMLInputElement>;
       changeEvent?.(event);
     };
 
