@@ -1,13 +1,12 @@
 'use client';
 import ImageNext from 'next/image';
-import { useEffect, useRef, useState } from 'react';
+import { forwardRef, useEffect, useRef, useState } from 'react';
 
 import { DefaultImage } from './default-image';
 import { DefaultImageLoading } from './default-image-loading';
-
 import { ImageProps } from './types';
 
-export function Image(props: ImageProps) {
+export const Image = forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
   const { src, defaultImage, defaultImageSize, loadingImage, loadingImageSize, ...rest } = props;
 
   const imageRef = useRef<HTMLImageElement>(null);
@@ -58,8 +57,6 @@ export function Image(props: ImageProps) {
   }
 
   return <ImageNext ref={imageRef} src={src} {...rest} />;
-}
+});
 
-export * from './default-image';
-export * from './default-image-loading';
-export * from './types';
+Image.displayName = 'Image';
