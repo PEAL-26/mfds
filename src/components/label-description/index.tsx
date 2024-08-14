@@ -5,7 +5,7 @@ export function LabelDescription(props: LabelDescriptionProps) {
 
   return (
     <span className="text-lg text-black ">
-      <span className="font-bold"> {title}</span>
+      <span className="font-bold">{title}</span>
       <p>{description}</p>
     </span>
   );
