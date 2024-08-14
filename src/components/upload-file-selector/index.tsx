@@ -9,7 +9,7 @@ import { useUploadFileSelector } from './use-upload-file-selector';
 
 export const UploadFileSelector = forwardRef<HTMLInputElement, UploadFileSelectorProps>(
   (props, ref) => {
-    const { className, accept, type, name, ...rest } = props;
+    const { className, accept, type, name, crossOrigin, ...rest } = props;
     const { files, getInputProps, getRootProps, fileRemove, errors, errorMessage } =
       useUploadFileSelector({ ...props, accept, type });
 
@@ -26,7 +26,7 @@ export const UploadFileSelector = forwardRef<HTMLInputElement, UploadFileSelecto
         >
           <input name={String(name)} ref={ref} {...getInputProps()} {...rest} />
           {files.length > 0 ? (
-            <Preview files={files} onRemove={fileRemove} />
+            <Preview files={files} onRemove={fileRemove} crossOrigin={crossOrigin} />
           ) : (
             <UploadFileSelectorEmpty />
           )}

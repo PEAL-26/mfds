@@ -1,4 +1,6 @@
 import { MouseEvent } from 'react';
+import { ImageProps } from '../image';
+type CrossOrigin = 'anonymous' | 'use-credentials' | '' | undefined;
 
 export type ErrorProps = {
   code: string;
@@ -29,11 +31,12 @@ export interface UploadFileSelectorProps<TForm = any>
   form?: TForm;
   name?: keyof TForm;
   url?: string;
+  crossOrigin?: CrossOrigin;
 }
 
 export interface UploadFileSelectorEmptyProps {}
 
-export interface PreviewProps {
+export interface PreviewProps extends Omit<ImageProps, 'alt'> {
   files: FileCustom[];
   onRemove?(e: MouseEvent<HTMLButtonElement>): void;
 }

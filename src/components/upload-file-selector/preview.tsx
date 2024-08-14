@@ -3,7 +3,7 @@ import { Image } from '../image';
 import { PreviewProps } from './types';
 
 export function Preview(props: PreviewProps) {
-  const { files, onRemove } = props;
+  const { files, onRemove, crossOrigin, ...rest } = props;
   if (!files || files.length === 0) {
     return null;
   }
@@ -12,6 +12,8 @@ export function Preview(props: PreviewProps) {
     <>
       <div className="relative flex h-full w-full items-center justify-center">
         <Image
+          {...rest}
+          crossOrigin={crossOrigin}
           alt=""
           src={files[0].preview}
           loading="lazy"
