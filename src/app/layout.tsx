@@ -19,6 +19,7 @@ export default function RootLayout({
             <Link href="/labels">labels</Link>
             <Link href="/selects">selects</Link>
             <Link href="/tables">tables</Link>
+            <Link href="/images">images</Link>
             <Link href="/uploads">uploads</Link>
             <Link href="/modals">Modals</Link>
           </div>
