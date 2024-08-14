@@ -16,6 +16,7 @@ export default function RootLayout({
             <Link href="/checks">checks</Link>
             <Link href="/forms">forms</Link>
             <Link href="/inputs">inputs</Link>
+            <Link href="/labels">labels</Link>
             <Link href="/selects">selects</Link>
             <Link href="/tables">tables</Link>
             <Link href="/uploads">uploads</Link>

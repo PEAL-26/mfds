@@ -35,6 +35,7 @@ export default function Inputs() {
         defaultValue={"1000.88"}
         value={"1000.88"}
       />
+      <Input.WithLabel label="Required" required />
       <Input.Text
         type="literal"
         variant="primary"
@@ -67,7 +68,7 @@ export default function Inputs() {
 
       <DateTimePicker
         {...form.register("date")}
-        value={form.getValues('date')}
+        value={form.getValues("date")}
         onChange={(e) => form.setValue("date", e.currentTarget.value)}
       />
       <span>{form.formState.errors.date?.message || ""}</span>
