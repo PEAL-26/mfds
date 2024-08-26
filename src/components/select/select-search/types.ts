@@ -27,4 +27,5 @@ export interface SelectSearchProps<T> {
   onSearch?: (value: string) => void;
   offlineSearch?: boolean;
   onSelect?: (item: T) => void;
+  modal?: boolean;
 }

@@ -39,6 +39,8 @@ export function SelectSearch<T>(props: SelectSearchProps<T>) {
     onSearch,
     offlineSearch = false,
     onSelect,
+
+    ...rest
   } = props;
 
   const popoverRef = useRef(null);
@@ -109,6 +111,7 @@ export function SelectSearch<T>(props: SelectSearchProps<T>) {
           setSearch('');
         }
       }}
+      {...rest}
     >
       <PopoverTrigger disabled={disabled} asChild className={cn('w-full', className)}>
         {FormControl ? (
