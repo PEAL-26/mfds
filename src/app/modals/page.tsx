@@ -6,6 +6,8 @@ import {
   DateTimePicker,
   DatetimePickerLabel,
   Modal,
+  SelectBadge,
+  SelectSearch,
 } from "../../../../design-system/components";
 
 export default function Page() {
@@ -17,6 +19,7 @@ export default function Page() {
   const [openDatepickerModal, setOpenDatepickerModal] = useState(false);
   const [openDatepickerLabelModal, setOpenDatepickerLabelModal] =
     useState(false);
+  const [openSelectModal, setOpenSelectModal] = useState(false);
 
   return (
     <>
@@ -47,6 +50,9 @@ export default function Page() {
         </Button.Root>
         <Button.Root variant="primary" onClick={() => setOpenFooterModal(true)}>
           Modal Footer
+        </Button.Root>
+        <Button.Root variant="primary" onClick={() => setOpenSelectModal(true)}>
+          select
         </Button.Root>
       </div>
       <Modal.Root
@@ -97,6 +103,31 @@ export default function Page() {
         <Modal.Footer>
           <Modal.ActionButtons />
         </Modal.Footer>
+      </Modal.Root>
+
+      <Modal.Root open={openSelectModal} onClose={setOpenSelectModal}>
+        <Modal.Body>
+          Select
+          <SelectBadge
+            type="default"
+            badge="Bade"
+            items={[
+              { id: "1", name: "John" },
+              { id: "2", name: "Jane" },
+            ]}
+            fieldValue="id"
+            fieldLabel="name"
+          />
+          <SelectSearch
+            modal
+            items={[
+              { id: "1", name: "John" },
+              { id: "2", name: "Jane" },
+            ]}
+            fieldValue="id"
+            fieldLabel="name"
+          />
+        </Modal.Body>
       </Modal.Root>
     </>
   );
