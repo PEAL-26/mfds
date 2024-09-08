@@ -5,7 +5,21 @@
 
 ## Descrição
 
-O MFDS é um design sistem desenvolvido para o um software Mais Factura, mas que.
+O **MFDS** (Mais Facturas Design System) foi criado com o objetivo de simplificar e acelerar o desenvolvimento de aplicativos, proporcionando uma base sólida e reutilizável para interfaces. Ele utiliza componentes prontos e configuráveis que seguem as melhores práticas de design e usabilidade, permitindo que desenvolvedores foquem no que realmente importa: a lógica de negócio e funcionalidades específicas dos projetos.
+
+Para construir este design system robusto e flexível, foram utilizadas bibliotecas como:
+
+- **@radix-ui**: Oferece componentes acessíveis e customizáveis.
+- **@tippyjs/react**: Fornece uma solução poderosa para tooltips e popovers.
+- **react-dropzone**: Facilita a criação de zonas de drag-and-drop para upload de arquivos.
+- **tailwindcss**: Oferece uma abordagem utilitária para estilização, permitindo criação rápida de layouts.
+
+Além disso, o **MFDS** exige dependências importantes para o seu funcionamento, que devem ser instaladas como `peerDependencies`:
+
+- **next** (^13.5.4): Framework essencial para o desenvolvimento com React e funcionalidades avançadas.
+- **react** e **react-dom** (^18.2.0): Base do ecossistema de interfaces.
+- **react-icons** (^4.11.0): Conjunto de ícones personalizáveis.
+- **sweetalert2** e **sweetalert2-react-content**: Para criar diálogos interativos e atraentes.
 
 ## Instalação
 
@@ -15,7 +29,7 @@ Você pode instalar este pacote via npm:
 npm install software-edv-design-system
 ```
 
-Instale também o plugin @tailwindcss/forms que os inputs sejam estilizados
+Instale também o plugin @tailwindcss/forms para que os inputs sejam estilizados
 
 ```bash
 npm i -D @tailwindcss/forms
