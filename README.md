@@ -1,11 +1,11 @@
-# Software EDV Design System
+# MFDS
 
 [![GitHub issues](https://img.shields.io/github/issues/PEAL-26/software-edv-design-system)](https://github.com/PEAL-26/software-edv-design-system/issues)
 [![GitHub license](https://img.shields.io/github/license/PEAL-26/software-edv-design-system)](https://github.com/PEAL-26/software-edv-design-system/blob/master/LICENSE)
 
 ## Descrição
 
-O Software EDV Design System é um sistema de design desenvolvido para o Software EDV.
+O MFDS é um design sistem desenvolvido para o um software Mais Factura, mas que.
 
 ## Instalação
 
