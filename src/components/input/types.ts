@@ -7,6 +7,7 @@ export interface InputRootProps {
 
 export interface InputLabelProps extends HTMLProps<HTMLLabelElement> {
   text?: string;
+    required?: boolean;
 }
 
 export interface InputMessageContainerProps extends HTMLProps<HTMLDivElement> {

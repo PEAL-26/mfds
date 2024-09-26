@@ -7,7 +7,7 @@ import { TextAreaWithLabelProps } from '../types';
 
 export const TextAreaWithLabel = forwardRef<HTMLTextAreaElement, TextAreaWithLabelProps>(
   (props, ref) => {
-    const { label, className, children, error, ...rest } = props;
+    const { label, className, children, error,required, ...rest } = props;
 
     const uuid = uuidV4();
 
@@ -15,6 +15,7 @@ export const TextAreaWithLabel = forwardRef<HTMLTextAreaElement, TextAreaWithLab
       <div className="flex flex-col  justify-start">
         <label className="mb-2 text-base font-bold text-black" htmlFor={uuid}>
           {label}
+           {required && <span className="text-red">{' *'}</span>}
         </label>
         <TextArea id={uuid} className={twMerge(className)} {...rest} ref={ref}>
           {children}

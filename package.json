@@ -1,7 +1,7 @@
 {
-  "name": "software-edv-design-system",
+  "name": "mfds",
   "version": "1.5.15",
-  "description": "Design system para o Software EDV",
+  "description": "Design system mfds",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [

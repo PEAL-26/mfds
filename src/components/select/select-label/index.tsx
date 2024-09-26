@@ -8,13 +8,14 @@ import { SelectSearch } from '../select-search';
 import { SelectLabelProps } from './types';
 
 export const SelectLabel = forwardRef<typeof Select, SelectLabelProps<any>>((props, ref) => {
-  const { label, containerClassName = '', type = 'default', error, ...rest } = props;
+  const { label, containerClassName = '', type = 'default', error,required, ...rest } = props;
   const uuid = uuidV4();
 
   return (
     <div className={twMerge('flex w-full flex-col  justify-start', containerClassName)}>
       <label className="mb-2 text-base font-bold text-black" htmlFor={uuid}>
         {label}
+        {required && <span className="text-red">{' *'}</span>}
       </label>
       {type === 'default' && <Select id={uuid} {...rest} />}
       {type === 'searchable' && <SelectSearch id={uuid} {...rest} />}

@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge';
 import { InputLabelProps } from './types';
 
 export const InputLabel = forwardRef<HTMLLabelElement, InputLabelProps>((props, ref) => {
-  const { className, text, children, ...rest } = props;
+  const { className, text, children,required, ...rest } = props;
 
   return (
     <label
@@ -13,6 +13,7 @@ export const InputLabel = forwardRef<HTMLLabelElement, InputLabelProps>((props, 
       ref={ref}
     >
       {text || children}
+        {required && <span className="text-red">{' *'}</span>}
     </label>
   );
 });

@@ -7,4 +7,5 @@ export interface SelectLabelProps<T> extends SelectProps<T>, SelectSearchProps<T
   error?: string;
   containerClassName?: string;
   type?: SelectTypes;
+    required?: boolean;
 }
