@@ -18,6 +18,7 @@ export function useUploadFileSelector(props?: UploadFileSelectorProps) {
     url,
     onChange,
     onErrors,
+    onRemoveFile,
   } = props || {};
 
   const [files, setFiles] = useState<FileCustom[]>([]);
@@ -88,6 +89,7 @@ export function useUploadFileSelector(props?: UploadFileSelectorProps) {
     updatedFiles.splice(indexToRemove, 1);
     setFiles(updatedFiles);
     handleChange(updatedFiles);
+    onRemoveFile?.();
   };
 
   const getAccept = () => {

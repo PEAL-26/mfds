@@ -19,10 +19,10 @@ export const Image = forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
     setIsError(false);
   };
 
-  const onError = () => {
+  const onError = (error) => {
     setIsError(true);
     setIsLoading(false);
-    console.error('Erro ao carregar a imagem!');
+    console.error('Erro ao carregar a imagem!', error);
   };
 
   const onLoadStart = () => {
@@ -35,6 +35,7 @@ export const Image = forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
 
     if (src && typeof src === 'string' && _imageRef) {
       _imageRef.src = src;
+      _imageRef.crossOrigin = rest.crossOrigin;
       _imageRef.addEventListener('load', onLoad);
       _imageRef.addEventListener('error', onError);
       onLoadStart();

@@ -32,6 +32,8 @@ export interface UploadFileSelectorProps<TForm = any>
   name?: keyof TForm;
   url?: string;
   crossOrigin?: CrossOrigin;
+  classNamePreview?: string;
+  onRemoveFile?(): void;
 }
 
 export interface UploadFileSelectorEmptyProps {}

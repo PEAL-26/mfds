@@ -1,9 +1,10 @@
 import { FaTrash } from 'react-icons/fa';
+import { twMerge } from 'tailwind-merge';
 import { Image } from '../image';
 import { PreviewProps } from './types';
 
 export function Preview(props: PreviewProps) {
-  const { files, onRemove, crossOrigin, ...rest } = props;
+  const { files, onRemove, crossOrigin, className, ...rest } = props;
   if (!files || files.length === 0) {
     return null;
   }
@@ -17,7 +18,7 @@ export function Preview(props: PreviewProps) {
           alt=""
           src={files[0].preview}
           loading="lazy"
-          className="h-full w-full rounded-md object-cover"
+          className={twMerge('h-full w-full rounded-md object-cover', className)}
           onLoad={() => {
             URL.revokeObjectURL(files[0].preview);
           }}
