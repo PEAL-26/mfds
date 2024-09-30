@@ -6,7 +6,14 @@ import { CheckToggleProps } from './types';
 
 type State = 'true' | 'false';
 export function CheckToggle(props: CheckToggleProps) {
-  const { active = true, onChange } = props;
+  const {
+    active = true,
+    onChange,
+    confirmText = 'LIGAR',
+    afterConfirmedText = 'LIGADO',
+    cancelText = 'DESLIGAR',
+    afterCanceledText = 'DESLIGADO',
+  } = props;
 
   const [value, setValue] = useState<State>('true');
 
@@ -31,10 +38,10 @@ export function CheckToggle(props: CheckToggleProps) {
         value="false"
         className={cn(className, 'rounded-l-sm data-[state=on]:bg-red-600')}
       >
-        {value === 'false' ? 'DESLIGADO' : 'DESLIGAR'}
+        {value === 'false' ? afterCanceledText : cancelText}
       </ToggleGroupItem>
       <ToggleGroupItem value="true" className={cn(className, 'rounded-r-sm')}>
-        {value === 'true' ? 'LIGADO' : 'LIGAR'}
+        {value === 'true' ? afterConfirmedText : confirmText}
       </ToggleGroupItem>
     </ToggleGroup>
   );
