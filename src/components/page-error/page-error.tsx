@@ -19,7 +19,7 @@ export function PageError(props: PageErrorProps) {
       <div className="flex flex-col text-center">
         <span className="text-center text-6xl font-bold text-primary-a lg:text-9xl">Oops!</span>
         <span className="mt-4 text-center text-3xl font-bold text-black">
-          {`${code} - ${error.title}`}
+          {`${code ? `${code} | ` : ''}${error?.title || title}`}
         </span>
         <span className="mt-1 max-w-md text-center text-base font-normal text-black">
           {error.description}
