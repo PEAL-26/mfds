@@ -39,7 +39,7 @@ export function SelectSearch<T>(props: SelectSearchProps<T>) {
     onSearch,
     offlineSearch = false,
     onSelect,
-
+    modal,
     ...rest
   } = props;
 
@@ -104,6 +104,7 @@ export function SelectSearch<T>(props: SelectSearchProps<T>) {
 
   return (
     <Popover
+      modal={modal}
       open={open}
       onOpenChange={(isOpen) => {
         setOpen(isOpen);
@@ -134,7 +135,7 @@ export function SelectSearch<T>(props: SelectSearchProps<T>) {
         className={cn('w-full bg-white p-0', contentClassName)}
       >
         <Command shouldFilter={offlineSearch}>
-          <CommandInput onValueChange={setSearch} placeholder="Pesquisar..." />
+          <CommandInput modal={modal} onValueChange={setSearch} placeholder="Pesquisar..." />
           <CommandList>
             {loading && (
               <CommandLoading className="flex justify-center py-6">

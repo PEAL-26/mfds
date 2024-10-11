@@ -23,6 +23,7 @@ export function Select<T>(props: SelectProps<T>) {
     contentClassName,
     contentGroupClassName,
     contentItemClassName,
+    iconCheck = true,
     ...rest
   } = props;
   const [selectedItem, setSelectedItem] = useState<T | undefined>(undefined);
@@ -44,12 +45,13 @@ export function Select<T>(props: SelectProps<T>) {
         <SelectGroup className={cn(contentGroupClassName)}>
           {items.map((item) => (
             <SelectItem
+              iconCheck={iconCheck}
               key={String(item[fieldValue])}
               value={String(item[fieldValue])}
               onSelect={() => setSelectedItem(item)}
               className={cn(contentItemClassName)}
             >
-              {String(item[fieldLabel])}
+              {item[fieldLabel] as any}
             </SelectItem>
           ))}
         </SelectGroup>
