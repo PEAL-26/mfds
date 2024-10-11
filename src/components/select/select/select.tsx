@@ -1,13 +1,13 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect,useState } from 'react';
 import { cn } from '../../../libs/utils';
 import {
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  Select as SelectPrimitive,
-  SelectTrigger,
-  SelectValue,
+SelectContent,
+SelectGroup,
+SelectItem,
+Select as SelectPrimitive,
+SelectTrigger,
+SelectValue,
 } from '../../@radix-ui/select';
 import { SelectProps } from './types';
 
@@ -26,11 +26,11 @@ export function Select<T>(props: SelectProps<T>) {
     iconCheck = true,
     ...rest
   } = props;
-  const [selectedItem, setSelectedItem] = useState<T | undefined>(undefined);
+  const [selectedItem, setSelectedItem] = useState<T | undefined>(() => defaultItem);
 
-  useEffect(() => {
-    setSelectedItem(defaultItem);
-  }, [defaultItem]);
+  // useEffect(() => {
+  //   setSelectedItem(defaultItem);
+  // }, [defaultItem]);
 
   return (
     <SelectPrimitive {...rest}>
@@ -39,7 +39,9 @@ export function Select<T>(props: SelectProps<T>) {
           placeholder={placeholder}
           defaultValue={String(selectedItem?.[fieldValue])}
           className="placeholder:text-gray-300"
-        />
+        >
+          {selectedItem?.[fieldLabel] as any}
+        </SelectValue>
       </SelectTrigger>
       <SelectContent className={cn(contentClassName)}>
         <SelectGroup className={cn(contentGroupClassName)}>
