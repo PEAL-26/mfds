@@ -1,4 +1,4 @@
-import { ChangeEvent, ElementType } from 'react';
+import { ChangeEvent,ElementType } from 'react';
 
 export interface SetValueOption {
   shouldValidate: boolean;
@@ -28,4 +28,7 @@ export interface SelectSearchProps<T> {
   offlineSearch?: boolean;
   onSelect?: (item: T) => void;
   modal?: boolean;
+  iconCheck?: boolean;
+  selectEmpty?: boolean;
+  selectEmptyText?: string;
 }

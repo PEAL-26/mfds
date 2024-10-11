@@ -40,6 +40,9 @@ export function SelectSearch<T>(props: SelectSearchProps<T>) {
     offlineSearch = false,
     onSelect,
     modal,
+    iconCheck = true,
+    selectEmpty = false,
+    selectEmptyText = 'Nenhum (a)',
     ...rest
   } = props;
 
@@ -148,6 +151,23 @@ export function SelectSearch<T>(props: SelectSearchProps<T>) {
             )}
             {!loading && (
               <CommandGroup className={cn(contentGroupClassName)}>
+                {selectEmpty && (
+                  <CommandItem
+                    value={undefined}
+                    onSelect={() => handleSelect(undefined)}
+                    className={cn(contentItemClassName)}
+                  >
+                    {iconCheck && (
+                      <LuCheck
+                        className={cn(
+                          'mr-2 h-4 w-4',
+                          selectedItem?.[fieldValue] === undefined ? 'opacity-100' : 'opacity-0',
+                        )}
+                      />
+                    )}
+                    <span>{selectEmptyText}</span>
+                  </CommandItem>
+                )}
                 {items.map((item) => (
                   <CommandItem
                     key={`${item[fieldValue]}`}
@@ -155,14 +175,16 @@ export function SelectSearch<T>(props: SelectSearchProps<T>) {
                     onSelect={() => handleSelect(item)}
                     className={cn(contentItemClassName)}
                   >
-                    <LuCheck
-                      className={cn(
-                        'mr-2 h-4 w-4',
-                        item[fieldValue] === selectedItem?.[fieldValue]
-                          ? 'opacity-100'
-                          : 'opacity-0',
-                      )}
-                    />
+                    {iconCheck && (
+                      <LuCheck
+                        className={cn(
+                          'mr-2 h-4 w-4',
+                          item[fieldValue] === selectedItem?.[fieldValue]
+                            ? 'opacity-100'
+                            : 'opacity-0',
+                        )}
+                      />
+                    )}
                     <span>{`${item[fieldLabel]}`}</span>
                   </CommandItem>
                 ))}

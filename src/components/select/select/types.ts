@@ -12,5 +12,7 @@ export interface SelectProps<T> extends RUISelectProps {
   contentClassName?: string;
   contentGroupClassName?: string;
   contentItemClassName?: string;
-  iconCheck?:boolean
+  iconCheck?: boolean;
+  selectEmpty?: boolean;
+  selectEmptyText?: string;
 }
