@@ -1,6 +1,6 @@
 {
   "name": "mfds",
-  "version": "1.5.22",
+  "version": "1.5.23",
   "description": "Design system mfds",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
