@@ -5,12 +5,49 @@ import {
   SelectLabel,
   SelectSearch,
 } from "../../../../design-system/components";
+import { FaBeer } from 'react-icons/fa';
 
 export default function Selects() {
   return (
     <div className="flex flex-col gap-3 justify-start items-start">
       <Select items={[]} />
+      <Select
+        selectEmpty
+        items={[
+          { id: "1", name: "John" },
+          { id: "2", name: "Jane" },
+        ]}
+      />
+      <Select
+        iconCheck={false}
+        fieldLabel="component"
+        fieldValue="id"
+        items={[
+          {
+            id: "1",
+            component: (
+              <div className="flex gap-1 items-center">
+                <FaBeer />
+                <span>Alguma coisa</span>
+              </div>
+            ),
+          },
+          { id: "2", component: "Jane" },
+        ]}
+      />
       <SelectBadge
+        type="default"
+        badge="Bade"
+        items={[
+          { id: "1", name: "John" },
+          { id: "2", name: "Jane" },
+        ]}
+        fieldValue="id"
+        fieldLabel="name"
+      />
+      <SelectBadge
+        iconCheck={false}
+        placeholder="Select   iconCheck={false}"
         type="default"
         badge="Bade"
         items={[
@@ -22,14 +59,41 @@ export default function Selects() {
       />
       <SelectLabel type="searchable" label="Label" items={[]} />
       <SelectSearch
+        selectEmpty
         items={[
           { id: "1", name: "John" },
-          { id: "2", name: "Jane" },
+          {
+            id: "2",
+            name: (
+              <div className="flex gap-1 items-center">
+                <FaBeer />
+                <span>Alguma coisa</span>
+              </div>
+            ),
+          },
         ]}
         fieldValue="id"
         fieldLabel="name"
       />
       <SelectSearch
+        items={[
+          { id: "1", name: "John" },
+          {
+            id: "2",
+            name: (
+              <div className="flex gap-1 items-center">
+                <FaBeer />
+                <span>Alguma coisa</span>
+              </div>
+            ),
+          },
+        ]}
+        fieldValue="id"
+        fieldLabel="name"
+      />
+      <SelectSearch
+        iconCheck={false}
+        placeholder="SelectSearch   iconCheck={false}"
         items={[
           { id: "1", name: "John" },
           { id: "2", name: "Jane" },
@@ -66,7 +130,7 @@ export default function Selects() {
         fieldLabel="name"
         offlineSearch={true}
       />
-       <SelectSearch
+      <SelectSearch
         items={[
           { id: "1", name: "John" },
           { id: "2", name: "Jane 2" },
@@ -93,7 +157,7 @@ export default function Selects() {
         fieldValue="id"
         fieldLabel="name"
         offlineSearch={true}
-        defaultItem={{ id: "2", name: "Jane 2"  }}
+        defaultItem={{ id: "2", name: "Jane 2" }}
       />
     </div>
   );

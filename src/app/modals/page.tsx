@@ -11,6 +11,7 @@ import {
 } from "../../../../design-system/components";
 
 export default function Page() {
+
   const [openModal, setOpenModal] = useState(false);
   const [openEnableBackdropCloseModal, setOpenEnableBackdropCloseModal] =
     useState(false);
@@ -120,9 +121,18 @@ export default function Page() {
           />
           <SelectSearch
             modal
+            offlineSearch
             items={[
               { id: "1", name: "John" },
               { id: "2", name: "Jane" },
+              { id: "3", name: "Jane" },
+              { id: "4", name: "Jane" },
+              { id: "5", name: "Jane" },
+              { id: "6", name: "Jane" },
+              { id: "7", name: "Jane" },
+              { id: "8", name: "Jane" },
+              { id: "9", name: "Jane" },
+              { id: "10", name: "Jane" },
             ]}
             fieldValue="id"
             fieldLabel="name"
