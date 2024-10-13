@@ -11,22 +11,22 @@ export function useModalRoot(props: ModalRootProps) {
     if (blockClosing) return;
 
     setIsModalOpen(false);
-    onClose && onClose(false);
+    onClose?.(false);
   };
 
   useEffect(() => {
     setIsModalOpen(open);
 
-    // const actionButtonCancel = document.querySelector('[data-modal-action-button-cancel]');
-    // console.log({ actionButtonCancel, modalRootRef: modalRootRef.current });
-    // if (actionButtonCancel) {
-    //   actionButtonCancel.addEventListener('click', closeModal);
-    // }
-    // return () => {
-    //   if (actionButtonCancel) {
-    //     actionButtonCancel.removeEventListener('click', closeModal);
-    //   }
-    // };
+    //   // const actionButtonCancel = document.querySelector('[data-modal-action-button-cancel]');
+    //   // console.log({ actionButtonCancel, modalRootRef: modalRootRef.current });
+    //   // if (actionButtonCancel) {
+    //   //   actionButtonCancel.addEventListener('click', closeModal);
+    //   // }
+    //   // return () => {
+    //   //   if (actionButtonCancel) {
+    //   //     actionButtonCancel.removeEventListener('click', closeModal);
+    //   //   }
+    //   // };
   }, [open]);
 
   return { isModalOpen, modalRootRef, closeModal };

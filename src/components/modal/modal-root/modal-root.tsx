@@ -19,10 +19,11 @@ export function ModalRoot(props: ModalRootProps) {
     blockClosing,
   });
 
+
   return (
     <Dialog
-      open={isModalOpen}
-      modal
+    modal
+    open={isModalOpen}
       defaultOpen={isModalOpen}
       onOpenChange={(open) => {
         if (!open) closeModal();
@@ -33,12 +34,12 @@ export function ModalRoot(props: ModalRootProps) {
           e.preventDefault();
           if (!blockClosing) closeModal();
         }}
-        onPointerDownOutside={(e) => {
-          if (!enableBackdropClose || blockClosing) e.preventDefault();
-        }}
-        onInteractOutside={(e) => {
-          if (!enableBackdropClose || blockClosing) e.preventDefault();
-        }}
+        // onPointerDownOutside={(e) => {
+        //   if (!enableBackdropClose || blockClosing) e.preventDefault();
+        // }}
+        // onInteractOutside={(e) => {
+        //   if (!enableBackdropClose || blockClosing) e.preventDefault();
+        // }}
         className={twMerge('flex max-h-screen items-center justify-center', containerClassName)}
       >
         <div

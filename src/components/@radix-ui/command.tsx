@@ -59,7 +59,7 @@ const CommandInput = React.forwardRef<
     <CommandPrimitive.Input
       ref={ref}
       className={cn(
-        // 'flex h-11 w-full rounded-md border-none bg-transparent py-3 text-sm outline-none ring-0 placeholder:text-gray-300 focus:border-none focus:outline-none focus:ring-0 disabled:cursor-not-allowed disabled:opacity-50',
+        'flex h-11 w-full rounded-md border-none bg-transparent py-3 text-sm outline-none ring-0 placeholder:text-gray-300 focus:border-none focus:outline-none focus:ring-0 disabled:cursor-not-allowed disabled:opacity-50',
         className,
       )}
       {...props}
@@ -119,9 +119,13 @@ const CommandSeparator = React.forwardRef<
 ));
 CommandSeparator.displayName = CommandPrimitive.Separator.displayName;
 
+type CommandItemProps = React.ComponentPropsWithoutRef<typeof CommandPrimitive.Item> & {
+
+};
+
 const CommandItem = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.Item>,
-  React.ComponentPropsWithoutRef<typeof CommandPrimitive.Item>
+  CommandItemProps
 >(({ className, ...props }, ref) => (
   <CommandPrimitive.Item
     ref={ref}

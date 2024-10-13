@@ -12,22 +12,32 @@ const SelectGroup = SelectPrimitive.Group;
 
 const SelectValue = SelectPrimitive.Value;
 
+type SelectTriggerProps = React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger> & {
+  search?: boolean;
+  formatting?: boolean;
+};
+
 const SelectTrigger = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>
->(({ className, children, ...props }, ref) => (
+  SelectTriggerProps
+>(({ className, children, search, formatting = true, ...props }, ref) => (
   <SelectPrimitive.Trigger
     ref={ref}
     className={cn(
-      'flex w-full items-center justify-between rounded-md border border-gray-light bg-white px-3 py-2 text-sm placeholder:text-gray-300 hover:bg-gray-50 focus:outline-none focus:ring-gray-300 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1',
+      formatting &&
+        'flex w-full items-center justify-between rounded-md border border-gray-light bg-white px-3 py-2 text-sm placeholder:text-gray-300 hover:bg-gray-50 focus:outline-none focus:ring-gray-300 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1',
       className,
     )}
     {...props}
   >
-    {children}
-    <SelectPrimitive.Icon asChild>
-      <LuChevronDown className="h-4 w-4 opacity-50" />
-    </SelectPrimitive.Icon>
+    <div className="flex w-full items-center justify-between rounded-md text-sm placeholder:text-gray-300">
+      {children}
+      {!search && (
+        <SelectPrimitive.Icon asChild>
+          <LuChevronDown className="h-4 w-4 opacity-50" />
+        </SelectPrimitive.Icon>
+      )}
+    </div>
   </SelectPrimitive.Trigger>
 ));
 SelectTrigger.displayName = SelectPrimitive.Trigger.displayName;
@@ -106,31 +116,29 @@ SelectLabel.displayName = SelectPrimitive.Label.displayName;
 
 type SelectItemProps = React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item> & {
   iconCheck?: boolean;
+  onClickItem?(): void;
 };
 
 const SelectItem = React.forwardRef<React.ElementRef<typeof SelectPrimitive.Item>, SelectItemProps>(
-  ({ className, children, iconCheck, ...props }, ref) => (
-    <SelectPrimitive.Item
-      ref={ref}
-      className={cn(
-        'relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-gray-50 focus:text-black data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
-        className,
-      )}
-      {...props}
-    >
-      {iconCheck && (
-        <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
-          <SelectPrimitive.ItemIndicator>
-            <LuCheck className="h-4 w-4" />
-          </SelectPrimitive.ItemIndicator>
-        </span>
-      )}
-
-      {React.isValidElement(children) ? (
-        <>{children}</>
-      ) : (
-        <SelectPrimitive.ItemText>{String(children)}</SelectPrimitive.ItemText>
-      )}
+  ({ className, children, iconCheck, asChild = true, onClickItem, ...props }, ref) => (
+    <SelectPrimitive.Item ref={ref} asChild={asChild} {...props}>
+      <div
+        className={cn(
+          'relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pr-2 text-sm outline-none focus:bg-gray-50 focus:text-black data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+          iconCheck ? 'pl-8' : 'pl-2',
+          className,
+        )}
+        onClick={() => onClickItem?.()}
+      >
+        {iconCheck && (
+          <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+            <SelectPrimitive.ItemIndicator>
+              <LuCheck className="h-4 w-4" />
+            </SelectPrimitive.ItemIndicator>
+          </span>
+        )}
+        {children}
+      </div>
     </SelectPrimitive.Item>
   ),
 );

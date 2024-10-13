@@ -18,6 +18,7 @@ export function TabDay(props: TabDayProps) {
     selectedYear,
     onNavClick,
     changeSelectionTab,
+    onClearClick,
   } = props;
 
   return (
@@ -102,12 +103,21 @@ export function TabDay(props: TabDayProps) {
         </tbody>
       </table>
 
-      <span
-        className="block cursor-pointer p-2 pb-0 text-center text-xs font-bold opacity-50 hover:text-[#005193] hover:opacity-80"
-        onClick={onTodayClick}
-      >
-        Hoje
-      </span>
+      <div className="flex items-center justify-between">
+        <span
+          className="block cursor-pointer p-2 pb-0 text-center text-xs font-bold opacity-50 hover:text-[#005193] hover:opacity-80"
+          onClick={onTodayClick}
+        >
+          Hoje
+        </span>
+
+        <span
+          className="block cursor-pointer p-2 pb-0 text-center text-xs font-bold opacity-50 hover:text-[#005193] hover:opacity-80"
+          onClick={onClearClick}
+        >
+          Limpar
+        </span>
+      </div>
     </>
   );
 }

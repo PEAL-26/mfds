@@ -1,4 +1,4 @@
-import { ChangeEvent,ElementType } from 'react';
+import { ChangeEvent, ElementType } from 'react';
 
 export interface SetValueOption {
   shouldValidate: boolean;
@@ -7,6 +7,7 @@ export interface SetValueOption {
 }
 
 export interface SelectSearchProps<T> {
+  id?: string;
   name?: string;
   onChange?: (event: ChangeEvent<HTMLElement>) => void;
   items?: T[];

@@ -1,5 +1,7 @@
 import { MouseEvent } from 'react';
-import { ChangeSelectionTabType, onNavClickType } from '../types';
+import { ChangeSelectionTabType,onNavClickType } from '../types';
+
+
 
 export interface TabDayNavigationProps {
   onNavClick: onNavClickType;
@@ -18,6 +20,7 @@ export interface TabDayProps {
   endDate?: Date;
   onDayClick(e: MouseEvent<HTMLElement>): void;
   onTodayClick(e: MouseEvent<HTMLElement>): void;
+  onClearClick(): void;
 
   monthNames: string[];
   selectedMonth: number;

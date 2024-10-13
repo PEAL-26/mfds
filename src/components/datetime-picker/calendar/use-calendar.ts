@@ -92,13 +92,14 @@ export function useCalendar(props: CalendarProps) {
     if (offMonth) setSelectedMonth(date.getMonth());
 
     setSelectedDate(date);
-    onChange && onChange(date);
+    onChange?.(date);
   };
 
   const onTodayClick = (e: MouseEvent<HTMLSpanElement>) => {
     setSelectedMonth(now.getMonth());
     setSelectedYear(now.getFullYear());
     setSelectedDate(new Date());
+    onChange?.(new Date());
   };
 
   const onNavClick = (
@@ -160,6 +161,10 @@ export function useCalendar(props: CalendarProps) {
     setSelectionTab(tab);
   };
 
+  const handleClear = () => {
+    onChange?.(undefined);
+  };
+
   return {
     datepickerRef,
     now,
@@ -174,6 +179,7 @@ export function useCalendar(props: CalendarProps) {
     onTodayClick,
     onMonthChange,
     onYearChange,
+    handleClear,
     yearsArray,
   };
 }

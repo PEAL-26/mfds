@@ -12,7 +12,7 @@ import { ChangeEventType, DateTimePickerProps } from './types';
 
 export const DateTimePicker = forwardRef<HTMLInputElement, DateTimePickerProps>((props, ref) => {
   const {
-    value = new Date(),
+    value,
     defaultValue,
     onChange,
     containerClassName = '',
@@ -20,17 +20,17 @@ export const DateTimePicker = forwardRef<HTMLInputElement, DateTimePickerProps>(
     startDate,
     endDate,
     error,
+    placeholder = 'yyyy/mm/dd',
     ...rest
   } = props;
 
   const [currentValue, setCurrentValue] = useState(() => value);
-  // const [currentDefaultValue, setCurrentDefaultValue] = useState(() => defaultValue);
   const [visible, setVisible] = useState(false);
 
-  const handleOnChange = (date: Date) => {
+  const handleOnChange = (date?: Date) => {
     const event = {
-      target: { value: date /*formatarDataYMD(date)*/ },
-      currentTarget: { value: date /* formatarDataYMD(date)*/ },
+      target: { value: date },
+      currentTarget: { value: date },
     } as ChangeEventType;
 
     setCurrentValue(date);
@@ -41,39 +41,33 @@ export const DateTimePicker = forwardRef<HTMLInputElement, DateTimePickerProps>(
   const show = () => setVisible(true);
   const hide = () => setVisible(false);
 
-  // useEffect(() => {
-  //   const date = value ? new Date(value.toString()) : new Date();
-  //   setCurrentValue(date);
-  // }, [value]);
-
-  // console.log({ currentValue, defaultValue });
-
   return (
     <>
       <Popover modal open={visible} onOpenChange={setVisible}>
         <PopoverTrigger asChild>
           <Input.Root>
             <Input.WithIcon
+              {...rest}
               icon={BiCalendar}
-              value={formatarDataYMD(currentValue)}
+              value={currentValue ? formatarDataYMD(currentValue) : undefined}
               defaultValue={defaultValue ? formatarDataYMD(defaultValue) : undefined}
               variant="primary"
               className={cn('cursor-pointer', className)}
-              {...rest}
               onClick={show}
+              placeholder={placeholder}
               readOnly
               ref={ref}
             />
           </Input.Root>
         </PopoverTrigger>
-          <PopoverContent className="w-auto border-none p-0" align="start">
-            <Calendar
-              startDate={startDate}
-              endDate={endDate}
-              value={currentValue}
-              onChange={handleOnChange}
-            />
-          </PopoverContent>
+        <PopoverContent className="w-auto border-none p-0" align="start">
+          <Calendar
+            startDate={startDate}
+            endDate={endDate}
+            value={currentValue}
+            onChange={handleOnChange}
+          />
+        </PopoverContent>
       </Popover>
       {error && <span className="mt-1 text-xs font-normal text-red-500">{error}</span>}
     </>

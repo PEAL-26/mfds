@@ -1,15 +1,19 @@
 'use client';
+import { forwardRef, useEffect, useState } from 'react';
+import { twMerge } from 'tailwind-merge';
 import { v4 as uuidV4 } from 'uuid';
 
-import { forwardRef } from 'react';
-import { twMerge } from 'tailwind-merge';
 import { Select } from '../select';
 import { SelectSearch } from '../select-search';
 import { SelectLabelProps } from './types';
 
 export const SelectLabel = forwardRef<typeof Select, SelectLabelProps<any>>((props, ref) => {
-  const { label, containerClassName = '', type = 'default', error,required, ...rest } = props;
-  const uuid = uuidV4();
+  const { label, containerClassName = '', type = 'default', error, required, ...rest } = props;
+  const [uuid, setUUID] = useState('');
+
+  useEffect(() => {
+    setUUID(uuidV4());
+  }, []);
 
   return (
     <div className={twMerge('flex w-full flex-col  justify-start', containerClassName)}>

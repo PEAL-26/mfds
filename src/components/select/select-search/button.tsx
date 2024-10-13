@@ -1,10 +1,10 @@
-import { forwardRef } from 'react';
+import { forwardRef,ReactNode } from 'react';
 import { RxCaretSort } from 'react-icons/rx';
 import { cn } from '../../../libs/utils';
-import { Button, ButtonProps } from '../../button';
+import { Button,ButtonProps } from '../../button';
 
 interface SelectSearchButtonProps extends ButtonProps {
-  selectedFieldLabel: string;
+  selectedFieldLabel?: ReactNode;
   placeholder?: string;
 }
 
@@ -17,13 +17,13 @@ export const SelectSearchButton = forwardRef<HTMLButtonElement, SelectSearchButt
         variant="outline"
         role="combobox"
         className={cn(
-          'flex w-full items-center justify-between rounded-md border border-gray-light text-sm focus:outline-none focus:ring-gray-300 disabled:cursor-not-allowed disabled:opacity-50',
+          'line-clamp-1 flex w-full items-center justify-between rounded-md border border-gray-light text-sm focus:outline-none focus:ring-gray-300 disabled:cursor-not-allowed disabled:opacity-50',
           !selectedFieldLabel && 'text-gray-300',
           className,
         )}
         {...rest}
       >
-        {selectedFieldLabel?.trim() ? `${selectedFieldLabel}` : placeholder}
+        {selectedFieldLabel || placeholder}
         <RxCaretSort className="ml-2 h-4 w-4 shrink-0 opacity-50" />
       </Button.Root>
     );

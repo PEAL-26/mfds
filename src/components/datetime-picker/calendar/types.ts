@@ -14,5 +14,5 @@ export interface CalendarProps {
   value?: Date;
   startDate?: Date;
   endDate?: Date;
-  onChange?(date: Date): void;
+  onChange?(date?: Date): void;
 }

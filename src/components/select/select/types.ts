@@ -1,4 +1,5 @@
 import { SelectProps as RUISelectProps } from '@radix-ui/react-select';
+import { ChangeEvent } from 'react';
 
 export interface SelectProps<T> extends RUISelectProps {
   id?: string;
@@ -8,6 +9,7 @@ export interface SelectProps<T> extends RUISelectProps {
   fieldValue?: keyof T;
   fieldLabel?: keyof T;
   onSelect?: (item: T) => void;
+  onChange?: (event: ChangeEvent<HTMLElement>) => void;
   className?: string;
   contentClassName?: string;
   contentGroupClassName?: string;

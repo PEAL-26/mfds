@@ -1,24 +1,25 @@
 'use client';
-import { ChangeEvent, useEffect, useRef, useState } from 'react';
-import { LuCheck, LuLoader2 } from 'react-icons/lu';
+import { ChangeEvent,useEffect,useState } from 'react';
+import { LuCheck,LuLoader2 } from 'react-icons/lu';
 
 import { cn } from '../../../libs/utils';
 import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandLoading,
+Command,
+CommandEmpty,
+CommandGroup,
+CommandInput,
+CommandItem,
+CommandList,
+CommandLoading,
 } from '../../@radix-ui/command';
-import { Popover, PopoverContent, PopoverTrigger } from '../../@radix-ui/popover';
+import { SelectContent,Select as SelectPrimitive,SelectTrigger } from '../../@radix-ui/select';
 
 import { SelectSearchButton } from './button';
 import { SelectSearchProps } from './types';
 
 export function SelectSearch<T>(props: SelectSearchProps<T>) {
   const {
+    id,
     name,
     items = [],
     defaultItem,
@@ -46,19 +47,17 @@ export function SelectSearch<T>(props: SelectSearchProps<T>) {
     ...rest
   } = props;
 
-  const popoverRef = useRef(null);
   const [open, setOpen] = useState(false);
-  const [selectedItem, setSelectedItem] = useState<T | undefined>(undefined);
-
+  const [selectedItem, setSelectedItem] = useState<T | undefined>(() => defaultItem);
   const [search, setSearch] = useState('');
 
   useEffect(() => {
     onSearch?.(search);
   }, [search]);
 
-  useEffect(() => {
-    setSelectedItem(defaultItem);
-  }, [defaultItem]);
+  // useEffect(() => {
+  //   setSelectedItem(defaultItem);
+  // }, [defaultItem]);
 
   useEffect(() => {
     if (defaultItem) {
@@ -106,8 +105,7 @@ export function SelectSearch<T>(props: SelectSearchProps<T>) {
   };
 
   return (
-    <Popover
-      modal={modal}
+    <SelectPrimitive
       open={open}
       onOpenChange={(isOpen) => {
         setOpen(isOpen);
@@ -117,28 +115,30 @@ export function SelectSearch<T>(props: SelectSearchProps<T>) {
       }}
       {...rest}
     >
-      <PopoverTrigger disabled={disabled} asChild className={cn('w-full', className)}>
+      <SelectTrigger
+        id={id}
+        className={cn('min-w-[180px] w-[180px]', className)}
+        asChild
+        search
+        formatting={false}
+      >
         {FormControl ? (
           <FormControl>
             <SelectSearchButton
-              selectedFieldLabel={String(selectedItem?.[fieldLabel] || '')}
+              selectedFieldLabel={selectedItem?.[fieldLabel] as any}
               placeholder={placeholder}
             />
           </FormControl>
         ) : (
           <SelectSearchButton
-            selectedFieldLabel={String(selectedItem?.[fieldLabel] || '')}
+            selectedFieldLabel={selectedItem?.[fieldLabel] as any}
             placeholder={placeholder}
           />
         )}
-      </PopoverTrigger>
-      <PopoverContent
-        align="start"
-        ref={popoverRef}
-        className={cn('w-full bg-white p-0', contentClassName)}
-      >
+      </SelectTrigger>
+      <SelectContent className={cn(contentClassName)}>
         <Command shouldFilter={offlineSearch}>
-          <CommandInput modal={modal} onValueChange={setSearch} placeholder="Pesquisar..." />
+          <CommandInput onValueChange={setSearch} placeholder="Pesquisar..." />
           <CommandList>
             {loading && (
               <CommandLoading className="flex justify-center py-6">
@@ -153,15 +153,20 @@ export function SelectSearch<T>(props: SelectSearchProps<T>) {
               <CommandGroup className={cn(contentGroupClassName)}>
                 {selectEmpty && (
                   <CommandItem
-                    value={undefined}
-                    onSelect={() => handleSelect(undefined)}
+                    value={'null'}
+                    onSelect={() => {
+                      const obj = Object();
+                      obj[fieldValue] = null;
+                      obj[fieldLabel] = selectEmptyText;
+                      handleSelect(obj);
+                    }}
                     className={cn(contentItemClassName)}
                   >
                     {iconCheck && (
                       <LuCheck
                         className={cn(
                           'mr-2 h-4 w-4',
-                          selectedItem?.[fieldValue] === undefined ? 'opacity-100' : 'opacity-0',
+                          selectedItem?.[fieldValue] === null ? 'opacity-100' : 'opacity-0',
                         )}
                       />
                     )}
@@ -185,14 +190,14 @@ export function SelectSearch<T>(props: SelectSearchProps<T>) {
                         )}
                       />
                     )}
-                    <span>{`${item[fieldLabel]}`}</span>
+                    <span>{item[fieldLabel] as any}</span>
                   </CommandItem>
                 ))}
               </CommandGroup>
             )}
           </CommandList>
         </Command>
-      </PopoverContent>
-    </Popover>
+      </SelectContent>
+    </SelectPrimitive>
   );
 }
