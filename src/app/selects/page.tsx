@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import {
   Select,
   SelectBadge,
@@ -8,6 +9,8 @@ import {
 import { FaBeer } from 'react-icons/fa';
 
 export default function Selects() {
+  const [yesNo, setYesNo] = useState(true)
+
   return (
     <div className="flex flex-col gap-3 justify-start items-start">
       <Select items={[]} />
@@ -158,6 +161,46 @@ export default function Selects() {
         fieldLabel="name"
         offlineSearch={true}
         defaultItem={{ id: "2", name: "Jane 2" }}
+      />
+
+      <SelectLabel
+        label="YesNo"
+        placeholder="Yes or No"
+        items={[
+          { id: "true", name: "Sim" },
+          { id: "false", name: "Não" },
+        ]}
+        className="w-full"
+        // onValueChange={(value) => {
+        //   setYesNo(value === "true");
+        // }}
+        defaultItem={
+          yesNo ? { id: "true", name: "Sim" } : { id: "false", name: "Não" }
+        }
+        // value={yesNo !== undefined ? String(yesNo) : undefined}
+        onChange={(e) => console.log("onChange", e)}
+        onSelect={(e) => console.log("onSelect", e)}
+        onValueChange={(e) => console.log("onValueChange", e)}
+      />
+    
+      <SelectLabel
+        label="YesNo Value"
+        placeholder="Yes or No"
+        items={[
+          { id: "true", name: "Sim" },
+          { id: "false", name: "Não" },
+        ]}
+        className="w-full"
+        // onValueChange={(value) => {
+        //   setYesNo(value === "true");
+        // }}
+        // defaultItem={
+        //   yesNo ? { id: "true", name: "Sim" } : { id: "false", name: "Não" }
+        // }
+        value={yesNo}
+        onChange={(e) => console.log("onChange", e)}
+        onSelect={(e) => console.log("onSelect", e)}
+        onValueChange={(e) => console.log("onValueChange", e)}
       />
     </div>
   );
