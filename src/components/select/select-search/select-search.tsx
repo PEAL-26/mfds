@@ -61,7 +61,7 @@ export function SelectSearch<T>(props: SelectSearchProps<T>) {
 
   useEffect(() => {
     if (defaultItem) {
-      const item = items.find((item) => item[fieldValue] === defaultItem[fieldValue]);
+      const item = items.find((item) => item?.[fieldValue] === defaultItem?.[fieldValue]);
       if (item) setSelectedItem(item);
     }
   }, [fieldLabel, fieldValue, items, defaultItem]);

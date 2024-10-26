@@ -1,13 +1,13 @@
 'use client';
-import { ChangeEvent,useState } from 'react';
+import { useEffect,useState } from 'react';
 import { cn } from '../../../libs/utils';
 import {
 SelectContent,
 SelectGroup,
-SelectItem,
 Select as SelectPrimitive,
 SelectTrigger,
 } from '../../@radix-ui/select';
+import { SelectItem } from './select-item';
 import { SelectProps } from './types';
 
 
@@ -28,64 +28,82 @@ export function Select<T>(props: SelectProps<T>) {
     selectEmptyText = 'Nenhum (a)',
     onValueChange,
     onSelect,
-    onChange,
+    value,
     ...rest
   } = props;
-  const [selectedItem, setSelectedItem] = useState<T | undefined | null>(() => defaultItem);
 
-  console.log({ selectedItem });
+  const [open, setOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState<T | undefined>(undefined);
 
-  const handleValueChange = (value: any) => {
-    if (value === null) {
-      const obj = Object();
+  const handleValueChangeClose = (item: T | null) => {
+    handleValueChange(item);
+    setOpen(false);
+  };
+
+  const handleValueChange = (item: T | null) => {
+    let obj = Object(item || {});
+
+    if (item === null) {
       obj[fieldValue] = null;
       obj[fieldLabel] = selectEmptyText;
-
-      setSelectedItem(obj);
-      onValueChange?.(value);
-      onSelect?.(null);
-      handleChange(null);
-      return;
     }
 
-    const item = items.find((i) => i[fieldValue] === value);
-    setSelectedItem(item);
-    onSelect?.(item);
-    onValueChange?.(value);
-    handleChange(item);
+    if (item !== null) {
+      obj = items.find((i) => String(i?.[fieldValue]) === String(item?.[fieldValue]));
+    }
+
+    setSelectedItem(obj);
+
+    onSelect?.(obj);
+    onValueChange?.(String(obj?.[fieldValue]));
   };
 
-  const handleChange = (value?: Record<any, any>) => {
-    const event = {
-      target: { value },
-      currentTarget: { value },
-    } as unknown as ChangeEvent<HTMLElement>;
+  useEffect(() => {
+    handleValueChange(defaultItem);
+  }, [defaultItem]);
 
-    onChange?.(event);
-  };
+  useEffect(() => {
+    let obj = Object()
+    obj[fieldValue] = value;
+    handleValueChange(obj);
+  }, [value]);
 
   return (
-    <SelectPrimitive onValueChange={handleValueChange} {...rest}>
+    <SelectPrimitive open={open} onOpenChange={setOpen} {...rest}>
       <SelectTrigger
         id={id}
-        className={cn('min-w-[180px] w-[180px]', className, !selectedItem?.[fieldLabel] && 'text-gray-300')}
+        className={cn(
+          'w-[180px] min-w-[180px]',
+          className,
+          !selectedItem?.[fieldLabel] && 'text-gray-300',
+        )}
       >
-        <div className='line-clamp-1 text-left'>{(selectedItem?.[fieldLabel] || placeholder) as any}</div>
+        <div className="line-clamp-1 text-left">
+          {(selectedItem?.[fieldLabel] || placeholder) as any}
+        </div>
       </SelectTrigger>
       <SelectContent className={cn(contentClassName)}>
         <SelectGroup className={cn(contentGroupClassName)}>
           {selectEmpty && (
-            <SelectItem iconCheck={iconCheck} value={null} className={cn(contentItemClassName)}>
+            <SelectItem
+              iconCheck={iconCheck}
+              checked={selectedItem?.[fieldValue] === null}
+              value={null}
+              className={cn(contentItemClassName)}
+              onClick={() => handleValueChangeClose(null)}
+            >
               {selectEmptyText}
             </SelectItem>
           )}
           {items.map((item) => (
             <SelectItem
               iconCheck={iconCheck}
-              key={String(item[fieldValue])}
-              value={String(item[fieldValue])}
+              checked={String(selectedItem?.[fieldValue]) === String(item?.[fieldValue])}
+              key={String(item?.[fieldValue])}
+              value={String(item?.[fieldValue])}
               className={cn(contentItemClassName)}
-              asChild
+              onClick={() => handleValueChangeClose(item)}
+              // asChild
             >
               {item[fieldLabel] as any}
             </SelectItem>

@@ -14,6 +14,7 @@ export const DatetimePickerLabel = forwardRef<HTMLInputElement, DateTimePickerLa
       containerClassName = '',
       label,
       error,
+      required,
       ...rest
     } = props;
 
@@ -26,6 +27,7 @@ export const DatetimePickerLabel = forwardRef<HTMLInputElement, DateTimePickerLa
           htmlFor={uuid}
         >
           {label}
+          {required && <span className="text-red">{' *'}</span>}
         </label>
         <DateTimePicker
           id={uuid}

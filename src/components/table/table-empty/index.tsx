@@ -14,8 +14,8 @@ export function TableEmpty(props: TableEmptyProps) {
       )}
     >
       {Icon && <Icon className="h-28 w-40 text-primary-a" />}
-      <div className="mb-5 mt-1 flex flex-col text-center  leading-none">
-        <span className="text-3xl font-bold text-black">{title}</span>
+      <div className="mb-5 mt-1 flex flex-col items-center text-center leading-none">
+        <span className="max-w-lg text-3xl font-bold text-black">{title}</span>
         {description && (
           <span className="max-w-xs text-center text-base font-normal leading-none text-black">
             {description}

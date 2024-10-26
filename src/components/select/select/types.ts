@@ -1,7 +1,7 @@
 import { SelectProps as RUISelectProps } from '@radix-ui/react-select';
 import { ChangeEvent } from 'react';
 
-export interface SelectProps<T> extends RUISelectProps {
+export interface SelectProps<T> extends Omit<RUISelectProps, 'value'> {
   id?: string;
   items?: T[];
   defaultItem?: T;
@@ -17,4 +17,5 @@ export interface SelectProps<T> extends RUISelectProps {
   iconCheck?: boolean;
   selectEmpty?: boolean;
   selectEmptyText?: string;
+  value?: any
 }

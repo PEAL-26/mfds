@@ -1,5 +1,5 @@
 'use client';
-import { forwardRef, useState } from 'react';
+import { forwardRef, useMemo, useState } from 'react';
 import { BiCalendar } from 'react-icons/bi';
 
 import { formatarDataYMD } from '../../helpers/date';
@@ -24,7 +24,8 @@ export const DateTimePicker = forwardRef<HTMLInputElement, DateTimePickerProps>(
     ...rest
   } = props;
 
-  const [currentValue, setCurrentValue] = useState(() => value);
+  const newValue = useMemo(() => value, [value]);
+  const [currentValue, setCurrentValue] = useState<Date | undefined>(() => newValue);
   const [visible, setVisible] = useState(false);
 
   const handleOnChange = (date?: Date) => {
