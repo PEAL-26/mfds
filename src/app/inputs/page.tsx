@@ -4,7 +4,7 @@ import { Input, DateTimePicker } from "../../../../design-system/components";
 import { useForm } from "react-hook-form";
 
 const dateSchema = z.object({
-  date: z.coerce.date(),
+  date: z.coerce.date().optional(),
 });
 type DateSchemaType = z.infer<typeof dateSchema>;
 
@@ -67,9 +67,12 @@ export default function Inputs() {
       />
 
       <DateTimePicker
-        {...form.register("date")}
-        value={form.getValues("date")}
-        onChange={(e) => form.setValue("date", e.currentTarget.value)}
+        // {...form.register("date")}
+        value={undefined}
+        onChange={(e) => {
+          console.log(e.currentTarget.value)
+          form.setValue("date", e.currentTarget.value)
+        }}
       />
       <span>{form.formState.errors.date?.message || ""}</span>
       <span>{String(form.watch("date"))}</span>
