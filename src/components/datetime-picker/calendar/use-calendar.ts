@@ -1,13 +1,22 @@
-import { MouseEvent, useEffect, useMemo, useRef, useState } from 'react';
-import { CalendarProps, Tab } from './types';
+import { MouseEvent,useEffect,useMemo,useRef,useState } from 'react';
+import { CalendarProps,Tab } from './types';
+
+
 
 export function useCalendar(props: CalendarProps) {
   const { value, onChange } = props;
   const now: Date = useMemo(() => new Date(), []);
 
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-  const [selectedMonth, setSelectedMonth] = useState<number>(now.getMonth());
-  const [selectedYear, setSelectedYear] = useState<number>(now.getFullYear());
+  const [year, month, date] = useMemo(() => {
+    const newDate = value || now;
+    const year = newDate?.getFullYear();
+    const month = newDate?.getMonth();
+    return [year, month, value];
+  }, [value]);
+
+  const [selectedDate, setSelectedDate] = useState<Date | null | undefined>(date);
+  const [selectedMonth, setSelectedMonth] = useState<number>(month);
+  const [selectedYear, setSelectedYear] = useState<number>(year);
 
   // state needed to display the day view, an array of the month weeks containing an array of week dates
   const [displayedWeeks, setDisplayedWeeks] = useState<Date[][]>([]);
@@ -63,16 +72,16 @@ export function useCalendar(props: CalendarProps) {
     setDisplayedWeeks(calendarArray);
   }, [selectedYear, selectedMonth]);
 
-  useEffect(() => {
-    if (value) {
-      const year = value.getFullYear();
-      const month = value.getMonth();
+  // useEffect(() => {
+  //   if (value) {
+  //     const year = value.getFullYear();
+  //     const month = value.getMonth();
 
-      setSelectedYear(year);
-      setSelectedMonth(month);
-      setSelectedDate(value);
-    }
-  }, [value]);
+  //     setSelectedYear(year);
+  //     setSelectedMonth(month);
+  //     setSelectedDate(value);
+  //   }
+  // }, [value]);
 
   const onYearChange = (value: number) => {
     setSelectionTab('day');
@@ -96,10 +105,11 @@ export function useCalendar(props: CalendarProps) {
   };
 
   const onTodayClick = (e: MouseEvent<HTMLSpanElement>) => {
+    const now = new Date();
     setSelectedMonth(now.getMonth());
     setSelectedYear(now.getFullYear());
-    setSelectedDate(new Date());
-    onChange?.(new Date());
+    setSelectedDate(now);
+    onChange?.(now);
   };
 
   const onNavClick = (

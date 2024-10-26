@@ -2,7 +2,7 @@
 import { forwardRef, useMemo, useState } from 'react';
 import { BiCalendar } from 'react-icons/bi';
 
-import { formatarDataYMD } from '../../helpers/date';
+import { dateIsValid, formatarDataYMD } from '../../helpers/date';
 import { cn } from '../../libs/utils';
 import { Popover, PopoverContent, PopoverTrigger } from '../@radix-ui/popover';
 import { Input } from '../input';
@@ -50,8 +50,16 @@ export const DateTimePicker = forwardRef<HTMLInputElement, DateTimePickerProps>(
             <Input.WithIcon
               {...rest}
               icon={BiCalendar}
-              value={currentValue ? formatarDataYMD(currentValue) : undefined}
-              defaultValue={defaultValue ? formatarDataYMD(defaultValue) : undefined}
+              value={
+                currentValue && dateIsValid(currentValue)
+                  ? formatarDataYMD(currentValue)
+                  : undefined
+              }
+              defaultValue={
+                defaultValue && dateIsValid(defaultValue)
+                  ? formatarDataYMD(defaultValue)
+                  : undefined
+              }
               variant="primary"
               className={cn('cursor-pointer', className)}
               onClick={show}

@@ -21,3 +21,8 @@ export function dateGreaterThan(date1: Date, date2: Date) {
 export function dateLessThan(date1: Date, date2: Date) {
   return date1.getTime() < date2.getTime();
 }
+
+export function dateIsValid(date?: string | Date | null) {
+  const newDate = new Date(date).getTime();
+  return !isNaN(newDate);
+}
