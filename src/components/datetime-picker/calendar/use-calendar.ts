@@ -1,7 +1,5 @@
-import { MouseEvent,useEffect,useMemo,useRef,useState } from 'react';
-import { CalendarProps,Tab } from './types';
-
-
+import { MouseEvent, useEffect, useMemo, useRef, useState } from 'react';
+import { CalendarProps, Tab } from './types';
 
 export function useCalendar(props: CalendarProps) {
   const { value, onChange } = props;
@@ -72,17 +70,6 @@ export function useCalendar(props: CalendarProps) {
     setDisplayedWeeks(calendarArray);
   }, [selectedYear, selectedMonth]);
 
-  // useEffect(() => {
-  //   if (value) {
-  //     const year = value.getFullYear();
-  //     const month = value.getMonth();
-
-  //     setSelectedYear(year);
-  //     setSelectedMonth(month);
-  //     setSelectedDate(value);
-  //   }
-  // }, [value]);
-
   const onYearChange = (value: number) => {
     setSelectionTab('day');
     setSelectedYear(value);
@@ -105,7 +92,7 @@ export function useCalendar(props: CalendarProps) {
   };
 
   const onTodayClick = (e: MouseEvent<HTMLSpanElement>) => {
-    const now = new Date();
+    const now = new Date(new Date().toISOString().split('T')[0]);
     setSelectedMonth(now.getMonth());
     setSelectedYear(now.getFullYear());
     setSelectedDate(now);

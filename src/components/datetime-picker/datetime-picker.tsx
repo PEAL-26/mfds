@@ -1,5 +1,5 @@
 'use client';
-import { forwardRef, useMemo, useState } from 'react';
+import { forwardRef, useEffect, useRef, useState } from 'react';
 import { BiCalendar } from 'react-icons/bi';
 
 import { dateIsValid, formatarDataYMD } from '../../helpers/date';
@@ -24,9 +24,9 @@ export const DateTimePicker = forwardRef<HTMLInputElement, DateTimePickerProps>(
     ...rest
   } = props;
 
-  const newValue = useMemo(() => value, [value]);
-  const [currentValue, setCurrentValue] = useState<Date | undefined>(() => newValue);
+  const [currentValue, setCurrentValue] = useState<Date | undefined>(() => defaultValue);
   const [visible, setVisible] = useState(false);
+  const previousValue = useRef(value);
 
   const handleOnChange = (date?: Date) => {
     const event = {
@@ -39,8 +39,23 @@ export const DateTimePicker = forwardRef<HTMLInputElement, DateTimePickerProps>(
     hide();
   };
 
+  useEffect(() => {
+    if (previousValue.current !== value) {
+      setCurrentValue(value);
+      previousValue.current = value;
+    }
+  }, [value]);
+
   const show = () => setVisible(true);
   const hide = () => setVisible(false);
+
+  const dateToString = (date?: Date) => {
+    if (date) {
+      return dateIsValid(date) ? formatarDataYMD(date) : 'Data Inválida';
+    }
+
+    return undefined;
+  };
 
   return (
     <>
@@ -50,16 +65,8 @@ export const DateTimePicker = forwardRef<HTMLInputElement, DateTimePickerProps>(
             <Input.WithIcon
               {...rest}
               icon={BiCalendar}
-              value={
-                currentValue && dateIsValid(currentValue)
-                  ? formatarDataYMD(currentValue)
-                  : undefined
-              }
-              defaultValue={
-                defaultValue && dateIsValid(defaultValue)
-                  ? formatarDataYMD(defaultValue)
-                  : undefined
-              }
+              value={dateToString(currentValue)}
+              defaultValue={dateToString(defaultValue)}
               variant="primary"
               className={cn('cursor-pointer', className)}
               onClick={show}
