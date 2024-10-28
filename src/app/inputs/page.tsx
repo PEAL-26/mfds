@@ -2,6 +2,7 @@
 import { z } from "zod";
 import { Input, DateTimePicker } from "../../../../design-system/components";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 
 const dateSchema = z.object({
   date: z.coerce.date().optional(),
@@ -9,6 +10,7 @@ const dateSchema = z.object({
 type DateSchemaType = z.infer<typeof dateSchema>;
 
 export default function Inputs() {
+  const [date, setDate] = useState<Date | undefined>(undefined);
   const form = useForm<DateSchemaType>({
     defaultValues: {
       date: new Date(new Date().setDate(15)),
@@ -67,15 +69,17 @@ export default function Inputs() {
       />
 
       <DateTimePicker
-        // {...form.register("date")}
-        value={undefined}
+        value={date}
         onChange={(e) => {
-          console.log(e.currentTarget.value)
-          form.setValue("date", e.currentTarget.value)
+          console.log(e.currentTarget.value);
+          form.setValue("date", e.currentTarget.value);
+          setDate(e.currentTarget.value);
         }}
       />
       <span>{form.formState.errors.date?.message || ""}</span>
       <span>{String(form.watch("date"))}</span>
+      <span onClick={() => setDate(undefined)}>Limpar</span>
+      <DateTimePicker />
     </div>
   );
 }

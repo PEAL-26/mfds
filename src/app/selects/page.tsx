@@ -6,10 +6,10 @@ import {
   SelectLabel,
   SelectSearch,
 } from "../../../../design-system/components";
-import { FaBeer } from 'react-icons/fa';
+import { FaBeer } from "react-icons/fa";
 
 export default function Selects() {
-  const [yesNo, setYesNo] = useState(true)
+  const [yesNo, setYesNo] = useState(true);
 
   return (
     <div className="flex flex-col gap-3 justify-start items-start">
@@ -182,7 +182,7 @@ export default function Selects() {
         onSelect={(e) => console.log("onSelect", e)}
         onValueChange={(e) => console.log("onValueChange", e)}
       />
-    
+
       <SelectLabel
         label="YesNo Value"
         placeholder="Yes or No"
@@ -202,6 +202,9 @@ export default function Selects() {
         onSelect={(e) => console.log("onSelect", e)}
         onValueChange={(e) => console.log("onValueChange", e)}
       />
+      <SelectSearch items={[{ id: "1", name: "Alguma coisa" }]}>
+        {(props) => <span>{props?.item?.name || 'Selecionar alguma coisa'}</span>}
+      </SelectSearch>
     </div>
   );
 }
