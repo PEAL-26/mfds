@@ -2,7 +2,7 @@
 import { twMerge } from 'tailwind-merge';
 import { v4 as uuidV4 } from 'uuid';
 
-import { useEffect, useState } from 'react';
+import { useEffect,useState } from 'react';
 import { Label } from '../../label';
 import { Select } from '../select';
 import { SelectSearch } from '../select-search';
@@ -16,6 +16,7 @@ export function SelectBadge<T>(props: SelectBadgeProps<T>) {
     error,
     containerClassName = '',
     className,
+    children,
     ...rest
   } = props;
   const [uuid, setUUID] = useState('');
@@ -38,14 +39,15 @@ export function SelectBadge<T>(props: SelectBadgeProps<T>) {
           </Label>
         )}
         {type === 'default' && (
-          <Select {...rest} id={uuid} className={twMerge(borderClassName, className)} />
-        )}
-        {type === 'searchable' && (
-          <SelectSearch
+          <Select
             {...rest}
+            children={children}
             id={uuid}
             className={twMerge(borderClassName, className)}
           />
+        )}
+        {type === 'searchable' && (
+          <SelectSearch {...rest} id={uuid} className={twMerge(borderClassName, className)} />
         )}
         {badgeAlign === 'right' && (
           <Label variant="badge" data-align={badgeAlign} htmlFor={uuid}>
@@ -59,6 +61,7 @@ export function SelectBadge<T>(props: SelectBadgeProps<T>) {
 }
 
 export * from './types';
+
 
 
 

@@ -44,6 +44,7 @@ export function SelectSearch<T>(props: SelectSearchProps<T>) {
     iconCheck = true,
     selectEmpty = false,
     selectEmptyText = 'Nenhum (a)',
+    children,
     ...rest
   } = props;
 
@@ -117,12 +118,14 @@ export function SelectSearch<T>(props: SelectSearchProps<T>) {
     >
       <SelectTrigger
         id={id}
-        className={cn('min-w-[180px] w-[180px]', className)}
+        className={cn('w-[180px] min-w-[180px]', className)}
         asChild
         search
         formatting={false}
       >
-        {FormControl ? (
+        {children ? (
+          children({ item: selectedItem })
+        ) : FormControl ? (
           <FormControl>
             <SelectSearchButton
               selectedFieldLabel={selectedItem?.[fieldLabel] as any}

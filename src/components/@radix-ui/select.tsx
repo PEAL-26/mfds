@@ -30,7 +30,7 @@ const SelectTrigger = React.forwardRef<
     )}
     {...props}
   >
-    <div className="flex w-full items-center justify-between rounded-md text-sm placeholder:text-gray-300">
+    <div className={"flex w-full items-center justify-between rounded-md text-sm placeholder:text-gray-300"}>
       {children}
       {!search && (
         <SelectPrimitive.Icon asChild>

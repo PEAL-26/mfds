@@ -1,5 +1,5 @@
 'use client';
-import { forwardRef, useEffect, useState } from 'react';
+import { forwardRef,useEffect,useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { v4 as uuidV4 } from 'uuid';
 
@@ -8,7 +8,7 @@ import { SelectSearch } from '../select-search';
 import { SelectLabelProps } from './types';
 
 export const SelectLabel = forwardRef<typeof Select, SelectLabelProps<any>>((props, ref) => {
-  const { label, containerClassName = '', type = 'default', error, required, ...rest } = props;
+  const { label, containerClassName = '', type = 'default', error, required, children, ...rest } = props;
   const [uuid, setUUID] = useState('');
 
   useEffect(() => {
@@ -21,7 +21,7 @@ export const SelectLabel = forwardRef<typeof Select, SelectLabelProps<any>>((pro
         {label}
         {required && <span className="text-red">{' *'}</span>}
       </label>
-      {type === 'default' && <Select id={uuid} {...rest} />}
+      {type === 'default' && <Select id={uuid} {...rest} children={children} />}
       {type === 'searchable' && <SelectSearch id={uuid} {...rest} />}
       {error && <span className={`mt-1 text-xs font-normal text-red`}>{error}</span>}
     </div>
@@ -30,3 +30,4 @@ export const SelectLabel = forwardRef<typeof Select, SelectLabelProps<any>>((pro
 SelectLabel.displayName = 'SelectLabel';
 
 export * from './types';
+

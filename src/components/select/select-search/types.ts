@@ -1,4 +1,4 @@
-import { ChangeEvent, ElementType } from 'react';
+import { ChangeEvent, ElementType, ReactNode } from 'react';
 
 export interface SetValueOption {
   shouldValidate: boolean;
@@ -32,4 +32,9 @@ export interface SelectSearchProps<T> {
   iconCheck?: boolean;
   selectEmpty?: boolean;
   selectEmptyText?: string;
+  children?: (props?: ChildrenProps<T>) => ReactNode;
 }
+
+type ChildrenProps<T> = {
+  item: T;
+};
