@@ -1,8 +1,10 @@
 export interface CounterProps {
   value?: number;
-  onDecrease?(): void;
-  onIncrease?(): void;
-  onChangeValue?(): void;
+  interval?: number;
+  onDecrease?(value?: number): void;
+  onIncrease?(value?: number): void;
+  onChangeValue?(value?: number): void;
   buttonClassName?: string;
   className?: string;
+  disableNegativeNumbers?: boolean;
 }
