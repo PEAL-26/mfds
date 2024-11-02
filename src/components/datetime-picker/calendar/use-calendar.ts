@@ -6,7 +6,7 @@ export function useCalendar(props: CalendarProps) {
   const now: Date = useMemo(() => new Date(), []);
 
   const [year, month, date] = useMemo(() => {
-    const newDate = value || now;
+    const newDate = value ? new Date(value) : now;
     const year = newDate?.getFullYear();
     const month = newDate?.getMonth();
     return [year, month, value];
