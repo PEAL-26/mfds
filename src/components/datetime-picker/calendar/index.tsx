@@ -5,10 +5,9 @@ import { TabMonth } from './tab-month';
 import { TabYear } from './tab-year';
 
 import { forwardRef } from 'react';
-import { monthNames,weekDays } from './constants';
+import { monthNames, weekDays } from './constants';
 import { CalendarProps } from './types';
 import { useCalendar } from './use-calendar';
-
 
 export const Calendar = forwardRef<HTMLInputElement, CalendarProps>((props, ref) => {
   const { startDate, endDate } = props;
@@ -28,7 +27,10 @@ export const Calendar = forwardRef<HTMLInputElement, CalendarProps>((props, ref)
     onYearChange,
     yearsArray,
     handleClear,
+    isLoading,
   } = useCalendar(props);
+
+  if (isLoading) return null;
 
   return (
     <div className="box-border w-64 rounded-md border bg-white p-3 shadow" ref={datepickerRef}>

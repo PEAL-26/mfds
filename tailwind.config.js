@@ -1,4 +1,5 @@
 const { tailwindConfig } = require('./src/configs');
+const forms = require('@tailwindcss/forms')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -6,5 +7,5 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [tailwindConfig],
+  plugins: [tailwindConfig, forms],
 };

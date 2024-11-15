@@ -6,6 +6,8 @@ import { useFormatMoney, useRestrictedInput } from '../../../hooks/use-restricte
 import { InputTextProps } from './types';
 import { inputTextVariants } from './variants';
 
+const TYPES_CUSTOM = ['literal', 'money'];
+
 export const InputText = forwardRef<HTMLInputElement, InputTextProps>(
   (props: InputTextProps, ref) => {
     const {
@@ -22,12 +24,11 @@ export const InputText = forwardRef<HTMLInputElement, InputTextProps>(
     const classNameVariante = inputTextVariants({ variant });
 
     const isMoney = type === 'money';
-    const isRestrict = type === 'number' || type === 'literal';
-    const typeRestrict = isRestrict ? type : undefined;
+    const isTypeCustom = TYPES_CUSTOM.includes(type);
     const newValue = isMoney ? numberToMoney(value ? String(value) : undefined) : value;
 
     const [currentValue, handleChange] = useRestrictedInput({
-      type: typeRestrict,
+      type,
       value: newValue,
       onChange,
     });
@@ -35,12 +36,12 @@ export const InputText = forwardRef<HTMLInputElement, InputTextProps>(
     return (
       <input
         ref={ref}
-        type={typeRestrict ? 'text' : type}
+        type={isTypeCustom ? 'text' : type}
         className={twMerge(classNameVariante, className, isMoney && 'text-right')}
-        {...rest}
         defaultValue={
           isMoney ? numberToMoney(defaultValue ? String(defaultValue) : undefined) : defaultValue
         }
+        {...rest}
         value={currentValue}
         onChange={handleChange}
         onKeyDown={(e) => (isMoney ? onKeydown(e, handleChange) : onKeyDownOriginal?.(e))}

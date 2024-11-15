@@ -5,6 +5,8 @@ export function useCalendar(props: CalendarProps) {
   const { value, onChange } = props;
   const now: Date = useMemo(() => new Date(), []);
 
+  const [isLoading, setIsLoading] = useState(true);
+
   const [year, month, date] = useMemo(() => {
     const newDate = value ? new Date(value) : now;
     const year = newDate?.getFullYear();
@@ -34,6 +36,10 @@ export function useCalendar(props: CalendarProps) {
     }
     setYearsArray(years);
   }, [selectedYear]);
+
+  useEffect(() => {
+   setIsLoading(false)
+  }, []);
 
   //get the array of weeks and dates needed for the day tab view, and update the displayedWeeks state
   useEffect(() => {
@@ -178,5 +184,6 @@ export function useCalendar(props: CalendarProps) {
     onYearChange,
     handleClear,
     yearsArray,
+    isLoading
   };
 }
