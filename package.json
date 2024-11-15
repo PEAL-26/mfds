@@ -31,7 +31,8 @@
     "build:publish:test": "npm run build && npm publish --tag test",
     "publish:public": "npm publish --access public",
     "patch": "npm version patch",
-    "patch:publish": "npm run patch && npm run build:publish",
+    "patch:publish": "npm run patch && npm run release && npm run build:publish",
+    "release": "standard-version",
     "test": "jest",
     "test:watch": "jest --watch",
     "format": "npx prettier ./src/** --write"
@@ -68,6 +69,7 @@
     "prettier-plugin-organize-imports": "^3.2.3",
     "prettier-plugin-tailwindcss": "^0.5.7",
     "rimraf": "^5.0.5",
+    "standard-version": "^9.5.0",
     "tailwindcss": "^3.3.3",
     "ts-node": "^10.9.1",
     "tsx": "^4.6.1",
