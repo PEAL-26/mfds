@@ -1,12 +1,14 @@
 'use client';
-import { forwardRef } from 'react';
+import { forwardRef,useMemo } from 'react';
 import { twMerge } from 'tailwind-merge';
 
-import { useFormatMoney, useRestrictedInput } from '../../../hooks/use-restricted-input';
+import { useFormatMoney,useRestrictedInput } from '../../../hooks/use-restricted-input';
 import { InputTextProps } from './types';
 import { inputTextVariants } from './variants';
 
-const TYPES_CUSTOM = ['literal', 'money'];
+
+
+const TYPES_CUSTOM = ['number', 'literal', 'money'];
 
 export const InputText = forwardRef<HTMLInputElement, InputTextProps>(
   (props: InputTextProps, ref) => {
@@ -14,7 +16,6 @@ export const InputText = forwardRef<HTMLInputElement, InputTextProps>(
       className,
       variant = 'none',
       type = 'text',
-      defaultValue,
       value,
       onChange,
       onKeyDown: onKeyDownOriginal,
@@ -23,25 +24,31 @@ export const InputText = forwardRef<HTMLInputElement, InputTextProps>(
     const { onKeydown, numberToMoney } = useFormatMoney();
     const classNameVariante = inputTextVariants({ variant });
 
-    const isMoney = type === 'money';
-    const isTypeCustom = TYPES_CUSTOM.includes(type);
-    const newValue = isMoney ? numberToMoney(value ? String(value) : undefined) : value;
+    const [isMoney, isTypeCustom, newValue, newDefaultValue] = useMemo(() => {
+      const isMoney = type === 'money';
+      const isTypeCustom = TYPES_CUSTOM.includes(type);
+      const newValue = isMoney ? numberToMoney(value ? String(value) : undefined) : value;
+      const newDefaultValue = isMoney
+        ? numberToMoney(rest?.defaultValue ? String(rest.defaultValue) : undefined)
+        : rest?.defaultValue;
 
-    const [currentValue, handleChange] = useRestrictedInput({
+      return [isMoney, isTypeCustom, newValue, newDefaultValue] as const;
+    }, [type, value, rest.defaultValue]);
+
+    const { currentValue, handleChange, defaultValue } = useRestrictedInput({
       type,
       value: newValue,
+      defaultValue: newDefaultValue,
       onChange,
     });
 
     return (
       <input
         ref={ref}
+        {...rest}
         type={isTypeCustom ? 'text' : type}
         className={twMerge(classNameVariante, className, isMoney && 'text-right')}
-        defaultValue={
-          isMoney ? numberToMoney(defaultValue ? String(defaultValue) : undefined) : defaultValue
-        }
-        {...rest}
+        defaultValue={newDefaultValue}
         value={currentValue}
         onChange={handleChange}
         onKeyDown={(e) => (isMoney ? onKeydown(e, handleChange) : onKeyDownOriginal?.(e))}
