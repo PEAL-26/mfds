@@ -3,6 +3,7 @@
 
 const { colors } = require("../design-system/styles");
 const animate = require("tailwindcss-animate");
+const forms = require('@tailwindcss/forms')
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -37,5 +38,5 @@ export default {
       },
     },
   },
-  plugins: [animate],
+  plugins: [animate, forms],
 };

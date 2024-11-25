@@ -1,5 +1,6 @@
 import { Link } from "../../../design-system/components";
 import "../styles/globals.css";
+import "@blueprintjs/core/lib/css/blueprint.css"; 
 
 export default function RootLayout({
   children,
