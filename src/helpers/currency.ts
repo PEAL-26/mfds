@@ -77,7 +77,8 @@ export function formatInputMoney(input = '000') {
 }
 
 export function moneyToNumber(money: string) {
-  return Number(money.replaceAll(' ', '').replace(',', '.'));
+  const number = Number(money.replaceAll(' ', '').replace(',', '.'));
+  return isNaN(number) ? 0 : number;
 }
 
 export function numberToMoney(value?: string, round = true) {
