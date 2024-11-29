@@ -7,12 +7,20 @@ import { TabsProps, TabType } from './types';
 import { checkDuplicateIds } from './utils';
 
 export function Tabs(props: TabsProps) {
-  const { tabs, defaultTab, children, className } = props;
+  const { tabs, defaultTab, defaultTabId, children, className, onChangeTab } = props;
 
-  const [currentTab, setCurrentTab] = useState<TabType>(defaultTab || tabs[0]);
+  const [currentTab, setCurrentTab] = useState<TabType>(() => {
+    if (defaultTabId) {
+      const tab = tabs.find((t) => t.id === defaultTabId);
+      if (tab) return tab;
+    }
+
+    return defaultTab || tabs[0];
+  });
 
   const handleChangeTab = (tab: TabType) => {
     setCurrentTab(tab);
+    onChangeTab?.(tab);
   };
 
   checkDuplicateIds(tabs);
