@@ -1,7 +1,7 @@
 {
   "name": "mfds",
   "version": "1.5.36",
-  "description": "Design system mfds",
+  "description": "Mais Facturas Design System",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -39,14 +39,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PEAL-26/software-edv/tree/design-system"
+    "url": "git+https://github.com/PEAL-26/mfds"
   },
   "author": "PEAL-26",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/PEAL-26/software-edv/issues"
+    "url": "https://github.com/PEAL-26/mfds/issues"
   },
-  "homepage": "https://peal-26.github.io/software-edv-design-system",
+  "homepage": "https://peal-26.github.io/mfds",
   "devDependencies": {
     "@babel/core": "^7.23.2",
     "@babel/preset-env": "^7.23.2",
