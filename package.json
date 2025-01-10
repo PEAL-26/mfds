@@ -1,6 +1,6 @@
 {
   "name": "mfds",
-  "version": "1.5.40",
+  "version": "1.5.41",
   "description": "Mais Facturas Design System",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
