@@ -54,7 +54,7 @@ export const DateTimePicker = forwardRef<HTMLInputElement, DateTimePickerProps>(
       return dateIsValid(date) ? formatarDataYMD(date) : 'Data Inválida';
     }
 
-    return undefined;
+    return '';
   };
 
   return (
